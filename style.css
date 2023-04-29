@@ -1,16 +1,50 @@
-h1 {
+div.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.item {
+    height: 200px;
+    width: 150px;
+    border-style: solid;
+    border-radius: 15px;
+    border-width: 1px;
+    border-color: grey;
+    padding: 20px 20px;
+    overflow: auto;
+}
+
+div#container {
     position: absolute;
     right: 100px;
     bottom: 100px;
     background-color: aqua;
     border-style: solid;
+    border-color: rgba(0, 0, 0, 0.2);
     padding: 20px 20px;
     border-radius: 20px;
     font-size: 14px;
     font-weight: unset;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.3s ease-in-out;
 }
 
-h1:hover {
-    background-color: green;
-    box-shadow: 10px 10px 10px grey;
+div#container:hover {
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+div#container :is(div, p) {
+    color: yellow;
+}
+
+.kiemelt {
+    background-color: black;
+    color: yellow;
+}
+
+.parag {
+    display: inline-block;
 }
