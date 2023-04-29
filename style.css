@@ -1,0 +1,16 @@
+h1 {
+    position: absolute;
+    right: 100px;
+    bottom: 100px;
+    background-color: aqua;
+    border-style: solid;
+    padding: 20px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: unset;
+}
+
+h1:hover {
+    background-color: green;
+    box-shadow: 10px 10px 10px grey;
+}
