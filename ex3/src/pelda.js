@@ -20,10 +20,19 @@ function osszead(tomb) {
     return result;
 }
 var Utazas = /** @class */ (function () {
-    function Utazas(cel, tavolsag) {
+    function Utazas(cel, tavolsag, isAngolszasz) {
         this.cel = cel;
         this.tavolsag = tavolsag;
+        this.isAngolszasz = isAngolszasz;
     }
+    Utazas.prototype.getTavolsag = function () {
+        if (this.isAngolszasz) {
+            return this.tavolsag * 1.6;
+        }
+        else {
+            return this.tavolsag;
+        }
+    };
     Utazas.prototype.print = function () {
         // if (this.tavolsag >= 100 && this.tavolsag <= 300) {
         //     return "Közepes kirándulas"
@@ -48,13 +57,20 @@ var Utazas = /** @class */ (function () {
 var Alkalmazott = /** @class */ (function () {
     function Alkalmazott(nev) {
         this.nev = nev;
-        this.utazasai = new Array();
+        this.utazasok = new Array();
     }
     Alkalmazott.prototype.setNev = function (nev) {
         this.nev = nev;
     };
     Alkalmazott.prototype.addUtazas = function (utazas) {
-        this.utazasai.push(utazas);
+        this.utazasok.push(utazas);
+    };
+    Alkalmazott.prototype.getTravelLength = function () {
+        var result = 0;
+        for (var i = 0; i < this.utazasok.length; i++) {
+            result += this.utazasok[i].getTavolsag();
+        }
+        return result;
     };
     return Alkalmazott;
 }());
@@ -62,10 +78,12 @@ var robi = new Alkalmazott("Róbert");
 var peti = new Alkalmazott("Péter");
 robi.setNev("Bárdonicsek Róbert");
 peti.setNev("lssfffééj");
-var utazas1 = new Utazas("Budapest", 550);
-var utazas2 = new Utazas("Pécs", 60);
-var utazas3 = new Utazas("Balaton", 300);
+var utazas1 = new Utazas("Budapest", 550, true);
+var utazas2 = new Utazas("Pécs", 60, false);
+var utazas3 = new Utazas("Balaton", 300, false);
 robi.addUtazas(utazas1);
+robi.addUtazas(utazas2);
+robi.addUtazas(utazas3);
 var alkalmazott = {
     "nev": "Robi",
     "utazasai": [
@@ -86,5 +104,5 @@ kutya[0] = 100;
 nev = "Józsi";
 // console.log("terfogatLista:" + terfogatLista);
 // console.log("kutya:" + kutya);
-console.log(utazas2.print());
+console.log(robi.getTravelLength());
 //# sourceMappingURL=pelda.js.map

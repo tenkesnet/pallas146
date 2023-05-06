@@ -25,10 +25,21 @@ function osszead(tomb: number[]): number {
 class Utazas {
     private cel: string
     private tavolsag: number
+    private isAngolszasz: boolean
 
-    constructor(cel: string, tavolsag: number) {
+    constructor(cel: string, tavolsag: number, isAngolszasz: boolean) {
         this.cel = cel
         this.tavolsag = tavolsag
+        this.isAngolszasz = isAngolszasz
+    }
+
+    getTavolsag(): number {
+        if (this.isAngolszasz) {
+            return this.tavolsag * 1.6
+        } else {
+            return this.tavolsag;
+        }
+
     }
 
     print(): string {
@@ -55,11 +66,11 @@ class Utazas {
 
 class Alkalmazott {
     private nev: String
-    private utazasai: Utazas[]
+    private utazasok: Utazas[]
 
     constructor(nev: string) {
         this.nev = nev;
-        this.utazasai = new Array<Utazas>();
+        this.utazasok = new Array<Utazas>();
     }
 
     setNev(nev: string): void {
@@ -67,7 +78,15 @@ class Alkalmazott {
     }
 
     addUtazas(utazas: Utazas) {
-        this.utazasai.push(utazas)
+        this.utazasok.push(utazas)
+    }
+
+    getTravelLength(): number {
+        let result: number = 0;
+        for (let i = 0; i < this.utazasok.length; i++) {
+            result += this.utazasok[i].getTavolsag()
+        }
+        return result;
     }
 }
 
@@ -75,11 +94,13 @@ let robi: Alkalmazott = new Alkalmazott("Róbert");
 let peti: Alkalmazott = new Alkalmazott("Péter");
 robi.setNev("Bárdonicsek Róbert")
 peti.setNev("lssfffééj")
-let utazas1 = new Utazas("Budapest", 550);
-let utazas2 = new Utazas("Pécs", 60);
-let utazas3 = new Utazas("Balaton", 300);
+let utazas1 = new Utazas("Budapest", 550, true);
+let utazas2 = new Utazas("Pécs", 60, false);
+let utazas3 = new Utazas("Balaton", 300, false);
 
 robi.addUtazas(utazas1);
+robi.addUtazas(utazas2);
+robi.addUtazas(utazas3);
 
 let alkalmazott = {
     "nev": "Robi",
@@ -103,4 +124,4 @@ nev = "Józsi"
 
 // console.log("terfogatLista:" + terfogatLista);
 // console.log("kutya:" + kutya);
-console.log(utazas2.print());
+console.log(robi.getTravelLength());
