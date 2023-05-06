@@ -4,11 +4,19 @@
 //camelCase motorTerfogatSzam 
 //PascalCase MotorTerfogat
 //underscore_case motor_terfogat
-let terfogat: number;
+let terfogat: number = 50;
+let uvegTerfogat: number = terfogat;
+terfogat = 100;
 let nev: String = "Robi"
-terfogat = 50;
+let terfogatLista: number[] = [23, 78, 56.8]
+let kutya = terfogatLista
 
-console.log(nev);
+//let alkalmazott =
+
+//terfogatLista.push(100)
+kutya[0] = 100
+//console.log(nev);
 nev = "Józsi"
 
-console.log(terfogat);
+console.log("terfogatLista:" + terfogatLista);
+console.log("kutya:" + kutya);
