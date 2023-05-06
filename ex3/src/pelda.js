@@ -39,8 +39,7 @@ var Alkalmazott = /** @class */ (function () {
 var robi = new Alkalmazott();
 var peti = new Alkalmazott();
 robi.setNev("Bárdonicsek Róbert");
-peti.
-    peti.setNev("lkjlééj");
+peti.setNev("lkjlééj");
 robi.utazasai.push(new Utazas());
 var alkalmazott = {
     "nev": "Robi",

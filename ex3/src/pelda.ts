@@ -39,8 +39,7 @@ class Alkalmazott {
 let robi: Alkalmazott = new Alkalmazott();
 let peti: Alkalmazott = new Alkalmazott();
 robi.setNev("Bárdonicsek Róbert")
-peti.
-    peti.setNev("lkjlééj")
+peti.setNev("lkjlééj")
 robi.utazasai.push(new Utazas());
 
 let alkalmazott = {
