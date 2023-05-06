@@ -23,24 +23,63 @@ function osszead(tomb: number[]): number {
 }
 
 class Utazas {
-    cel: String = ""
-    tavolsag: number = 0
+    private cel: string
+    private tavolsag: number
+
+    constructor(cel: string, tavolsag: number) {
+        this.cel = cel
+        this.tavolsag = tavolsag
+    }
+
+    print(): string {
+        // if (this.tavolsag >= 100 && this.tavolsag <= 300) {
+        //     return "Közepes kirándulas"
+        // } else if (this.tavolsag < 100) {
+        //     return "Rövid kirándulás"
+        // } else {
+        //     return "Hosszú utazás"
+        // }
+        switch (true) {
+            case this.tavolsag >= 100 && this.tavolsag <= 300:
+                return "Közepes kirándulas";
+                break;
+            case this.tavolsag < 100:
+                return "Rövid kirándulás";
+                break;
+            default:
+                return "Hosszú utazás"
+
+        }
+    }
 }
 
 class Alkalmazott {
-    protected nev: String = ""
-    utazasai: Utazas[] = []
+    private nev: String
+    private utazasai: Utazas[]
+
+    constructor(nev: string) {
+        this.nev = nev;
+        this.utazasai = new Array<Utazas>();
+    }
 
     setNev(nev: string): void {
         this.nev = nev;
     }
+
+    addUtazas(utazas: Utazas) {
+        this.utazasai.push(utazas)
+    }
 }
 
-let robi: Alkalmazott = new Alkalmazott();
-let peti: Alkalmazott = new Alkalmazott();
+let robi: Alkalmazott = new Alkalmazott("Róbert");
+let peti: Alkalmazott = new Alkalmazott("Péter");
 robi.setNev("Bárdonicsek Róbert")
-peti.setNev("lkjlééj")
-robi.utazasai.push(new Utazas());
+peti.setNev("lssfffééj")
+let utazas1 = new Utazas("Budapest", 550);
+let utazas2 = new Utazas("Pécs", 60);
+let utazas3 = new Utazas("Balaton", 300);
+
+robi.addUtazas(utazas1);
 
 let alkalmazott = {
     "nev": "Robi",
@@ -64,4 +103,4 @@ nev = "Józsi"
 
 // console.log("terfogatLista:" + terfogatLista);
 // console.log("kutya:" + kutya);
-console.log(osszead(terfogatLista));
+console.log(utazas2.print());
