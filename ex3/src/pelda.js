@@ -67,8 +67,12 @@ var Alkalmazott = /** @class */ (function () {
     };
     Alkalmazott.prototype.getTravelLength = function () {
         var result = 0;
-        for (var i = 0; i < this.utazasok.length; i++) {
-            result += this.utazasok[i].getTavolsag();
+        // for (let i = 0; i < this.utazasok.length; i++) {
+        //     result += this.utazasok[i].getTavolsag()
+        // }
+        for (var _i = 0, _a = this.utazasok; _i < _a.length; _i++) {
+            var utazas = _a[_i];
+            result += utazas.getTavolsag();
         }
         return result;
     };
@@ -88,16 +92,20 @@ var alkalmazott = {
     "nev": "Robi",
     "utazasai": [
         {
-            cel: "Budapest",
-            tavolsag: 550
+            "cel": "Budapest",
+            "tavolsag": 550,
+            "utazasiIroda": "Valami Travel",
         },
         {
-            cel: "Korfu",
+            "cel": "Korfu",
             "utazasiIroda": "Valami Travel",
             "tavolsag": 3400
         }
     ]
 };
+for (var key in alkalmazott.utazasai[1]) {
+    console.log(key + " : " + alkalmazott.utazasai[1][key]);
+}
 //terfogatLista.push(100)
 kutya[0] = 100;
 //console.log(nev);

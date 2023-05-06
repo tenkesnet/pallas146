@@ -83,8 +83,11 @@ class Alkalmazott {
 
     getTravelLength(): number {
         let result: number = 0;
-        for (let i = 0; i < this.utazasok.length; i++) {
-            result += this.utazasok[i].getTavolsag()
+        // for (let i = 0; i < this.utazasok.length; i++) {
+        //     result += this.utazasok[i].getTavolsag()
+        // }
+        for (let utazas of this.utazasok) {
+            result += utazas.getTavolsag()
         }
         return result;
     }
@@ -106,15 +109,20 @@ let alkalmazott = {
     "nev": "Robi",
     "utazasai": [
         {
-            cel: "Budapest",
-            tavolsag: 550
+            "cel": "Budapest",
+            "tavolsag": 550,
+            "utazasiIroda": "Valami Travel",
         },
         {
-            cel: "Korfu",
+            "cel": "Korfu",
             "utazasiIroda": "Valami Travel",
             "tavolsag": 3400
         }
     ]
+}
+
+for (let key in alkalmazott.utazasai[1]) {
+    console.log(key + " : " + alkalmazott.utazasai[1][key])
 }
 
 //terfogatLista.push(100)
