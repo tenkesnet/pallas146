@@ -105,7 +105,7 @@ robi.addUtazas(utazas1);
 robi.addUtazas(utazas2);
 robi.addUtazas(utazas3);
 
-let alkalmazott = {
+let alkalmazott: { [index: string]: any } = {
     "nev": "Robi",
     "utazasai": [
         {
