@@ -1,3 +1,18 @@
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 // 1,2,567,-3,-78
 // 1.6, 0.5,-3.6
 // true, false
@@ -8,8 +23,17 @@ var terfogat = 50;
 var uvegTerfogat = terfogat;
 terfogat = 100;
 var nev = "Robi";
+var szin = 300;
 var terfogatLista = [23, 78, 56.8];
 var kutya = terfogatLista;
+var b = {
+    x: 10
+};
+var macska = {
+    nev: "Cirmi"
+};
+macska.nev = "Kormi";
+console.log(macska);
 function osszead(tomb) {
     var result = 0;
     for (var _i = 0, tomb_1 = tomb; _i < tomb_1.length; _i++) {
@@ -113,4 +137,40 @@ nev = "Józsi";
 // console.log("terfogatLista:" + terfogatLista);
 // console.log("kutya:" + kutya);
 console.log(robi.getTravelLength());
-//# sourceMappingURL=pelda.js.map
+var Szemely = /** @class */ (function () {
+    function Szemely(nev, szulIdo, nem) {
+        this.nev = nev;
+        this.szulIdo = szulIdo;
+        this.nem = nem;
+        this.tajszam = '';
+    }
+    return Szemely;
+}());
+var Tanulo = /** @class */ (function (_super) {
+    __extends(Tanulo, _super);
+    function Tanulo(nev, szulIdo, nem, intezmeny, jogviszony) {
+        var _this = _super.call(this, nev, szulIdo, nem) || this;
+        _this.intezmeny = intezmeny;
+        _this.jogviszony = jogviszony;
+        return _this;
+    }
+    Tanulo.prototype.log = function (msg, date) {
+        console.log(msg);
+    };
+    return Tanulo;
+}(Szemely));
+var Tanar = /** @class */ (function (_super) {
+    __extends(Tanar, _super);
+    function Tanar() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return Tanar;
+}(Szemely));
+var Munkaido = /** @class */ (function () {
+    function Munkaido() {
+        this.kezdet = 8;
+        this.vege = 17;
+    }
+    return Munkaido;
+}());
+var tanulo1 = new Tanulo("Robi", new Date('2000-03-01'), 'f', 'PTE', true);
