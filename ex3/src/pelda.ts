@@ -8,10 +8,26 @@ let terfogat: number = 50;
 let uvegTerfogat: number = terfogat;
 terfogat = 100;
 let nev: String = "Robi"
+const szin: number = 300
+
+
+
 
 let terfogatLista: number[] = [23, 78, 56.8]
 let kutya = terfogatLista
+const b = {
+    x: 10
+}
 
+const macska = {
+    nev: "Cirmi"
+}
+
+
+
+macska.nev = "Kormi"
+
+console.log(macska);
 
 function osszead(tomb: number[]): number {
     let result: number = 0
@@ -133,3 +149,45 @@ nev = "Józsi"
 // console.log("terfogatLista:" + terfogatLista);
 // console.log("kutya:" + kutya);
 console.log(robi.getTravelLength());
+
+class Szemely {
+    nev: string
+    szulIdo: Date
+    nem: string
+    protected tajszam: string
+
+    constructor(nev: string, szulIdo: Date, nem: string) {
+        this.nev = nev
+        this.szulIdo = szulIdo
+        this.nem = nem
+        this.tajszam = ''
+    }
+}
+
+class Tanulo extends Szemely {
+    jogviszony: boolean
+    intezmeny: string
+
+    constructor(nev: string, szulIdo: Date, nem: string, intezmeny: string, jogviszony: boolean) {
+        super(nev, szulIdo, nem)
+        this.intezmeny = intezmeny
+        this.jogviszony = jogviszony
+    }
+
+    log(msg: string, date?: Date) {
+        console.log(msg)
+    }
+}
+
+class Tanar extends Szemely {
+
+}
+
+class Munkaido {
+
+    kezdet: number = 8;
+    vege: number = 17;
+}
+
+let tanulo1: Tanulo = new Tanulo("Robi", new Date('2000-03-01'), 'f', 'PTE', true);
+
