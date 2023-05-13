@@ -6,6 +6,11 @@ INSERT INTO regions(region_id,region_name) VALUES (2,'Americas');
 INSERT INTO regions(region_id,region_name) VALUES (3,'Asia');
 INSERT INTO regions(region_id,region_name) VALUES (4,'Middle East and Africa');
 
+INSERT INTO regions(region_name) VALUES ('Africa');
+
+select * from regions;
+update regions set region_name='India';
+delete from regions where region_id=7;
 
 /*Data for the table countries */
 INSERT INTO countries(country_id,country_name,region_id) VALUES ('AR','Argentina',2);
