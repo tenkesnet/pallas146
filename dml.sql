@@ -47,7 +47,7 @@ INSERT INTO locations(location_id,street_address,postal_code,city,state_province
 INSERT INTO locations(location_id,street_address,postal_code,city,state_province,country_id) VALUES (2400,'8204 Arthur St',NULL,'London',NULL,'UK');
 INSERT INTO locations(location_id,street_address,postal_code,city,state_province,country_id) VALUES (2500,'Magdalen Centre, The Oxford Science Park','OX9 9ZB','Oxford','Oxford','UK');
 INSERT INTO locations(location_id,street_address,postal_code,city,state_province,country_id) VALUES (2700,'Schwanthalerstr. 7031','80925','Munich','Bavaria','DE');
-
+INSERT INTO locations(location_id,street_address,postal_code,city,state_province,country_id) VALUES (2800,'Szegfű u 7','2613','Pécs','Baranya','HU');
 
 /*Data for the table jobs */
 
