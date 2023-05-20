@@ -1,5 +1,7 @@
 package org.pallas;
 
 public class Main {
-    String szin="fehér";
+    public static void main(String[] args) {
+
+    }
 }
