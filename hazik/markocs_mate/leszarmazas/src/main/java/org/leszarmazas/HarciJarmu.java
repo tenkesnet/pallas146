@@ -1,12 +1,12 @@
 package org.leszarmazas;
 
 public class HarciJarmu {
-    protected String gyarto;
-    protected int suly;
-    protected int hossz;
-    protected int magassag;
-    protected int szelesseg;
-    protected boolean isFelfegyverzett;
+    private String gyarto;
+    private int suly;
+	private int hossz;
+    private int magassag;
+    private int szelesseg;
+    private boolean isFelfegyverzett;
 
     protected HarciJarmu(String gyarto, int suly, int hossz, int magassag, int szelesseg, boolean isFelfegyverzett){
         this.gyarto = gyarto;
@@ -16,8 +16,22 @@ public class HarciJarmu {
         this.szelesseg = szelesseg;
         this.isFelfegyverzett = isFelfegyverzett;
     }
-
+    
+    public HarciJarmu() {
+    	
+    }
     protected void gyartoKiiras(){
         System.out.println(this.gyarto);
     }
+
+	public String getGyarto() {
+		return gyarto;
+	}
+	public int getSuly() {
+		return suly;
+	}
+
+	public void setSuly(int suly) {
+		this.suly = suly;
+	}
 }

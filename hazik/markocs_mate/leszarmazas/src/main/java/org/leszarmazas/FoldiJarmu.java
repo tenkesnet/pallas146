@@ -9,4 +9,7 @@ public class FoldiJarmu extends HarciJarmu{
         this.legenysegSzama = legenysegSzama;
         this.sebessegKmH = sebessegKmH;
     }
+    public FoldiJarmu() {
+    	
+    }
 }

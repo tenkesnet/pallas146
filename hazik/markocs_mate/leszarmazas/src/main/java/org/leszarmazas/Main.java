@@ -11,7 +11,7 @@ public class Main {
         Csatahajo uSSAlaska = new Csatahajo("USA", 45500, 124000, 43200, 34520,
                 true, 42.4, 2345.8, 4, 12, 235);
 
-        System.out.println(t54.gyarto);
+        System.out.println(t54.getGyarto());
         t54.gyartoKiiras();
         uSSAlaska.gyartoKiiras();
 
@@ -19,7 +19,7 @@ public class Main {
         mustang.onmukodoKiiras();
 
         t54.tankInfo();
-        t54.suly = 52000;
+        t54.setSuly(52000);
         t54.tankInfo();
     }
 }
