@@ -23,6 +23,7 @@ public class Pelda1 {
 		// TODO Auto-generated method stub
 		String[] nevek = { "Robi", "Gizi", "Jani", "a","b" };
 		// String[] nevek = { "Robi" };
+		
 		Inc jref=new Inc();
 		Inc iref=new Inc();
 		Pelda1 pelda= new Pelda1();
