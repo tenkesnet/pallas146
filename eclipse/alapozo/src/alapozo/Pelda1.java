@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Pelda1 {
-	String nev;
+	String nev="";
 
 	public boolean vizsgal(Inc vizsgalando, int hatarertek) {
 		// System.out.println("Vizsgalat: "+vizsgalando.getValue()+"<"+hatarertek);
@@ -24,13 +24,10 @@ public class Pelda1 {
 
 		Pelda1 pelda = new Pelda1();
 		Pelda1 szamar = new Pelda1();
-		try {
-			System.out.println(szamar.nev.length());
-		} catch (NullPointerException e) {
-			System.out.println("bakker vétettél!");
-			System.exit(0);
-		}
+
 		
+		System.out.println(szamar.nev.length());
+
 		BufferedReader in;
 
 		String fileName = "birka.txt";
