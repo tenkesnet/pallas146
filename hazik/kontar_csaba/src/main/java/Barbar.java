@@ -7,13 +7,17 @@ public class Barbar extends Harcos {
     }
 
     @Override
-    public boolean sebzes (double ero) {
-        //System.out.println("Barbar sebzés!");
+    public boolean sebzes(double ero) {
+        // System.out.println("Barbar sebzés!");
         super.sebzes(ero + kozelharciSzerencse);
-        setEletEro(getEletEro()-ero);
-        if(getEletEro()<=0) {
+        setEletEro(getEletEro() - ero);
+        if (getEletEro() <= 0) {
             return false;
         }
         return true;
+    }
+
+    public void gyogyul() {
+        setEletEro(getEletEro() + 3);
     }
 }
