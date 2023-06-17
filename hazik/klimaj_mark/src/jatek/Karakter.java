@@ -1,66 +1,55 @@
 package jatek;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-
 public class Karakter {
 	double eletEro;
-	double eletEroTruncated =BigDecimal.valueOf(eletEro)
-			.setScale(3, RoundingMode.HALF_UP)
-			.doubleValue(); //befejezetlen kerekítés ref.:https://stackoverflow.com/questions/14845937/java-how-to-set-precision-for-double-value
+	double eletEroTruncated;
 	double sebzes;
-	double sebzesTruncated =BigDecimal.valueOf(sebzes)
-			.setScale(3, RoundingMode.HALF_UP)
-			.doubleValue(); //befejezetlen kerekítés ref.: ua.
+	double sebzesTruncated; // befejezetlen kerekítés ref.: ua.
 	String nev;
 	int szint;
 	int eleresiTavolsag;
 	int kor;
-	generateRandom talalatiEsely = new generateRandom();
+	GenerateRandom talalatiEsely = new GenerateRandom();
 	double eletEroMax;
-	
-	Karakter(double eletEro, double sebzes, String nev,int szint){
-		this.eletEro = eletEro+(eletEro*(szint*0.035));
+
+	public Karakter(double eletEro, double sebzes, String nev, int szint) {
+		this.eletEro = talalatiEsely.round(eletEro + (eletEro * (szint * 0.035)), 3);
 		this.nev = nev;
-		this.sebzes = sebzes+(sebzes*(szint*0.015));
+		this.sebzes = talalatiEsely.round(sebzes + (sebzes * (szint * 0.015)), 3);
 		this.szint = szint;
-		this.eletEroMax= this.eletEro;
+		this.eletEroMax = this.eletEro;
 	}
-	
+
 	public void Harcol(Karakter ellenfel) {
-		boolean isTalaltE = ellenfel.utes(talalatiEsely.rng());
-		boolean isTalaltP = utes(talalatiEsely.rng());
-		
-		if(this.eletEro>0.0 && ellenfel.eletEro>0) {
-		if(isTalaltP)
-		{
-			ellenfel.eletEro = ellenfel.eletEro-this.sebzes;
-			System.out.println("Talalt! "+this.sebzes+" Sebzes kiosztva");
-			System.out.println("Ellenfel jelenlegi eletereje:"+ellenfel.eletEro);
-			}
-			
-		else
-			System.out.println("Ellenfel tamadasa melle!");}
-		
-		if(this.eletEro>0.0 && ellenfel.eletEro>0) {
-		if(isTalaltE) {
-			this.eletEro = this.eletEro - ellenfel.sebzes;
-			System.out.println("Talalt! "+ellenfel.sebzes+" Sebzes elszenvedve");
-			System.out.println("Tamado jelenlegi eletereje:"+this.eletEro);
+		boolean isTalaltE = ellenfel.utes(talalatiEsely.rng(0, 100));
+		boolean isTalaltP = utes(talalatiEsely.rng(0, 100));
+
+		if (isTalaltP) {
+			ellenfel.eletEro = ellenfel.eletEro - this.sebzes;
+			System.out.println("Talalt! " + talalatiEsely.round(this.sebzes, 3) + " Sebzes kiosztva");
+			System.out.println(ellenfel.nev + " jelenlegi eletereje:" + talalatiEsely.round(ellenfel.eletEro, 3));
+		} else
+			System.out.println(ellenfel.nev + " tamadasa melle!");
+
+		if (ellenfel.eletEro > 0) {
+			if (isTalaltE) {
+				this.eletEro = this.eletEro - ellenfel.sebzes;
+				System.out.println("Talalt! " + ellenfel.sebzes + " Sebzes elszenvedve");
+				System.out.println(nev + " jelenlegi eletereje:" + this.eletEro);
+			} else
+				System.out.println(nev + " tamadasa melle");
+			kor++;
 		}
-		else
-			System.out.println("Tamado tamadasa melle");
-		kor++;
-		}}
-	
+	}
+
 	public boolean utes(int talalatiEsely) {
-		
-		return (talalatiEsely>50);
+
+		return (talalatiEsely > 50);
 
 	}
-	
-    public void printFinalRound() {
-        System.out.println("A harc " + kor + ". korig tartott");
-    }
-	
+
+	public void printFinalRound() {
+		System.out.println("A harc " + kor + ". korig tartott");
+	}
+
 }
