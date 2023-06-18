@@ -1,22 +1,22 @@
-public class Warrior extends Fighter{
+public class Warrior extends Fighter {
     private static final double critMultiplier = 2;
     private final int critChance;
 
-    public Warrior(String name, int healthPoints, int damagePoints, int speed, int critChance) {
-        super(name, healthPoints, damagePoints, speed);
+    public Warrior(Fighter fighter, int critChance) {
+        super(fighter.getName(), fighter.getMaxHealthPoints(), fighter.getDamagePoints(), fighter.getSpeed());
         this.critChance = critChance;
     }
 
-    private boolean isCrit(){
-        return (this.critChance >= (Math.random()*100));
+    private boolean isCrit() {
+        return (this.critChance >= (Math.random() * 100));
     }
 
     @Override
     public int dealingDamage() {
-        if (isCrit()){
+        if (isCrit()) {
             System.out.println(this.getName() + " kritikusat ütött! Sebzése: " +
-                    (int)(this.getDamagePoints() * critMultiplier));
-            return (int)(this.getDamagePoints() * critMultiplier);
+                    (int) (this.getDamagePoints() * critMultiplier));
+            return (int) (this.getDamagePoints() * critMultiplier);
         }
         return super.dealingDamage();
     }

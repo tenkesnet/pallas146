@@ -15,11 +15,15 @@ public interface IFighter {
 
     String getName();
 
-    int getHealthPoints();
+    int getCurrentHealthPoints();
 
-    void setHealthPoints(int healthPoints);
+    void setCurrentHealthPoints(int currentHealthPoints);
 
     int getDamagePoints();
 
     int getSpeed();
+
+    int getMaxHealthPoints();
+
+    void healDamage();
 }

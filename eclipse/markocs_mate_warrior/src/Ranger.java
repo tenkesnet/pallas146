@@ -1,27 +1,27 @@
 public class Ranger extends Fighter {
 
-    private int avoidChance;
+    private final int avoidChance;
 
-    public Ranger(String name, int healthPoints, int damagePoints, int speed, int avoidChance) {
-        super(name, healthPoints, damagePoints, speed);
+    public Ranger(Fighter fighter, int avoidChance) {
+        super(fighter.getName(), fighter.getMaxHealthPoints(), fighter.getDamagePoints(), fighter.getSpeed());
         this.avoidChance = avoidChance;
     }
 
-    private boolean isAvoid(){
-        return (this.avoidChance >= (Math.random()*100));
+    private boolean isAvoid() {
+        return (this.avoidChance >= (Math.random() * 100));
     }
 
     @Override
     public void takingDamage(int damage) {
-        if (isAvoid()){
+        if (isAvoid()) {
             System.out.print(this.getName() + " elugrott az ütés elől! ");
         } else {
-        this.setHealthPoints(this.getHealthPoints() - damage);
+            this.setCurrentHealthPoints(this.getCurrentHealthPoints() - damage);
         }
-        if (this.isAlive()){
-            System.out.println(this.getName() + " maradék élete: " + this.getHealthPoints());
-        } else{
-        System.out.println(this.getName() + " meghalt!");
+        if (this.isAlive()) {
+            System.out.println(this.getName() + " maradék élete: " + this.getCurrentHealthPoints());
+        } else {
+            System.out.println(this.getName() + " meghalt!");
         }
     }
 
@@ -34,9 +34,4 @@ public class Ranger extends Fighter {
     public int getAvoidChance() {
         return avoidChance;
     }
-
-    public void setAvoidChance(int avoidChance) {
-        this.avoidChance = avoidChance;
-    }
-
 }
