@@ -1,3 +1,5 @@
+package Warrior;
+
 public class Duel {
 
     public static IFighter fighting(IFighter player1, IFighter player2) {
