@@ -21,5 +21,4 @@ public class Harcos extends Karakter {
 		eletEro = -1;
 		break;}}
 	};
-	
 }

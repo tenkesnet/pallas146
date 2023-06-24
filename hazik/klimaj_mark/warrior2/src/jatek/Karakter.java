@@ -23,6 +23,7 @@ public class Karakter implements IKarakter {
 		boolean isTalaltP = utes(talalatiEsely.rng(0, 100));
 
 		if (isTalaltP) {
+			// TODO: javitando methodus hívásra kell cserélni elenfel.sebzes(sebzesi erő);
 			ellenfel.eletEro = ellenfel.eletEro - this.sebzes;
 			System.out.println(nev+" Talalt! " + talalatiEsely.round(this.sebzes, 2) + " Sebzes kiosztva");
 		} else
@@ -40,9 +41,7 @@ public class Karakter implements IKarakter {
 	}
 
 	public boolean utes(int talalatiEsely) {
-
 		return (talalatiEsely > 50);
-
 	}
 
 	public void printFinalRound() {
