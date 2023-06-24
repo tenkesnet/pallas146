@@ -1,3 +1,5 @@
+package Warrior;
+
 public class Util {
     private String name;
 

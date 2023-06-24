@@ -1,3 +1,5 @@
+package Warrior;
+
 public class Warrior extends Fighter {
     private static final double critMultiplier = 2;
     private final int critChance;

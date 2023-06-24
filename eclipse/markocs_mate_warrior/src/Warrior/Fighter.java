@@ -1,4 +1,6 @@
-public class Fighter implements IFighter {
+package Warrior;
+
+public class Fighter implements IFighter,MyMarker {
 
     private final String name;
     private final int maxHealthPoints;

@@ -1,4 +1,6 @@
-public class Mage extends Fighter {
+package Warrior;
+
+public class Mage extends Fighter{
 
     private final double magicShieldChance = 0.35;
     private final int magicShield;

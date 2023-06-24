@@ -1,3 +1,5 @@
+package Warrior;
+
 public interface IFighter {
     boolean isAlive();
 

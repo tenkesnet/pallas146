@@ -1,3 +1,5 @@
+package Warrior;
+
 public class Ranger extends Fighter {
 
     private final int avoidChance;
