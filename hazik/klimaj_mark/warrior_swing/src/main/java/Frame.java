@@ -9,7 +9,7 @@ public class Frame extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setIconImage(image.getImage());
         this.setTitle("Adventure");
-        this.setSize(630, 630);
+        //this.setSize(630, 630);
         this.add(gpanel);
         this.setLocationRelativeTo(null);
         this.setVisible(true);

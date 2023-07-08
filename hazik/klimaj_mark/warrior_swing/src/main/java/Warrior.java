@@ -91,7 +91,7 @@ public class Warrior extends Fighter {
         }
         }
     }
-    public void draw(Graphics2D g2){
+    public void draw(Graphics g2){
 
         BufferedImage image = getPImage.getSubimage
                 (32,1006,88,110);;
