@@ -1,6 +1,5 @@
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,19 +18,19 @@ public class TileManager {
         tile = new Tile[10];
         mapTileNum = new int[gp.maxScreenCol][gp.maxScreenWidth];
         getTileImage();
-        loadMap("map.txt");
+        loadMap("images/map.txt");
     }
 
     public void getTileImage() {
         try {
             tile[0] = new Tile();
-            tile[0].image = ImageIO.read(getClass().getResourceAsStream("grass01.png"));
+            tile[0].image = ImageIO.read(getClass().getResourceAsStream("images/grass01.png"));
 
             tile[1] = new Tile();
-            tile[1].image = ImageIO.read(getClass().getResourceAsStream("floor01.png"));
+            tile[1].image = ImageIO.read(getClass().getResourceAsStream("images/floor01.png"));
 
             tile[2] = new Tile();
-            tile[2].image = ImageIO.read(getClass().getResourceAsStream("earth.png"));
+            tile[2].image = ImageIO.read(getClass().getResourceAsStream("images/earth.png"));
 
         } catch (IOException e) {
             e.printStackTrace();

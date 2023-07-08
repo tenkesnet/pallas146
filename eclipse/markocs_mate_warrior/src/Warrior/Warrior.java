@@ -24,9 +24,8 @@ public class Warrior extends Fighter {
     }
 
     @Override
-    public void printStats() {
-        super.printStats();
-        System.out.println(this.getCritChance() + "% kritikus esélye van.");
+    public String printStats() {
+        return super.printStats()+"\n"+this.getCritChance() + "% kritikus esélye van.";
     }
 
     public int getCritChance() {

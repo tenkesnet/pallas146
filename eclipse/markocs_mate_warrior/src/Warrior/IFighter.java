@@ -13,7 +13,7 @@ public interface IFighter {
 
     void printDead();
 
-    void printStats();
+    String printStats();
 
     String getName();
 

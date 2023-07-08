@@ -55,7 +55,7 @@ public class Warrior extends Fighter {
     public void getPlayerImage(){
             try{
                 getPImage = ImageIO.read(getClass().
-                        getResourceAsStream("warrior.png"));
+                        getResourceAsStream("images/warrior.png"));
             }
             catch(IOException e){
                 e.printStackTrace();

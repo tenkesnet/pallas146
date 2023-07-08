@@ -2,11 +2,16 @@ package myinterface;
 
 public class Main {
     public static void main(String[] args) {
-        People<People> p1= new People<People>( 24,"Markocs Mate");
+        TurisztikaiSzolgaltats szallasadas = new TurisztikaiSzolgaltats(4500);
+        TurisztikaiSzolgaltats turavezetes = new TurisztikaiSzolgaltats(3500);
 
+        // kódrészlet
 
-        System.out.println(p1.getBirthDate());
-        People pg=p1.get();
-        System.out.println(p1.get());
+        TurisztikaiSzolgaltats.setAfa(20);
+
+        //kódrészletek
+
+        System.out.println("Szallasadás áfa: " + szallasadas.getAfaTartalom());
+        System.out.println("Turavezetés áfa: " + turavezetes.getAfaTartalom());
     }
 }

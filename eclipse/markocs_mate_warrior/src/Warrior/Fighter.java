@@ -1,6 +1,6 @@
 package Warrior;
 
-public class Fighter implements IFighter,MyMarker {
+public class Fighter implements IFighter {
 
     private final String name;
     private final int maxHealthPoints;
@@ -53,10 +53,10 @@ public class Fighter implements IFighter,MyMarker {
     }
 
     @Override
-    public void printStats() {
-        System.out.print(this.getName() + " akinek " +
+    public String printStats() {
+        return this.getName() + " akinek " +
                 this.getCurrentHealthPoints() + " élete, " + this.getDamagePoints() + " sebzése, " +
-                this.getSpeed() + " gyorsasága, ");
+                this.getSpeed() + " gyorsasága, ";
     }
 
     @Override

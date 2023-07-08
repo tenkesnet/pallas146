@@ -28,9 +28,8 @@ public class Ranger extends Fighter {
     }
 
     @Override
-    public void printStats() {
-        super.printStats();
-        System.out.println(this.getAvoidChance() + "% elugrási esélye van.");
+    public String printStats() {
+        return super.printStats()+"\n"+this.getAvoidChance() + "% elugrási esélye van.";
     }
 
     public int getAvoidChance() {

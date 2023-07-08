@@ -1,5 +1,6 @@
 package Warrior;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -40,7 +41,40 @@ public class CharacterGenerator {
 
     private static String getRandomName() {
         ArrayList<String> names = new ArrayList<>();
-        FileReader.readFileToList("src/Names.txt", names);
+        try {
+            FileReader.readFileToList("src/Names.txt", names);
+        } catch ( IOException e){
+            names.add("Harid");
+            names.add("Ih'Mai");
+            names.add("Zule");
+            names.add("Merlendes");
+            names.add("Rilah");
+            names.add("Ponnol");
+            names.add("Lua");
+            names.add("Katrin");
+            names.add("Norwin");
+            names.add("Hellmut");
+            names.add("Savana");
+            names.add("Lizeth");
+            names.add("Scarlet");
+            names.add("Roddy");
+            names.add("Garan");
+            names.add("Brad");
+            names.add("Ermin");
+            names.add("Parkley");
+            names.add("Jevon");
+            names.add("Kaiya");
+            names.add("Ferdinanda");
+            names.add("Helma");
+            names.add("Lilliana");
+            names.add("Bernhardt");
+            names.add("Xander");
+            names.add("Albrecht");
+            names.add("Yorik");
+            names.add("Jacqualine");
+            names.add("Gabrielle");
+        }
+
         return names.get((int) (Math.random() * (names.size())));
     }
 }

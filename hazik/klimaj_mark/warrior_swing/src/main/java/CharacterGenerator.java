@@ -38,7 +38,7 @@ public class CharacterGenerator {
 
     private static String getRandomName() {
         ArrayList<String> names = new ArrayList<>();
-        FileReader.readFileToList("src/Names.txt", names);
+        FileReader.readFileToList("src/main/resources/Names.txt", names);
         return names.get((int) (Math.random() * (names.size())));
     }
 }

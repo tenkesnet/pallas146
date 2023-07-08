@@ -5,7 +5,7 @@ public class Dummy extends Fighter{
         super(name, maxHealthPoints, damagePoints, speed);
     }
     @Override
-    public void printStats(){
-        System.out.println("Ellenfele egy emberméretű szalmazsák!");
+    public String printStats(){
+        return "Ellenfele egy emberméretű szalmazsák!";
     }
 }

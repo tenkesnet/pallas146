@@ -29,7 +29,12 @@ public class BattleRoyale {
     }
 
     private void printChampion() {
-        System.out.print("\nA GYŐZTES: ");
-        fighterList.get(0).printStats();
+        try{
+            var result = fighterList.get(0).printStats();
+            System.out.print("\nA GYŐZTES: \n"+result);
+        } catch (Exception e){
+            System.out.println("Minimum két játékos szükséges!");
+        }
+
     }
 }

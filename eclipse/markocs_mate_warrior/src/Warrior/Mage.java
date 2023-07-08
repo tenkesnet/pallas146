@@ -31,9 +31,8 @@ public class Mage extends Fighter{
     }
 
     @Override
-    public void printStats() {
-        super.printStats();
-        System.out.println(this.getMagicShield() + " mágikus pajzsa van.");
+    public String printStats() {
+        return super.printStats()+"\n"+this.getMagicShield() + " mágikus pajzsa van.";
     }
 
     public int getMagicShield() {
