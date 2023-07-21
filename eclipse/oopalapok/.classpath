@@ -8,12 +8,3 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
-
-
-// q: what contains .classpath?
-// a: it contains the classpath of the project
-// q: what is the classpath?
-// a: it is the path where the compiler looks for the classes
-// q: what is classpathentry path attribute if i use installed jdk17?
-
-

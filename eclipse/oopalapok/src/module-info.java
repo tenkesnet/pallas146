@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author bardo
+ *
+ */
+module oopalapok {
+}
