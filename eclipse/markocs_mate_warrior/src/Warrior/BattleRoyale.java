@@ -18,7 +18,7 @@ public class BattleRoyale {
         }
     }
 
-    public void startBattle() throws ArrayIndexOutOfBoundsException{
+    public void startBattle(){
         while (this.fighterList.length >= 2){
             int firstFighter = (int) ((Math.random() * fighterList.length));
             int secondFighter = (int) ((Math.random() * fighterList.length));
