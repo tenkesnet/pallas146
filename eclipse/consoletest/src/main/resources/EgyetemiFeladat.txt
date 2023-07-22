@@ -1,0 +1,15 @@
+- Hozz létre egy Egyetem osztálytás rakd egy intezmeny csomagba. Property : nev, varos.
+- Hozz létre egy Vegzettseg osztályt ez is az intezmeny csomagba legyen. Propertyk: szak, egyetemen.
+- Hozz létre egy Oktato osztályt ez az oktatas csomagban legyen: Tulajdonságok: nev, vegzettseg
+- Hozz létre egy Kurzus osztályt az oktatas csomagban. Tul: nev, oktato.
+
+- Paraméteres konstruktor, getterek, és setterek. És toString() metódussal szöveges írja ki a tulajdonságait
+- Írj egy main osztályt. A main metódusban példányosíts egyetemeket, majd ezek segítségével hozz létre végzettségeket, majd oktatókat.
+Hozz létre egy
+statikus Kurzus objektumokat tároló tömböt is (tetszőleges mérettel : 4), és a tömb minden
+elemébe példányosíts egy Kurzus objektumot. Írj ki minden kurzust konzolra.
+
+A város nevét a main metódusból kapd meg.
+Készíts metódust, ami egy város nevét kapja paraméterül. A metódus járja be a fenti
+kurzustömböt, és számold meg, hogy hány kurzus oktatója szerezte a végzettségét az
+adott városban. A metódus ezzel az eredménnyel térjen vissza.

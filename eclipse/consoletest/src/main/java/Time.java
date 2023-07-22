@@ -1,12 +1,17 @@
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import ora.ClockDisplay;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Time {
     public static void main(String... args) throws InterruptedException {
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+        ClockDisplay oraPeldany = new ClockDisplay();
+        LocalDateTime time = LocalDateTime.now();
+        oraPeldany.setTime(time.getHour(),time.getMinute());
         while(true) {
-            System.out.printf("\r%s", sdf.format(new Date()));
-            Thread.sleep(1000);
+            oraPeldany.timeTick();
+            System.out.printf("\r%s", oraPeldany.getTime());
+            Thread.sleep(1000*60);
         }
     }
 }
