@@ -28,7 +28,6 @@ public class Kurzus {
 
     @Override
     public String toString(){
-        return String.format("Kurzus neve: %s \n Kurzust "+oktato.toString(), name);
-
+        return String.format("Kurzus neve: %s \n Kurzust %s",name,oktato.toString());
     }
 }

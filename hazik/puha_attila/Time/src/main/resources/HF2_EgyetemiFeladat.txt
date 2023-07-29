@@ -1,0 +1,21 @@
+Házi feladat - 2
+
+1. Hozz létre egy Egyetem osztályt és rakd egy "Intézmény" csomagba!
+    - Két propertyre lesz szükség: nev, varos.
+2. Hozz létre egy "Végzettség" osztályt! Ezt is az "Intézmény" csomag része legyen!
+    - Properties: szak, egyetem.
+3. Hozz létre egy "Oktató" osztályt és ez az "Oktatás" csomagban legyen!
+    - Tulajdonságok: nev, vegzettseg.
+4. Hozz létre egy "Kurzus" osztályt az "Oktatás" csomagban!
+    - Tulajdonságok: nev, oktato.
+
+Mindenhol legyen:
+    - Contructor
+    - Getter
+    - Setter
+    - toString --> metódussal szövegesen írja ki a tulajdonságait!
+
+5. Hozz létre egy "Main" osztályt!
+6. Hozz létre egy statikus "Kurzus" objektumokat tároló tömböt is (tetszőleges mérettel) és a tömb minden elemében példányosíts egy "Kurzus" objektumot!
+7. Írj ki minden kurzust konzolra!
+8. Készíts metódust, ami egy város nevét kapja paraméterül! A metódus járja be a fenti "Kurzus" tömbjét és számold meg, hogy hány kurzus oktatója szerezte a végzettségét az adott városban! A metódus ezzel az eredménnyel térjen vissza!

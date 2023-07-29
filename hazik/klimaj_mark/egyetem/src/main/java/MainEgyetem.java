@@ -3,6 +3,8 @@ package Hazifeladat;
 import Hazifeladat.intezmeny.*;
 import Hazifeladat.oktatas.*;
 
+import java.util.LinkedList;
+
 public class MainEgyetem {
 
 
@@ -17,7 +19,7 @@ public class MainEgyetem {
         Oktato o2 = new Oktato("Géza", v2);
         Oktato o3 = new Oktato("Tibor", v3);
         Oktato o4 = new Oktato("Géza", v3);
-        Oktato o5 = new Oktato("Géza", v3);
+        Oktato o5 = new Oktato("Gizi", v3);
 
 
         Kurzus[] kurzus = new Kurzus[]
@@ -44,6 +46,7 @@ public class MainEgyetem {
     public static void varosNeve(Kurzus[] ellenorzes, String varosNev) {
         short incr = 0;
         boolean[] azonosOktatonev=new boolean[ellenorzes.length];
+
         for (Kurzus vizsgalando : ellenorzes) {
 
             if (vizsgalando.getOktato().getVegzettseg().getEgytem().getVaros().equals(varosNev)) {
