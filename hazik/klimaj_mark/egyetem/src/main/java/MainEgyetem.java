@@ -3,6 +3,7 @@ package Hazifeladat;
 import Hazifeladat.intezmeny.*;
 import Hazifeladat.oktatas.*;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,13 +18,13 @@ public class MainEgyetem {
         Vegzettseg v1 = new Vegzettseg("Informatika", e1);
         Vegzettseg v2 = new Vegzettseg("Informatika", e2);
         Vegzettseg v3 = new Vegzettseg("Informatika", e3);
-        Vegzettseg v4 = new Vegzettseg("Informatika", e4);
-        Oktato o1 = new Oktato("János", v1);
-        Oktato o2 = new Oktato("Géza", v2);
-        Oktato o3 = new Oktato("Tibi", v3);
-        Oktato o4 = new Oktato("Zoli", v3);
-        Oktato o5 = new Oktato("Géza", v3);
-        Oktato o6 = new Oktato("Géza", v4);
+        Vegzettseg v4 = new Vegzettseg("Biológia", e4);
+        Oktato o1 = new Oktato("János", v1,4);
+        Oktato o2 = new Oktato("Géza", v2,6);
+        Oktato o3 = new Oktato("Tibi", v3,7);
+        Oktato o4 = new Oktato("Zoli", v3,3);
+        Oktato o5 = new Oktato("Géza", v3,5);
+        Oktato o6 = new Oktato("Géza", v4,2);
 
         Kurzus[] kurzus = new Kurzus[]
                 {
@@ -56,13 +57,16 @@ public class MainEgyetem {
 
     public static void varosNeve(Kurzus[] ellenorzes, String varosNev) {
         short incr = 0;
-        HashSet<Oktato> oktatok = new HashSet<>();
+        HashMap<String,Oktato> oktatokMap = new HashMap<>();
         for (Kurzus vizsgalando : ellenorzes) {
             if (vizsgalando.getOktato().getVegzettseg().getEgytem().getVaros().equals(varosNev)) {
-                if (!oktatok.contains(vizsgalando.getOktato())) {
-                    incr++;
+                if (!oktatokMap.containsKey(vizsgalando.getOktato().getName()+
+                        vizsgalando.getOktato().getVegzettseg().getSzak())) {
+                    incr+=vizsgalando.getOktato().getTapasztalat();
                 }
-                oktatok.add(vizsgalando.getOktato());
+                oktatokMap.put(vizsgalando.getOktato().getName()+
+                        vizsgalando.getOktato().getVegzettseg().getSzak()
+                        ,vizsgalando.getOktato());
             }
         }
         System.out.printf("A megadott városból : %d oktató szerezte a végzettségét", incr);
