@@ -36,15 +36,15 @@ public class StarWars {
         }
         for(int i=0; i<aSCount;i++)
         {
-            anakins.add(new AnakinSkywalker());
-            anakins.get(i).engeddElAHaragod();
-
+            AnakinSkywalker anakin =new AnakinSkywalker();
+            anakin.engeddElAHaragod();
+            anakins.add(anakin);
         }
 
         for(int i=0; i<uCount;i++){
-            uralkodos.add(new Uralkodo());
-            uralkodos.get(i).engeddElAHaragod();
-
+            Uralkodo uralkodo = new Uralkodo();
+            uralkodo.engeddElAHaragod();
+            uralkodos.add(uralkodo);
         }
 
             System.out.printf(String.format("Összes sor a fájlban %d ", count));

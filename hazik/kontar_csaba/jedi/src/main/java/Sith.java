@@ -1,0 +1,3 @@
+interface Sith {
+    void engeddElAHaragod();
+}
