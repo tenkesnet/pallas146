@@ -1,2 +1,2 @@
-Anakin Skywalker
-Uralkodó
+Anakin Skywalker,3
+Uralkodó,7

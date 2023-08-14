@@ -42,4 +42,12 @@ public class Harcos {
 		this.eletEro = eletEro;
 	}
 
+	@Override
+	public String toString() {
+		return "Harcos{" +
+				"nev='" + nev + '\'' +
+				", eletEro=" + eletEro +
+				", sebzesiEro=" + sebzesiEro +
+				'}';
+	}
 }
