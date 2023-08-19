@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1466e184-7c74-4863-b28d-08be7c90f734" name="Changes" comment="Dolgozok file betöltése">
+    <list default="true" id="1466e184-7c74-4863-b28d-08be7c90f734" name="Changes" comment="Dolgozok lista szűrések">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/alapozo/Dolgozo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/alapozo/Dolgozo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/alapozo/OOPStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/alapozo/OOPStream.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/alapozo/Sorszam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/alapozo/Sorszam.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/alapozo/StreamExamples.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/alapozo/StreamExamples.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -104,7 +105,23 @@
       <option name="project" value="LOCAL" />
       <updated>1692430412288</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Dolgozok lista feltöltése">
+      <option name="closed" value="true" />
+      <created>1692433998103</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1692433998103</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Dolgozok lista szűrések">
+      <option name="closed" value="true" />
+      <created>1692439491648</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1692439491649</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -112,15 +129,17 @@
     <MESSAGE value="OOPStream 2.0" />
     <MESSAGE value="Stream examples" />
     <MESSAGE value="Dolgozok file betöltése" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dolgozok file betöltése" />
+    <MESSAGE value="Dolgozok lista feltöltése" />
+    <MESSAGE value="Dolgozok lista szűrések" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dolgozok lista szűrések" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/alapozo/StreamExamples.java</url>
-          <line>78</line>
-          <option name="timeStamp" value="8" />
+          <line>122</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

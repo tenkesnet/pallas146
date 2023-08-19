@@ -5,10 +5,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.*;
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class StreamExamples {
@@ -98,5 +98,28 @@ public class StreamExamples {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+    }
+
+    public void primitivStreamek(){
+        var result=IntStream.rangeClosed(1, 6)
+                .reduce((a, b) -> a + b)
+                .getAsInt();
+        double osszeg=0;
+        double[] osszegTomb = {0};
+        Sorszam sorszam = new Sorszam(0);
+        AtomicReference<Double> doubleOsszeg= new AtomicReference<>(Double.valueOf(0));
+        var start= System.currentTimeMillis();
+        IntStream.rangeClosed(1, 1000)
+                        .forEach(x-> doubleOsszeg.updateAndGet(v -> v + Math.sqrt(x)));
+        var end= System.currentTimeMillis();;
+        System.out.println("Futási idő:"+String.valueOf(end-start));
+        doubleOsszeg.getAndSet(doubleOsszeg.get() + 1);
+        start= System.currentTimeMillis();
+        for(int i=1; i<=1000; i++){
+            osszeg+=Math.sqrt(i);
+        }
+        end= System.currentTimeMillis();;
+        System.out.println("Futási idő:"+String.valueOf(end-start));
+        System.out.println(""+osszeg);
     }
 }

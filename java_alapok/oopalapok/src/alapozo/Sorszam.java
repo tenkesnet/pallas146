@@ -1,17 +1,20 @@
 package alapozo;
 
 public class Sorszam {
-    private int i;
+    private double i;
     public Sorszam(){
         i=0;
     }
-    public Sorszam(int values){
+    public Sorszam(double values){
         i=values;
     }
     public void increment(){
         i++;
     }
-    public int get(){
+    public void increment(double values){
+        i+=values; //i = i+ values
+    }
+    public double get(){
         return i;
     }
 }
