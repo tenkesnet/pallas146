@@ -5,10 +5,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.time.LocalDateTime;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -75,6 +73,24 @@ public class StreamExamples {
                 }
                 sorszam++;
             }
+            long kiskoru = dolgozok.stream()
+                    .filter(d -> d.getAge() <30)
+                    .count();
+            OptionalDouble atlagEletkor = dolgozok.stream()
+                    .mapToDouble(x -> x.getAge())
+                    .average();
+            System.out.println("Átlagéletkor: "+atlagEletkor.getAsDouble());
+            List<Dolgozo> idos = dolgozok.stream()
+                    .filter(d -> d.getAge() >50)
+                    .collect(Collectors.toList());
+            var start= System.currentTimeMillis();
+            dolgozok.stream().forEach(dolgozo-> {
+                if(dolgozo.getCountry().equals("United States")){
+                    dolgozo.setCountry("USA");
+                }
+            });
+            var end= System.currentTimeMillis();;
+            System.out.println("Futási idő:"+String.valueOf(end-start));
 
             System.out.println("");
         } catch (IOException e) {
