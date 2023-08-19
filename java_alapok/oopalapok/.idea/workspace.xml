@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1466e184-7c74-4863-b28d-08be7c90f734" name="Changes" comment="PrimitivStreamek bemutatása">
+    <list default="true" id="1466e184-7c74-4863-b28d-08be7c90f734" name="Changes" comment="Grouping megoldások">
+      <change afterPath="$PROJECT_DIR$/src/alapozo/Country.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/file_example_CSV_5000.csv" beforeDir="false" afterPath="$PROJECT_DIR$/file_example_CSV_5000.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/alapozo/OOPStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/alapozo/OOPStream.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/alapozo/StreamExamples.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/alapozo/StreamExamples.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +127,15 @@
       <option name="project" value="LOCAL" />
       <updated>1692445716768</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Grouping megoldások">
+      <option name="closed" value="true" />
+      <created>1692449026887</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1692449026887</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -140,7 +146,8 @@
     <MESSAGE value="Dolgozok lista feltöltése" />
     <MESSAGE value="Dolgozok lista szűrések" />
     <MESSAGE value="PrimitivStreamek bemutatása" />
-    <option name="LAST_COMMIT_MESSAGE" value="PrimitivStreamek bemutatása" />
+    <MESSAGE value="Grouping megoldások" />
+    <option name="LAST_COMMIT_MESSAGE" value="Grouping megoldások" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
