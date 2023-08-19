@@ -20,7 +20,7 @@ public class StreamExamples {
             , new Harcos("Géza", 25, 3)
             , new Harcos("Kata", 20, 1)
     );
-    List<Dolgozo> dolgozok=new ArrayList<>();
+    List<Dolgozo> dolgozok = new ArrayList<>();
 
     public StreamExamples() {
     }
@@ -74,24 +74,59 @@ public class StreamExamples {
                 sorszam++;
             }
             long kiskoru = dolgozok.stream()
-                    .filter(d -> d.getAge() <30)
+                    .filter(d -> d.getAge() < 30)
                     .count();
             OptionalDouble atlagEletkor = dolgozok.stream()
                     .mapToDouble(x -> x.getAge())
                     .average();
-            System.out.println("Átlagéletkor: "+atlagEletkor.getAsDouble());
+            System.out.println("Átlagéletkor: " + atlagEletkor.getAsDouble());
             List<Dolgozo> idos = dolgozok.stream()
-                    .filter(d -> d.getAge() >50)
+                    .filter(d -> d.getAge() > 50)
                     .collect(Collectors.toList());
-            var start= System.currentTimeMillis();
-            dolgozok.stream().forEach(dolgozo-> {
-                if(dolgozo.getCountry().equals("United States")){
+            var start = System.currentTimeMillis();
+            dolgozok.stream().forEach(dolgozo -> {
+                if (dolgozo.getCountry().equals("United States")) {
                     dolgozo.setCountry("USA");
                 }
             });
-            var end= System.currentTimeMillis();;
-            System.out.println("Futási idő:"+String.valueOf(end-start));
+            var end = System.currentTimeMillis();
+            ;
+            System.out.println("Futási idő:" + String.valueOf(end - start));
 
+            //Márk filteres és ciklus megoldása
+            OptionalDouble franciadolgozoAVG = dolgozok.stream().filter(x -> x.getCountry().equals("France")).mapToDouble(Dolgozo::getAge).average();
+            OptionalDouble amerikadolgozoAVG = dolgozok.stream().filter(x -> x.getCountry().equals("USA")).mapToDouble(Dolgozo::getAge).average();
+            OptionalDouble angoldolgozoAVG = dolgozok.stream().filter(x -> x.getCountry().equals("Great Britain")).mapToDouble(Dolgozo::getAge).average();
+
+            System.out.println("Futasi idő: " + (end - start));
+
+            System.out.println("Átlagéletkor:" + atlagEletkor.getAsDouble());
+            System.out.println("Francia átlagéletkor:" + franciadolgozoAVG.getAsDouble());
+            System.out.println("Amerikai átlagéletkor:" + amerikadolgozoAVG.getAsDouble());
+            System.out.println("Angol átlagéletkor:" + angoldolgozoAVG.getAsDouble());
+
+            final double[] franciaAVG = new double[] {0, 0};
+
+            dolgozok.stream().forEach(x -> {
+                        if (x.getCountry().equals("France")) {
+                            franciaAVG[0] = franciaAVG[0] + x.getAge();
+                            franciaAVG[1]++;
+                        }
+
+                    }
+            );
+
+            System.out.println("Francia átlag élétkor: " + (franciaAVG[0] / franciaAVG[1]));
+
+            //Grouping mnegoldás
+            Map<String, Optional<Dolgozo>> atlagEletkorOrszagonkent = dolgozok.stream()
+                    .collect(Collectors.groupingBy(
+                            Dolgozo::getCountry,
+                            Collectors.minBy(Comparator.comparing(Dolgozo::getAge))
+                    ));
+
+            System.out.println("Átlagéletkor országonként:");
+            atlagEletkorOrszagonkent.forEach((orszag, atlag) -> System.out.println(orszag + ": " + atlag));
             System.out.println("");
         } catch (IOException e) {
             e.printStackTrace();
@@ -100,26 +135,28 @@ public class StreamExamples {
         }
     }
 
-    public void primitivStreamek(){
-        var result=IntStream.rangeClosed(1, 6)
+    public void primitivStreamek() {
+        var result = IntStream.rangeClosed(1, 6)
                 .reduce((a, b) -> a + b)
                 .getAsInt();
-        double osszeg=0;
+        double osszeg = 0;
         double[] osszegTomb = {0};
         Sorszam sorszam = new Sorszam(0);
-        AtomicReference<Double> doubleOsszeg= new AtomicReference<>(Double.valueOf(0));
-        var start= System.currentTimeMillis();
+        AtomicReference<Double> doubleOsszeg = new AtomicReference<>(Double.valueOf(0));
+        var start = System.currentTimeMillis();
         IntStream.rangeClosed(1, 1000)
-                        .forEach(x-> doubleOsszeg.updateAndGet(v -> v + Math.sqrt(x)));
-        var end= System.currentTimeMillis();;
-        System.out.println("Futási idő:"+String.valueOf(end-start));
+                .forEach(x -> doubleOsszeg.updateAndGet(v -> v + Math.sqrt(x)));
+        var end = System.currentTimeMillis();
+        ;
+        System.out.println("Futási idő:" + String.valueOf(end - start));
         doubleOsszeg.getAndSet(doubleOsszeg.get() + 1);
-        start= System.currentTimeMillis();
-        for(int i=1; i<=1000; i++){
-            osszeg+=Math.sqrt(i);
+        start = System.currentTimeMillis();
+        for (int i = 1; i <= 1000; i++) {
+            osszeg += Math.sqrt(i);
         }
-        end= System.currentTimeMillis();;
-        System.out.println("Futási idő:"+String.valueOf(end-start));
-        System.out.println(""+osszeg);
+        end = System.currentTimeMillis();
+        ;
+        System.out.println("Futási idő:" + String.valueOf(end - start));
+        System.out.println("" + osszeg);
     }
 }

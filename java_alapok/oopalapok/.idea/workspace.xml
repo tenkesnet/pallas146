@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1466e184-7c74-4863-b28d-08be7c90f734" name="Changes" comment="Dolgozok lista szűrések">
+    <list default="true" id="1466e184-7c74-4863-b28d-08be7c90f734" name="Changes" comment="PrimitivStreamek bemutatása">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file_example_CSV_5000.csv" beforeDir="false" afterPath="$PROJECT_DIR$/file_example_CSV_5000.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/alapozo/OOPStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/alapozo/OOPStream.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/alapozo/Sorszam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/alapozo/Sorszam.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/alapozo/StreamExamples.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/alapozo/StreamExamples.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,8 +45,8 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="Pelda" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="alapozo.Pelda" />
+    <configuration name="OOPStream" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="alapozo.OOPStream" />
       <module name="oopalapok" />
       <extension name="coverage">
         <pattern>
@@ -60,7 +60,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Pelda" />
+        <item itemvalue="Application.OOPStream" />
       </list>
     </recent_temporary>
   </component>
@@ -121,7 +121,15 @@
       <option name="project" value="LOCAL" />
       <updated>1692439491649</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="PrimitivStreamek bemutatása">
+      <option name="closed" value="true" />
+      <created>1692445716768</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1692445716768</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -131,15 +139,21 @@
     <MESSAGE value="Dolgozok file betöltése" />
     <MESSAGE value="Dolgozok lista feltöltése" />
     <MESSAGE value="Dolgozok lista szűrések" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dolgozok lista szűrések" />
+    <MESSAGE value="PrimitivStreamek bemutatása" />
+    <option name="LAST_COMMIT_MESSAGE" value="PrimitivStreamek bemutatása" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/alapozo/StreamExamples.java</url>
-          <line>122</line>
+          <line>159</line>
           <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/alapozo/StreamExamples.java</url>
+          <line>129</line>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

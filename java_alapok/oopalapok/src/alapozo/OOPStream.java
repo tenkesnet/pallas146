@@ -6,6 +6,6 @@ public class OOPStream {
         //streamExamples.reduce();
         //StreamAdvanced.illegalStateException();
         streamExamples.dolgozokBeolvasasa();
-        streamExamples.primitivStreamek();
+        //streamExamples.primitivStreamek();
     }
 }
