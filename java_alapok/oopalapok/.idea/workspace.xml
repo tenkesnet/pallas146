@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1466e184-7c74-4863-b28d-08be7c90f734" name="Changes" comment="Stream examples">
-      <change afterPath="$PROJECT_DIR$/file_example_CSV_5000.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/alapozo/Dolgozo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/alapozo/Sorszam.java" afterDir="false" />
+    <list default="true" id="1466e184-7c74-4863-b28d-08be7c90f734" name="Changes" comment="Dolgozok file betöltése">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/alapozo/OOPStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/alapozo/OOPStream.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/alapozo/StreamAdvanced.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/alapozo/StreamAdvanced.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/alapozo/Dolgozo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/alapozo/Dolgozo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/alapozo/StreamExamples.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/alapozo/StreamExamples.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -100,22 +96,31 @@
       <option name="project" value="LOCAL" />
       <updated>1692425110180</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Dolgozok file betöltése">
+      <option name="closed" value="true" />
+      <created>1692430412288</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1692430412288</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Csaba hazi + OOPStream class + java alapok rendberakasa" />
     <MESSAGE value="OOPStream 2.0" />
     <MESSAGE value="Stream examples" />
-    <option name="LAST_COMMIT_MESSAGE" value="Stream examples" />
+    <MESSAGE value="Dolgozok file betöltése" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dolgozok file betöltése" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/alapozo/StreamExamples.java</url>
-          <line>54</line>
-          <option name="timeStamp" value="4" />
+          <line>78</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
