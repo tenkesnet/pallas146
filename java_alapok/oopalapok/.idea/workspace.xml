@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1466e184-7c74-4863-b28d-08be7c90f734" name="Changes" comment="Csaba hazi + OOPStream class + java alapok rendberakasa">
-      <change beforePath="$PROJECT_DIR$/../../hazik/kontar_csaba/jedi/karakterek.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../hazik/kontar_csaba/jedi/karakterek.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hazik/kontar_csaba/jedi/src/main/java/StarWars.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../hazik/kontar_csaba/jedi/src/main/java/StarWars.java" afterDir="false" />
+    <list default="true" id="1466e184-7c74-4863-b28d-08be7c90f734" name="Changes" comment="OOPStream 2.0">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/alapozo/StreamAdvanced.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/alapozo/StreamExamples.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../hazik/klimaj_mark/Jedi/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../hazik/klimaj_mark/Jedi/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/alapozo/Harcos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/alapozo/Harcos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/alapozo/OOPStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/alapozo/OOPStream.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,13 +34,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RunManager">
+    <configuration name="Pelda" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="alapozo.Pelda" />
+      <module name="oopalapok" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="alapozo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Pelda" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -56,11 +78,20 @@
       <option name="project" value="LOCAL" />
       <updated>1691830259412</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="OOPStream 2.0">
+      <option name="closed" value="true" />
+      <created>1692042888520</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1692042888521</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Csaba hazi + OOPStream class + java alapok rendberakasa" />
-    <option name="LAST_COMMIT_MESSAGE" value="Csaba hazi + OOPStream class + java alapok rendberakasa" />
+    <MESSAGE value="OOPStream 2.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="OOPStream 2.0" />
   </component>
 </project>
