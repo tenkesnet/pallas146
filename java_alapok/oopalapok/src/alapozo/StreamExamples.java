@@ -1,8 +1,12 @@
 package alapozo;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -15,6 +19,7 @@ public class StreamExamples {
             ,new Harcos("Géza", 25, 3)
             ,new Harcos("Kata", 20, 1)
     );
+    List<Dolgozo> dolgozok;
     public StreamExamples() {
     }
     public void reduce(){
@@ -40,5 +45,23 @@ public class StreamExamples {
                 } );
         result.ifPresent(x-> System.out.println(x));
         System.out.println("");
+    }
+    public void dolgozokBeolvasasa(){
+        try {
+            List<String> lines =Files.readAllLines(Path.of("file_example_CSV_5000.csv"));
+            Sorszam sorszam= new Sorszam(1);
+            lines.stream().forEach(x -> {
+                if(sorszam.get()!=1) {
+                    String[] fields = x.split(",");
+                    System.out.println("");
+                }
+                sorszam.increment();
+            });
+
+
+            System.out.println("");
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 }

@@ -12,7 +12,7 @@ public class StreamAdvanced {
                         ;
         Optional<String> anyElement = elements.findAny();
         //IllegalStateException
-        Optional<String> firstElement = elements.findFirst();
+        Optional<String> firstElement = elements.findAny();
 
         /**
          * Megoldás:
