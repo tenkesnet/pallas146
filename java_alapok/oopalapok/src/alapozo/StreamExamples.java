@@ -54,16 +54,18 @@ public class StreamExamples {
         try {
             List<String> lines = Files.readAllLines(Path.of("file_example_CSV_5000.csv"));
             int sorszam = 1;
+            HashMap<String,Country> countries= new HashMap<>();
             for (String line : lines) {
                 if (sorszam != 1) {
                     String[] fields = line.split(",");
                     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                    countries.putIfAbsent(fields[4],new Country(fields[4]));
                     Dolgozo dolgozo = new Dolgozo(
                             Integer.parseInt(fields[0]),
                             fields[1],
                             fields[2],
                             fields[3],
-                            fields[4],
+                            countries.get(fields[4]),
                             Integer.parseInt(fields[5]),
                             sdf.parse(fields[6]),
                             Integer.parseInt(fields[7])
@@ -84,16 +86,17 @@ public class StreamExamples {
                     .filter(d -> d.getAge() > 50)
                     .collect(Collectors.toList());
             var start = System.currentTimeMillis();
-            dolgozok.stream().forEach(dolgozo -> {
+            /*dolgozok.stream().forEach(dolgozo -> {
                 if (dolgozo.getCountry().equals("United States")) {
                     dolgozo.setCountry("USA");
                 }
-            });
+            });*/
             var end = System.currentTimeMillis();
             ;
             System.out.println("Futási idő:" + String.valueOf(end - start));
 
             //Márk filteres és ciklus megoldása
+            /*
             OptionalDouble franciadolgozoAVG = dolgozok.stream().filter(x -> x.getCountry().equals("France")).mapToDouble(Dolgozo::getAge).average();
             OptionalDouble amerikadolgozoAVG = dolgozok.stream().filter(x -> x.getCountry().equals("USA")).mapToDouble(Dolgozo::getAge).average();
             OptionalDouble angoldolgozoAVG = dolgozok.stream().filter(x -> x.getCountry().equals("Great Britain")).mapToDouble(Dolgozo::getAge).average();
@@ -104,10 +107,10 @@ public class StreamExamples {
             System.out.println("Francia átlagéletkor:" + franciadolgozoAVG.getAsDouble());
             System.out.println("Amerikai átlagéletkor:" + amerikadolgozoAVG.getAsDouble());
             System.out.println("Angol átlagéletkor:" + angoldolgozoAVG.getAsDouble());
-
+            */
             final double[] franciaAVG = new double[] {0, 0};
 
-            dolgozok.stream().forEach(x -> {
+            /*dolgozok.stream().forEach(x -> {
                         if (x.getCountry().equals("France")) {
                             franciaAVG[0] = franciaAVG[0] + x.getAge();
                             franciaAVG[1]++;
@@ -117,9 +120,9 @@ public class StreamExamples {
             );
 
             System.out.println("Francia átlag élétkor: " + (franciaAVG[0] / franciaAVG[1]));
-
+            */
             //Grouping mnegoldás
-            Map<String, Optional<Dolgozo>> atlagEletkorOrszagonkent = dolgozok.stream()
+            Map<Country, Optional<Dolgozo>> atlagEletkorOrszagonkent = dolgozok.stream()
                     .collect(Collectors.groupingBy(
                             Dolgozo::getCountry,
                             Collectors.minBy(Comparator.comparing(Dolgozo::getAge))

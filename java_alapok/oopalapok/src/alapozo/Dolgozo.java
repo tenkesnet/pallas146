@@ -8,7 +8,7 @@ public class Dolgozo {
     String firstName;
     String lastName;
     String gender;
-    String country;
+    Country country;
     int age;
 
     Date date;
@@ -17,7 +17,7 @@ public class Dolgozo {
 
     public Dolgozo(int azonosito, String firstName,
                    String lastName, String gender,
-                   String country, int age, Date date, int id){
+                   Country country, int age, Date date, int id){
         this.azon=azonosito;
         this.firstName=firstName;
         this.lastName=lastName;
@@ -58,11 +58,11 @@ public class Dolgozo {
         this.gender = gender;
     }
 
-    public String getCountry() {
+    public Country getCountry() {
         return country;
     }
 
-    public void setCountry(String country) {
+    public void setCountry(Country country) {
         this.country = country;
     }
 
