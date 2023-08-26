@@ -75,6 +75,7 @@ public class StreamExamples {
                 }
                 sorszam++;
             }
+            countries.get("United States").setName("USA");
             long kiskoru = dolgozok.stream()
                     .filter(d -> d.getAge() < 30)
                     .count();
@@ -127,7 +128,11 @@ public class StreamExamples {
                             Dolgozo::getCountry,
                             Collectors.minBy(Comparator.comparing(Dolgozo::getAge))
                     ));
-
+            Map<Country, Double> atlagEletkorOrszagonkent2 = dolgozok.stream()
+                    .collect(Collectors.groupingBy(
+                            Dolgozo::getCountry,
+                            Collectors.averagingInt(Dolgozo::getAge)
+                    ));
             System.out.println("Átlagéletkor országonként:");
             atlagEletkorOrszagonkent.forEach((orszag, atlag) -> System.out.println(orszag + ": " + atlag));
             System.out.println("");
