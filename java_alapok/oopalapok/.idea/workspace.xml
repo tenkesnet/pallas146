@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1466e184-7c74-4863-b28d-08be7c90f734" name="Changes" comment="Stream gyakrás">
-      <change afterPath="$PROJECT_DIR$/src/alapozo/Address.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/alapozo/Comments.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/alapozo/Company.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/alapozo/Geo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/alapozo/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/examples/Alkalmazott.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/examples/Pelda.java" afterDir="false" />
+    <list default="true" id="1466e184-7c74-4863-b28d-08be7c90f734" name="Changes" comment="08_26-i óraanyag">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,9 +23,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2TsRygVD20MNwAmBzAxradt3ANb" />
   <component name="ProjectViewState">
     <option name="flattenPackages" value="true" />
@@ -44,7 +37,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "/home/bardo/repo/pallas/pallas146/java_alapok/oopalapok",
+    "last_opened_file_path": "/home/bardo/repo/pallas/pallas146/hazik/klimaj_mark/Vegyesbolt",
     "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
@@ -192,7 +185,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693035388337</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="08_26-i óraanyag">
+      <option name="closed" value="true" />
+      <created>1693053616753</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1693053616753</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -208,7 +209,8 @@
     <MESSAGE value="Jedi megoldás" />
     <MESSAGE value="Steam házi megoldása" />
     <MESSAGE value="Stream gyakrás" />
-    <option name="LAST_COMMIT_MESSAGE" value="Stream gyakrás" />
+    <MESSAGE value="08_26-i óraanyag" />
+    <option name="LAST_COMMIT_MESSAGE" value="08_26-i óraanyag" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

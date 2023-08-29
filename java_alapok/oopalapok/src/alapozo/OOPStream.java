@@ -22,7 +22,7 @@ public class OOPStream {
         System.out.println(i++ == ++i); //false
 
         int a=15;
-        if (a==15)  System.out.println("\"a\" \n \t \bértéke = 15");
+        if (a==15)  System.out.println("\"a\" \n \t értéke = 15");
 
         a*=2;
         System.out.println(a);
