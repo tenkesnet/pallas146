@@ -1,0 +1,4 @@
+
+interface Akciozhato {
+    int akciosAr();
+}

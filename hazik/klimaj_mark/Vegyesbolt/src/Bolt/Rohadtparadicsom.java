@@ -20,7 +20,7 @@ private double tomeg = 0;
     }
 
     @Override
-    public String toString(){
-        return String.format("%.2f kg %s".formatted(tomeg,super.toString()));
+    public String toString() {
+            return String.format("Akciós %s %.2f kg",super.toString(),tomeg);
     }
 }

@@ -5,19 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3aabd56f-ed15-4160-95d9-8e6e59e66fce" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bolt/Akciozhato.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bolt/Rohadtparadicsom.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bolt/Salata.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bolt/Termek.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bolt/Vegyesbolt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/termekek.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/untitled.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../java_alapok/oopalapok/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../java_alapok/oopalapok/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Bolt/Rohadtparadicsom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bolt/Rohadtparadicsom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Bolt/Salata.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bolt/Salata.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Bolt/Termek.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bolt/Termek.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Bolt/Vegyesbolt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bolt/Vegyesbolt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/maven/Vegyesbolt/Vegyesbolt/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/maven/Vegyesbolt/Vegyesbolt/pom.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +44,10 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "/home/bardo/repo/pallas/pallas146/hazik/klimaj_mark/Vegyesbolt"
+    "last_opened_file_path": "/home/bardo/repo/pallas/pallas146/hazik/kontar_csaba/Akcio",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -56,6 +55,16 @@
       <recent name="C:\JavaProjects\Hazik\untitled\src" />
       <recent name="C:\JavaProjects\Hazik\untitled\src\Bolt" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Vegyesbolt" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Bolt.Vegyesbolt" />
+      <module name="untitled" />
+      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/termekek.txt" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

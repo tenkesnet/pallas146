@@ -14,6 +14,6 @@ public class Salata extends Termek{
 
     @Override
     public String toString(){
-        return String.format("%d db %s".formatted(darab,super.toString()));
+        return String.format("%s %d db",super.toString(),darab);
     }
 }

@@ -1,0 +1,18 @@
+Predicate<T>: egy paraméter predikátumát reprezentálja. Olyan lambda kifejezést hozhatunk vele létre, ami egy boolean értéket ad vissza a megadott aktuális paraméter alapján. Például meg tudjuk nézni, hogy egy átadott érték pozitív-e, majd ezt használva el tudjuk tüntetni egy listából a pozitív értékeket:
+
+Predicate<Integer> isPositive = number -> number > 0;
+Arrays.asList(10, -3, 1).removeIf(isPositive); 
+Persze a lambda kifejezést egyből a removeIf paramétereként is megadhatjuk, hiszen az Predicate<T> típusú. A Predicate<T> funkcionális metódusát test-nek hívják.
+
+Consumer<T>: olyan műveletet vár, aminek egy paramétere van és nincs visszatérési értéke. A többi funkcionális interfésztől eltérően ennek valamilyen mellékhatása van. A fenti forEach-es példa pont ilyen volt. Most a külön Consumer<String> deklarációt már nem írom ki, gondolom ezek után már egyértelmű, hogy úgy is lehet:
+
+Arrays.asList("a", "b", "d").forEach(e -> System.out.println(e)); 
+Supplier<T>: valamilyen végeredmény létrehozója. Egyfajta gyártómetódus, ami nem vár paramétert, csak visszaad egy eredményt. Akár egy objektumpéldányt:
+
+Supplier<String> domainName = () -> "egalizer.hu";
+domainName.get(); 
+
+Function<T,R>: olyan függvényt reprezentál, ami egy T típusú paramétert fogad és egy R típusú eredményt ad.
+
+Function<Double, Double> multiPi = x -> x * Math.PI;
+multiPi.apply(3.0); 
