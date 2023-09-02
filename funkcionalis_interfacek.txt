@@ -7,6 +7,7 @@ Persze a lambda kifejezést egyből a removeIf paramétereként is megadhatjuk, 
 Consumer<T>: olyan műveletet vár, aminek egy paramétere van és nincs visszatérési értéke. A többi funkcionális interfésztől eltérően ennek valamilyen mellékhatása van. A fenti forEach-es példa pont ilyen volt. Most a külön Consumer<String> deklarációt már nem írom ki, gondolom ezek után már egyértelmű, hogy úgy is lehet:
 
 Arrays.asList("a", "b", "d").forEach(e -> System.out.println(e)); 
+
 Supplier<T>: valamilyen végeredmény létrehozója. Egyfajta gyártómetódus, ami nem vár paramétert, csak visszaad egy eredményt. Akár egy objektumpéldányt:
 
 Supplier<String> domainName = () -> "egalizer.hu";

@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1466e184-7c74-4863-b28d-08be7c90f734" name="Changes" comment="08_26-i óraanyag">
-      <change afterPath="$PROJECT_DIR$/src/alapozo/JsonWrite.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/alapozo/PrimeExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="1466e184-7c74-4863-b28d-08be7c90f734" name="Changes" comment="Primszam példa">
+      <change beforePath="$PROJECT_DIR$/../../funkcionalis_interfacek.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../funkcionalis_interfacek.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/alapozo/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/alapozo/Address.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/alapozo/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/alapozo/Company.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/alapozo/Geo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/alapozo/Geo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/alapozo/JsonWrite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/alapozo/JsonWrite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/alapozo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/alapozo/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,7 +202,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693053616753</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Primszam példa">
+      <option name="closed" value="true" />
+      <created>1693648086305</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1693648086305</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -216,7 +227,8 @@
     <MESSAGE value="Steam házi megoldása" />
     <MESSAGE value="Stream gyakrás" />
     <MESSAGE value="08_26-i óraanyag" />
-    <option name="LAST_COMMIT_MESSAGE" value="08_26-i óraanyag" />
+    <MESSAGE value="Primszam példa" />
+    <option name="LAST_COMMIT_MESSAGE" value="Primszam példa" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
