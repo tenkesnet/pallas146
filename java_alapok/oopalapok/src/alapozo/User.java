@@ -10,6 +10,7 @@ public class User {
     private Address address;
     private Company company;
 
+    public User(){}
     public User(int id, String name, String username, String email, String phone, String website, Address address, Company company) {
         this.id = id;
         this.name = name;

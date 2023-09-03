@@ -1,6 +1,10 @@
 package alapozo;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class JsonWrite {
     User user = new User(
@@ -9,4 +13,15 @@ public class JsonWrite {
             new Company("Romaguera-Crona","Multi-layered client-server neural-net","harness real-time e-markets")
     );
 
+    public static void main(String[] args) {
+        JsonWrite jsonWrite = new JsonWrite();
+        ObjectMapper objectMapper = new ObjectMapper();
+        ArrayList<User> users = new ArrayList<>();
+        users.add(jsonWrite.user);
+        try {
+            objectMapper.writeValue(new File("user.json"), users);
+        }catch (IOException e){
+            System.out.println("Nem tudom létrehozni a filet");
+        }
+    }
 }
