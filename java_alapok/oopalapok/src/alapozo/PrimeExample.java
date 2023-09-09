@@ -1,7 +1,7 @@
 package alapozo;
 
 public class PrimeExample {
-    public int maxSzam = 2000000;
+    public int maxSzam = 10000;
     public static void main(String[] args){
         int i;
         PrimeExample foProgram = new PrimeExample();
@@ -9,7 +9,7 @@ public class PrimeExample {
         long start=System.currentTimeMillis();
         for(i=2; i<foProgram.maxSzam;i++){
             int valtozo;
-            if(foProgram.primE(i)){
+            if(foProgram.primE(i) && foProgram.primE(reverseNumber(i)) ){
                 darab++;
             }
 
@@ -29,5 +29,14 @@ public class PrimeExample {
             }
         }
         return result;
+    }
+    public static int reverseNumber(int num){
+        int reversed = 0;
+        while(num!=0){
+            int digit = num % 10;
+            reversed = reversed*10+digit;
+            num/=10;
+        }
+        return reversed;
     }
 }

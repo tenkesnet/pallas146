@@ -1,6 +1,5 @@
 package alapozo;
 
-import com.fasterxml.jackson.annotation.*;
 
 
 public class Company {
