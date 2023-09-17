@@ -5,15 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1466e184-7c74-4863-b28d-08be7c90f734" name="Changes" comment="Json előkészítése javítás">
-      <change afterPath="$PROJECT_DIR$/src/alapozo/JsonRead.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ddl.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../ddl.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oopalapok.iml" beforeDir="false" afterPath="$PROJECT_DIR$/oopalapok.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/alapozo/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/alapozo/Address.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/alapozo/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/alapozo/Company.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/alapozo/Geo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/alapozo/Geo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/alapozo/JsonWrite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/alapozo/JsonWrite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/alapozo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/alapozo/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/alapozo/OOPStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/alapozo/OOPStream.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/alapozo/StreamAdvanced.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/alapozo/StreamAdvanced.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,24 +36,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "/home/bardo/repo/pallas/pallas146/java_alapok/oopalapok/lib/jackson-databind-2.15.2.jar",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/bardo/repo/pallas/pallas146/java_alapok/oopalapok/lib/jackson-databind-2.15.2.jar&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.OOPStream">
     <configuration name="OOPStream" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="alapozo.OOPStream" />
       <module name="oopalapok" />

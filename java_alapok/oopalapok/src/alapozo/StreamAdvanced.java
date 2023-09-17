@@ -5,7 +5,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Stream;
 
@@ -25,7 +24,7 @@ public class StreamAdvanced {
 		 * elements.stream().findFirst();
 		 */
 	}
-
+	
 	public void loadSzavak(String filePath) {
 		try {
 			List<String> szavak = Files.readAllLines(Path.of(filePath), StandardCharsets.UTF_8);
@@ -34,28 +33,41 @@ public class StreamAdvanced {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-		for( String szo: szavak) {
-			if(isPalindrome(szo) && szo.length()==4 ) System.out.println(szo);
+		for (String szo : szavak) {
+			if ( szo.length() == 4 && isPalindrome(szo) )
+				System.out.println(szo);
 		}
 		System.out.println("");
 	}
-	
+
+	/**
+	 * A palndrom kifejezés azt jelenti Egy szó oda vissza olvasva ugyan azt jelenti.
+	 * @param inputString
+	 * @return igaz értéket ad vissza ha Palindrome egy szó
+	 */
 	public static boolean isPalindrome(String inputString) {
-		Objects.requireNonNull(inputString, "String cannot be null."); // Get the length of string
+		if (inputString == null) {
+			inputString = "String cannot be null.";
+			return false;
+		}
+		try {
+			Thread.sleep(2);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		int len = inputString.length();
 		if (len <= 1) {
 			return true;
 		}
-		String newStr = inputString.toUpperCase();
+		String newStr = inputString.toLowerCase();
 		boolean result = true;
 
 		int counter = len / 2;
 
 		for (int i = 0; i < counter; i++) {
 			if (newStr.charAt(i) != newStr.charAt(len - 1 - i)) {
-
 				result = false;
-
 				break;
 			}
 		}

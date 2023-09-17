@@ -1,8 +1,28 @@
 -- SQLite
 CREATE TABLE regions (
-	region_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+	region_id serial PRIMARY KEY NOT NULL,
 	region_name text NOT NULL
 );
+drop table regions;
+drop sequence regions_id_seq;
+CREATE SEQUENCE regions_id_seq;
+
+CREATE SEQUENCE public.regions_id_seq
+	INCREMENT BY 1
+	MINVALUE 1
+	MAXVALUE 9223372036854775807
+	START 1
+	CACHE 1
+	NO CYCLE;
+
+CREATE TABLE regions (
+	region_id bigint primary key NOT NULL DEFAULT nextval('regions_id_seq'),
+	region_name text NOT NULL
+);
+
+ALTER SEQUENCE table_name_id_seq
+OWNED BY table_name.id;
+
 
 CREATE TABLE countries (
 	country_id text NOT NULL,

@@ -1,0 +1,19 @@
+A teams Általános csatornán a fileok között lévő magyar-szavak-kat.txt.zip file tartalmazza a magyar szavak listáját kategórizálva. A file szerkezeti leírását ugyan itt lévő web2.2-freq-sorted-lemmatized.readme file tartalmazza.
+
+Olvassa be a file tartalmát egy listába. A lista típusa egy SzotarElem POJO( osztály) legyen, aminek a szerkezete:
+
+	private String szo;
+	private String lemming;
+	private String szofaj;
+	private int szotagszam;
+
+Beolvasás után számolja meg hány lemma van benne és melyik lemmához tartozik a legtöbb toldalékos vagy képzett szó.
+Modjuk az első 10 ilyet lsitázza ki.
+
+Valamint a 10 leghosszab szót is listázza ki illetve a 10 leghozzabb Paligramm szót is.
+
+Majd számolja meg a szótípusiok számát.
+
+Továbbá a legtöbb szótagó szavakat is ( ebből is 10-et ).
+
+
