@@ -112,7 +112,7 @@ insert into sz_tulajdonos values (1,'Kiss Kálmán','Budapest'),(2,'Nagy József
 (16,'Magyar Oszkár','Zalaegerszeg'),(17,'Tóth András','Verőce'),(18,'John Smith','Sopron'),(19,'Molnár Géza','Szeghalom'),
 (20,'Mészáros Árpád','Mórahalom');
 
-insert into sz_auto_tulajdonosa values (1,'2008-10-20',2),(1,'2010-010-20',3),(6,'2010-11-20',2),(1,'2008-10-20',2);
+insert into sz_auto_tulajdonosa values (1,'2008-10-20',2),(1,'2010-10-20',3),(6,'2010-11-20',3),(6,'2008-10-20',2);
 
 insert into sz_szerelo values (1, 'Kovács János','Budapest',null,'1989-08-04',null), (2, 'Szilágyi Gyula','Gödöllő',null,'1969-01-24',null), (3, 'Tarcsa Mihály','Szolnok',null,'1994-08-20',null),
 (4, 'Sebők István','Debrecen',null,'1972-10-12',null), (5, 'Tóth Pál','Nagytarcsa',null,'1980-03-15',null), (6, 'Jakus László','Szolnok',null,'1978-04-04',null), (7, 'Kovács László','Budapest',null,'1980-07-08',null),
