@@ -1,5 +1,5 @@
-show search_path;
-set search_path = auto;
+--show search_path;
+--set search_path = auto;
 
 --drop table if exists sz_automarka
 create table sz_automarka (
@@ -97,14 +97,38 @@ primary key(auto_azon,muhely_azon,szereles_kezdete)
 alter table sz_szereles add constraint FK_sz_szereles_sz_auto foreign key(auto_azon) references sz_auto(azon) on update set null on delete set null;
 alter table sz_szereles add constraint FK_sz_szereles_sz_szerelomuhely foreign key(muhely_azon) references sz_szerelomuhely(azon) on update set null on delete set null;
 
+insert into sz_automarka values('audi'), ('mercedes'), ('vw'), ('opel'),('suzuki'),('trabant'),	('bmw'),('maserati'),('kia');
 
-insert into sz_automarka values('audi'), ('mercedes'), ('vw'), ('opel'),('suzuki');
-select * from sz_automarka sa ;
+insert into sz_autotipus values (1,'bevásárló','opel',null), (2,'bevásárló2','suzuki',null), (3,'luxus','audi',null) ,(4,'old','vw',null),
+(5,'sport','bmw',null),	(6,'combi','kia',null),	(7,'luxus','maserati',null);
 
-insert into sz_autotipus values (default,'bevásárló','opel',null), (default,'bevásárló2','suzuki',null), (default,'luxus','audi',null) ,(default,'old','vw',null);
-select * from sz_autotipus;
-insert into sz_auto values (default,'kék','2008-10-20',1200000,1,'AAA-001'),(default,'fehér','2002-02-10',800000,2,'ABA-001'),(default,'fekete','2000-05-10',600000,1,'AVV-004'),
-(default,'piros','2020-07-10',8000000,3,'KEZ-873');
+insert into sz_auto values (1,'kék','2008-10-20',1200000,1,'AAA-001'),(2,'fehér','2002-02-10',800000,2,'ABA-001'),(3,'fekete','2000-05-10',600000,1,'AVV-004'),
+(4,'piros','2020-07-10',8000000,3,'KEZ-873'),(5,'kek','2020-01-12',25000000,7,'SAS-111'),	(6,'zold','2017-07-10',6000000,6,'JAJ-009'),(7,'barna','2023-09-29',60000000,4,'ZAJ-999');
+ 
+insert into sz_tulajdonos values (1,'Kiss Kálmán','Budapest'),(2,'Nagy József','Debrecen'),(3,'Erdős Nikolett','Szekszárd'),
+(4,'Papp Lajos','Győr'),(5,'Öreg László','Nyíregyháza'),(6,'Tóth Ottó','Piliscsaba'),(7,'Józan Krisztina','Békéscsaba'),
+(8,'Kovács László','Szeged'),(9,'Szabó Attila','Pécs'),(10,'Fiatal Katalin','Szombathely'),(11,'Kádár Mónika','Veszprém'),
+(12,'Magas Béla','Miskolc'),(13,'Vajda Erika','Salgótarján'),(14,'Boros Levente','Eger'),(15,'Kerek Matild', 'Szentendre'),
+(16,'Magyar Oszkár','Zalaegerszeg'),(17,'Tóth András','Verőce'),(18,'John Smith','Sopron'),(19,'Molnár Géza','Szeghalom'),
+(20,'Mészáros Árpád','Mórahalom');
+
+insert into sz_szerelo values (1, 'Kovács János','Budapest',null,'1989-08-04',null), (2, 'Szilágyi Gyula','Gödöllő',null,'1969-01-24',null), (3, 'Tarcsa Mihály','Szolnok',null,'1994-08-20',null),
+(4, 'Sebők István','Debrecen',null,'1972-10-12',null), (5, 'Tóth Pál','Nagytarcsa',null,'1980-03-15',null), (6, 'Jakus László','Szolnok',null,'1978-04-04',null), (7, 'Kovács László','Budapest',null,'1980-07-08',null),
+(8, 'Szabó Tamás','Gödöllő',null,'1975-12-24',null);
+
+
+insert into sz_AUTOFELERTEKELES values 
+(1, '2010-09-15', 3),
+(2, '2015-09-23', 2),
+(3, '2018-09-05', 2),
+(4, '2021-09-05', 4),
+(5, '2016-09-01', 2),
+(1, '2019-09-19', 4),
+(5, '2025-09-09', 3),
+(3, '2023-09-11', 4),
+(5, '2023-09-30', 3);
+
+
 
 
  
