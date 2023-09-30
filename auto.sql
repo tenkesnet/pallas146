@@ -54,5 +54,46 @@ primary key (auto_azon,vasarlas_ideje)
 alter table sz_auto_tulajdonosa add constraint FK_sz_auto_tulajdonosa_sz_auto foreign key (auto_azon) references sz_auto(azon) on update set null on delete set null;
 alter table sz_auto_tulajdonosa add constraint FK_sz_auto_tulajdonosa_sz_tulajdonos foreign key (tulaj_azon) references sz_tulajdonos(azon) on update set null on delete set null;
 
-
-
+create table sz_szerelo(
+azon serial primary key,
+nev text,
+cim text,
+telefon text,
+szul_dat date,
+adoszam text
+);
+ 
+create table sz_szerelomuhely(
+azon serial primary key,
+cim text,
+vezeto_azon int,
+nev text
+);
+ 
+alter table sz_szerelomuhely add constraint FK_sz_szerelomuhely_sz_szerelo foreign key(vezeto_azon) references sz_szerelo(azon) on update set null on delete set null;
+ 
+create table sz_dolgozik(
+szerelo_azon int,
+muhely_azon int,
+munkaviszony_kezdete date,
+munkaviszony_vege date,
+havi_fizetes numeric(10),
+primary key(szerelo_azon,muhely_azon,munkaviszony_kezdete)
+);
+ 
+alter table sz_dolgozik add constraint FK_sz_dolgozik_sz_szerelo foreign key(szerelo_azon) references sz_szerelo(azon) on update set null on delete set null;
+alter table sz_dolgozik add constraint FK_sz_dolgozik_sz_szerelomuhely foreign key(muhely_azon) references sz_szerelomuhely(azon) on update set null on delete set null;
+ 
+ 
+create table sz_szereles (
+auto_azon int,
+muhely_azon int,
+szereles_kezdete date,
+szereles_vege date,
+munkavegzes_ara numeric(10),
+primary key(auto_azon,muhely_azon,szereles_kezdete)
+);
+ 
+alter table sz_szereles add constraint FK_sz_szereles_sz_auto foreign key(auto_azon) references sz_auto(azon) on update set null on delete set null;
+alter table sz_szereles add constraint FK_sz_szereles_sz_szerelomuhely foreign key(muhely_azon) references sz_szerelomuhely(azon) on update set null on delete set null;
+ 
