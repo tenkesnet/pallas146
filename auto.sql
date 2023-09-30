@@ -1,6 +1,7 @@
 show search_path;
 set search_path = auto;
 
+--drop table if exists sz_automarka
 create table sz_automarka (
 nev text primary key
 );
@@ -36,4 +37,22 @@ primary key(auto_azon,datum)
 
 alter table sz_autofelertekeles add constraint FK_sz_autofelertekeles_sz_auto foreign key (auto_azon) references sz_auto(azon) on update set null on delete set null;
 --alter table sz_autofelertekeles drop constraint FK_sz_autofelertekeles_sz_auto;
+
+create table sz_tulajdonos (
+azon serial primary key,
+nev text,
+cim text
+);
+
+create table sz_auto_tulajdonosa (
+auto_azon int,
+vasarlas_ideje date,
+tulaj_azon int,
+primary key (auto_azon,vasarlas_ideje)
+);
+
+alter table sz_auto_tulajdonosa add constraint FK_sz_auto_tulajdonosa_sz_auto foreign key (auto_azon) references sz_auto(azon) on update set null on delete set null;
+alter table sz_auto_tulajdonosa add constraint FK_sz_auto_tulajdonosa_sz_tulajdonos foreign key (tulaj_azon) references sz_tulajdonos(azon) on update set null on delete set null;
+
+
 
