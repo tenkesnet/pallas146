@@ -103,8 +103,8 @@ select * from sz_automarka sa ;
 
 insert into sz_autotipus values (default,'bevásárló','opel',null), (default,'bevásárló2','suzuki',null), (default,'luxus','audi',null) ,(default,'old','vw',null);
 select * from sz_autotipus;
-insert into sz_auto values (default,'kék','2008-10-20',1200000,5,'AAA-001'),(default,'fehér','2002-02-10',800000,6,'ABA-001'),(default,'fekete','2000-05-10',600000,5,'AVV-004'),
-(default,'piros','2020-07-10',8000000,7,'KEZ-873');
+insert into sz_auto values (default,'kék','2008-10-20',1200000,1,'AAA-001'),(default,'fehér','2002-02-10',800000,2,'ABA-001'),(default,'fekete','2000-05-10',600000,1,'AVV-004'),
+(default,'piros','2020-07-10',8000000,3,'KEZ-873');
 
 
  
