@@ -47,11 +47,13 @@ kartyaszam numeric(10)
 
 
 create table futamok(
-azon serial primary key,
+azon int,
 kutya_azon int,
 felvezeto_azon int,
+kezdo_idopont timestamp,
 hiba numeric(2),
-ido decimal(4,2)
+ido decimal(5,2), 
+PRIMARY KEY (azon,kutya_azon,kezdo_idopont)
 );
 
 alter table futamok add constraint FK_futamok_felvezeto foreign key (felvezeto_azon) references felvezeto(azon) on update set null on delete set null;
@@ -79,5 +81,5 @@ insert into felvezeto values (1,'Ács-Kövesi Ágnes', '1970-12-01',00031016), (
 (12,'Kárász Edit','1985-06-01',3246), (13,'Bartos Zsuzsanna','1992-09-04',5331), (14,'Papp Rita','1991-01-23',00035), (15,'Vincze Zsolt','1997-11-11',5841),
 (16,'Ficzere Csenge','1994-01-29',0003151), (17,'Balogh-Nagy Réka','1989-03-20',000357);
 
-insert into futamok values (1,1,2,0,35.40), (2,2,2,15,38.56), (3,3,7,5,44.50), (4,4,7,20,50.23), (5,6,3,35,78.51), (6,8,6,0,37.20), (7,12,1,0,40.11), 
+insert into futamok values (1,1,2,0,35.40), (1,2,2,15,38.56), (1,3,7,5,44.50), (2,4,7,20,50.23), (2,6,3,35,78.51), (2,8,6,0,37.20), (7,12,1,0,40.11), 
 (8,16,17,0,34.80), (9,23,5,20,41.60), (10,22,11,10,39.75), (11,21,12,10,37.75), (12,20,15,0,40.05);
