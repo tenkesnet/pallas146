@@ -79,12 +79,12 @@ CREATE TYPE auto AS
 CREATE OR REPLACE FUNCTION insert_auto (p1 auto)
 	RETURNS text AS $$
 	DECLARE
-		marka text;
+		marka_tmp text;
 		markanev text;
 	begin
-		select megnevezes into marka from sz_autotipus where azon=p1.tipus_azon;
-		select nev into markanev from sz_automarka where nev=marka;
-		if marka is null and markanev is null then 
+		select marka into marka_tmp from sz_autotipus where azon=p1.tipus_azon;
+		select nev into markanev from sz_automarka where nev=marka_tmp;
+		if marka_tmp is null or markanev is null then 
 			return 'Error message'; 
 		end if;
 		perform * from sz_auto where azon=p1.azon;
@@ -97,8 +97,40 @@ CREATE OR REPLACE FUNCTION insert_auto (p1 auto)
 	END;
 $$ LANGUAGE plpgsql;
 
+CREATE TYPE dolgozo AS
+   (  	
+    dolgozo_id bigserial,
+	nev text ,
+	munkakor text,
+	belepesi_datum date,	
+	felettes text
+   );
 
-select insert_auto(row(1,'bordó','2011-12-12',300000,1,'ddc-987'));
+  CREATE OR REPLACE FUNCTION insert_dolgozo (p1 dolgozo)
+	RETURNS text AS $$
+	DECLARE
+		munkakor_id bigint;
+		markanev text;
+	begin
+		select munkakor into munkakor_id from munkakor where munkakor_nev=p1.munkakor;
+		select nev into markanev from sz_automarka where nev=marka_tmp;
+		if marka_tmp is null or markanev is null then 
+			return 'Error message'; 
+		end if;
+		perform * from sz_auto where azon=p1.azon;
+		if not found then
+			insert into sz_auto (azon,szin,elso_vasarlas_idopontja,elso_vasarlasi_ar,tipus_azon,rendszam) values (p1.azon,p1.szin,p1.elso_vasarlas_idopontja,p1.elso_vasarlasi_ar,p1.tipus_azon,p1.rendszam);
+		else
+			update sz_auto set szin=p1.szin,elso_vasarlas_idopontja=p1.elso_vasarlas_idopontja,elso_vasarlasi_ar=p1.elso_vasarlasi_ar,tipus_azon=p1.tipus_azon,rendszam=p1.rendszam where azon=p1.azon ;
+		end if;
+		return 'Ok';
+	END;
+$$ LANGUAGE plpgsql;
+  
+  
+select insert_auto(row(11,'keki','2022-12-20',30000000,7,'SOLYOM-111'));
+select insert_dolgozo(row(11,'Péter','Infrastructure Management'));
+select * from sz_auto ;
 
 
 
