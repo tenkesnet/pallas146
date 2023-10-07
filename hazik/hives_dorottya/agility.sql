@@ -1,11 +1,19 @@
 --show search_path;
 
+CREATE TABLE statusz (
+	statusz_id serial PRIMARY KEY,
+	nev text
+);
 
-create table tulajdonos(
+INSERT INTO statusz (nev) VALUES ('tulajdonos') , ('felvezető'), ('biró');
+
+create table szemelyek (
 azon serial primary key,
 teljesnev text,
+statusz_id int ,
 cim text
 );
+
 
 create table szintkategoria(
 azon serial primary key,
@@ -24,7 +32,7 @@ kutyafajta text
 
 create table kutyak(
 azon serial primary key,
-tulaj_azon int,
+szemely_azon int,
 hivonev text,
 fajta_azon int,
 kor numeric(2),
@@ -49,10 +57,12 @@ kartyaszam numeric(10)
 create table futamok(
 azon int,
 kutya_azon int,
-felvezeto_azon int,
+szemely_azon int,
 kezdo_idopont timestamp,
 hiba numeric(2),
-ido decimal(5,2), 
+ido decimal(5,2),
+eredmeny decimal(3),
+hossz decimal(3)
 PRIMARY KEY (azon,kutya_azon,kezdo_idopont)
 );
 
