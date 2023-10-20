@@ -11,27 +11,25 @@ select szin,max(elso_vasarlasi_ar) from sz_auto group by szin order by szin desc
 
 select szin from sz_auto group by szin having count(szin)<5 order by szin;
 
+5. Melyek azok az autótípusok, amelyekhez 5-nél kevesebb autó tartozik?
 select t.megnevezes,count(a.azon) from sz_auto a join sz_autotipus t on t.azon=a.tipus_azon group by t.azon having count(a.azon)<5;
-
-select * from sz_auto;
-select  * from sz_autotipus sa ;
 
 select rendszam  from sz_auto where elso_vasarlasi_ar = (select max(elso_vasarlasi_ar) from sz_auto);
 
-Ki az utolsó tulajdonosa annak az autónak, amelyikhez a legdrágább autófelértékelés tartozik?
+7. Ki az utolsó tulajdonosa annak az autónak, amelyikhez a legdrágább autófelértékelés tartozik?
 
-select * from sz_autofelertekeles ertekeles 
+select tulaj.nev from sz_autofelertekeles ertekeles 
 	left join sz_auto_tulajdonosa tulaja on ertekeles.auto_azon=tulaja.auto_azon 
 	join sz_tulajdonos tulaj on tulaja.tulaj_azon = tulaj.azon
 	where 
 	ertekeles.ertek = (select max(ertek) from sz_autofelertekeles)
-	and tulaja.vasarlas_ideje=(select max(vasarlas_ideje) from sz_auto_tulajdonosa where auto_azon=tulaja.auto_azon);
+	and tulaja.vasarlas_ideje=(select max(tulaja2.vasarlas_ideje) from sz_auto_tulajdonosa tulaja2 where tulaja2.auto_azon=tulaja.auto_azon);
 
 
 	select * from sz_auto_tulajdonosa sat ;
 select * from sz_tulajdonos st ;
 	
-Ki volt az autók előző tulajdonosa?
+8. Ki volt az autók előző tulajdonosa?
 
 select * from sz_auto a 
 	join sz_auto_tulajdonosa aut on aut.auto_azon=a.azon
@@ -44,13 +42,12 @@ select * from sz_auto a
 
 9. Melyik az az autótípus, amelyekhez a legtöbb autó tartozik?
 
-
 select t.megnevezes,count(a.azon) from sz_autotipus t join sz_auto a on a.tipus_azon=t.azon group by t.azon,t.megnevezes
 	having count(t.azon) = ( 
 		select max(m.tipus_count) from 
 			(select count(t2.azon) as tipus_count from sz_auto a2 join sz_autotipus t2 on t2.azon=a2.tipus_azon group by t2.azon ) m 
 	) ;
-;
+
 select * from sz_autotipus t join sz_auto a on a.tipus_azon=t.azon
 
 select * from sz_auto sa ;
@@ -61,11 +58,7 @@ select * from sz_auto a where a.elso_vasarlasi_ar = (
 
 select szin,max(elso_vasarlasi_ar),rendszam,elso_vasarlas_idopontja from sz_auto group by szin,rendszam,elso_vasarlas_idopontja; 
 
-Egy bejövő tábla paraméterből (UDT): @autok (Oszlopai: SZ_AUTO táblával megegyező) beszúrja az
-SZ_AUTO táblába azokat a sorokat/vagy módosítja (Kulcs: AZON oszlop), amelyekhez tartozik
-megfelelő autótípus, illetve autómárka. Amelyekhez nem, azokat a sorokat a program ne töltse be az
-adatbázisba, és dobjon egy figyelmeztető üzenetet.
-
+11.Tárolteljárás létrehozása:
 CREATE TYPE auto AS
    (  	
     azon numeric(5),

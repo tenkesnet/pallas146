@@ -24,6 +24,7 @@ public class SzotarUtil {
 			elem.setLemming(items[1]);
 			elem.setSzofaj(items[2]);
 			elem.setSzotagszam(Integer.parseInt(items[4]));
+			elem.setCv(items[5]);
 			szotarElems.add(elem);
 		}
 		System.out.println("");
