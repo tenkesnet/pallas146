@@ -103,7 +103,8 @@ insert into sz_autotipus values (1,'bevásárló','opel',null), (2,'bevásárló
 (5,'sport','bmw',null),	(6,'combi','kia',null),	(7,'luxus','maserati',null);
 
 insert into sz_auto values (1,'kék','2008-10-20',1200000,1,'AAA-001'),(2,'fehér','2002-02-10',800000,2,'ABA-001'),(3,'fekete','2000-05-10',600000,1,'AVV-004'),
-(4,'piros','2020-07-10',8000000,3,'KEZ-873'),(5,'kék','2020-01-12',25000000,7,'SAS-111'),	(6,'zold','2017-07-10',6000000,6,'JAJ-009'),(7,'barna','2023-09-29',60000000,4,'ZAJ-999');
+(4,'piros','2020-07-10',8000000,3,'KEZ-873'),(5,'kék','2020-01-12',25000000,7,'SAS-111'),	(6,'zold','2017-07-10',6000000,6,'JAJ-009'),
+(7,'barna','2023-09-29',60000000,4,'ZAJ-999');
  
 insert into sz_tulajdonos values (1,'Kiss Kálmán','Budapest'),(2,'Nagy József','Debrecen'),(3,'Erdős Nikolett','Szekszárd'),
 (4,'Papp Lajos','Győr'),(5,'Öreg László','Nyíregyháza'),(6,'Tóth Ottó','Piliscsaba'),(7,'Józan Krisztina','Békéscsaba'),
