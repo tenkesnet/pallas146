@@ -1,12 +1,14 @@
 package szotar;
 
+//POJO
 public class SzotarElem {
     private String szo;
-    private String lemming;
+    private String lemma;
     private String szofaj;
     private int szotagszam;
-
     private String cv;
+    private int szoGyakorisag;
+    private int lemmaGyakorisag;
 
     public String getSzo() {
         return szo;
@@ -16,12 +18,12 @@ public class SzotarElem {
         this.szo = szo;
     }
 
-    public String getLemming() {
-        return lemming;
+    public String getLemma() {
+        return lemma;
     }
 
-    public void setLemming(String lemming) {
-        this.lemming = lemming;
+    public void setLemma(String lemma) {
+        this.lemma = lemma;
     }
 
     public String getSzofaj() {
@@ -43,4 +45,20 @@ public class SzotarElem {
     public String getCv() { return cv; }
 
     public void setCv(String cv) { this.cv = cv;  }
+
+    public int getSzoGyakorisag() {
+        return szoGyakorisag;
+    }
+
+    public void setSzoGyakorisag(int szoGyakorisag) {
+        this.szoGyakorisag = szoGyakorisag;
+    }
+
+    public int getLemmaGyakorisag() {
+        return lemmaGyakorisag;
+    }
+
+    public void setLemmaGyakorisag(int lemmaGyakorisag) {
+        this.lemmaGyakorisag = lemmaGyakorisag;
+    }
 }

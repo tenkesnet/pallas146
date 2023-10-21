@@ -21,10 +21,12 @@ public class SzotarUtil {
 			if(items.length<8) continue;
 			SzotarElem elem = new SzotarElem();
 			elem.setSzo(items[0]);
-			elem.setLemming(items[1]);
+			elem.setLemma(items[1]);
 			elem.setSzofaj(items[2]);
 			elem.setSzotagszam(Integer.parseInt(items[4]));
 			elem.setCv(items[5]);
+			elem.setSzoGyakorisag(Integer.parseInt(items[6]));
+			elem.setLemmaGyakorisag(Integer.parseInt(items[7]));
 			szotarElems.add(elem);
 		}
 		System.out.println("");
