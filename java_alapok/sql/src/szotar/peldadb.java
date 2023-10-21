@@ -39,7 +39,7 @@ public class peldadb {
             st.execute();
 
 
-            stmt.addBatch(String.format("insert into words (szo,gyakor,szofajta) values ('%s',%d,'%s')",));
+            //stmt.addBatch(String.format("insert into words (szo,gyakor,szofajta) values ('%s',%d,'%s')",));
 
 
             stmt.executeBatch();

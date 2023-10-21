@@ -44,6 +44,19 @@ public class SzotarElem {
 
     public String getCv() { return cv; }
 
+    @Override
+    public String toString() {
+        return "SzotarElem{" +
+                "szo='" + szo + '\'' +
+                ", lemma='" + lemma + '\'' +
+                ", szofaj='" + szofaj + '\'' +
+                ", szotagszam=" + szotagszam +
+                ", cv='" + cv + '\'' +
+                ", szoGyakorisag=" + szoGyakorisag +
+                ", lemmaGyakorisag=" + lemmaGyakorisag +
+                '}';
+    }
+
     public void setCv(String cv) { this.cv = cv;  }
 
     public int getSzoGyakorisag() {
