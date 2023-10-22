@@ -45,7 +45,7 @@ cim text
 );
 
 create table sz_auto_tulajdonosa (
-auto_azon int,
+auto_azon int not null,
 vasarlas_ideje date,
 tulaj_azon int,
 primary key (auto_azon,vasarlas_ideje)

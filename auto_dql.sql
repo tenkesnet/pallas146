@@ -6,7 +6,7 @@ join auto.sz_tulajdonos t on ta.tulaj_azon = t.azon  where t.nev =('Nagy József
 
 select * from sz_automarka am left join sz_autotipus t on t.marka=am.nev;
 
-select szin,max(elso_vasarlasi_ar) from sz_auto group by szin order by szin desc ;
+select szin,max(elso_vasarlasi_ar) from auto.sz_auto group by szin order by szin desc ;
 
 select szin from sz_auto group by szin having count(szin)<5 order by szin;
 
@@ -71,6 +71,8 @@ drop function insert_auto(auto);
 select insert_auto(row(1,'bordo','2011-12-12',300000,1,'ddc-987'));
 
 select * from sz_auto ;
+
+delete from auto.sz_auto where azon=6;
 
 
 

@@ -19,6 +19,7 @@ select count(*) from words;
 truncate words;
 vacuum words;
 commit;
+select w1.szo from words w1 where length(w1.szo) = (select max(length(szo)) from words w2 );
 
 SELECT version();
 
