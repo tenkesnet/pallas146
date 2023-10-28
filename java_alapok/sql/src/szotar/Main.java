@@ -1,6 +1,11 @@
 package szotar;
 
 
+import vizsga.Feladatok;
+import vizsga.Lekerdezes;
+
+import java.sql.PreparedStatement;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -12,7 +17,10 @@ public class Main {
 		System.out.println("Futási idő: " + (stop - start) + "ms");
 
 		System.out.println(String.format("A max mássalhangzójú szi: %s", util.getMaxMassalhangzo()));
-
+		Feladatok f = new Feladatok();
+		for(Lekerdezes l : f.getKerdesek()){
+			//PreparedStatement st = c.prepareStatement(l.getSqlParancs());
+		}
 		/*System.out.println("--------------------");
 		System.out.println("Most kezdődik az insert.");
 		start = System.currentTimeMillis();
