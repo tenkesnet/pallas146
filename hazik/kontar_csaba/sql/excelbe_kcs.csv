@@ -1,0 +1,2176 @@
+Kérdés: Irassa ki az egyes autók típusát, a vásárlás idejét és a beszerzési árat!	
+Script: select t.tipus_nev,a.vasarlas_datuma,a.ar from autok a join tipusok t ON a.tipusok_id = t.id	
+Eredmény: 19	
+
+FORD ESCORT	1993-01-02	1300000	
+RENAULT 19	1993-01-02	1200000	
+RENAULT NEVADA	1993-06-01	2473000	
+RENAULT LAGUNA	1993-06-05	2346000	
+RENAULT 19	1993-06-30	1329000	
+RENAULT NEVADA	1993-07-20	2473000	
+SKODA LX	1993-10-01	827000	
+SKODA CL	1993-10-01	917000	
+OPEL ASTRA	1993-11-11	1239000	
+OPEL VECTRA	1993-10-11	3977000	
+W VENTO CL	1993-12-01	1650000	
+W VENTO CL	1993-12-01	1650000	
+OPEL CORSA	1993-12-01	917000	
+OPEL ASTRA	1993-12-01	1239000	
+FORD ESCORT	1994-01-02	1400000	
+RENAULT LAGUNA	1994-01-02	2346000	
+RENAULT ESPACE	1994-01-02	3530000	
+W VENTO CL	1994-01-02	1999000	
+RENAULT TWINGO	1994-01-03	955000	
+
+
+Kérdés: Irassa ki SELECT utasítással az AUTOK táblából az összes autó rendszámát, típusát és árát! A kiírás az ár szerinti csökkenő sorrendben történjen!	
+Script: select a.rendszam, t.tipus_nev,a.ar from autok a join tipusok t on a.tipusok_id=t.id	
+Eredmény: 19	
+
+ABR-047	FORD ESCORT	1300000	
+ABR-115	RENAULT 19	1200000	
+CDE-324	RENAULT NEVADA	2473000	
+DHV-123	RENAULT LAGUNA	2346000	
+PHD-100	RENAULT 19	1329000	
+PHD-610	RENAULT NEVADA	2473000	
+ABC-021	SKODA LX	827000	
+ABC-022	SKODA CL	917000	
+ABC-123	OPEL ASTRA	1239000	
+BAH-115	OPEL VECTRA	3977000	
+CIC-312	W VENTO CL	1650000	
+COD-705	W VENTO CL	1650000	
+CBN-301	OPEL CORSA	917000	
+CBN-302	OPEL ASTRA	1239000	
+CDD-115	FORD ESCORT	1400000	
+DCD-324	RENAULT LAGUNA	2346000	
+PDP-101	RENAULT ESPACE	3530000	
+CBN-001	W VENTO CL	1999000	
+CDD-115	RENAULT TWINGO	955000	
+
+
+Kérdés: Irassa ki az AUTOK táblából az autók rendszámát és árát!	
+Script: select rendszam,ar from autok	
+Eredmény: 19	
+
+ABR-047	1300000	
+ABR-115	1200000	
+CDE-324	2473000	
+DHV-123	2346000	
+PHD-100	1329000	
+PHD-610	2473000	
+ABC-021	827000	
+ABC-022	917000	
+ABC-123	1239000	
+BAH-115	3977000	
+CIC-312	1650000	
+COD-705	1650000	
+CBN-301	917000	
+CBN-302	1239000	
+CDD-115	1400000	
+DCD-324	2346000	
+PDP-101	3530000	
+CBN-001	1999000	
+CDD-115	955000	
+
+
+Kérdés: Irassa ki az 1350000 Ft-nál drágábban vásárolt autók típusát és árát!	
+Script: select t.tipus_nev,a.ar from autok a join tipusok t on a.tipusok_id=t.id where a.ar>1350000	
+Eredmény: 10	
+
+RENAULT NEVADA	2473000	
+RENAULT LAGUNA	2346000	
+RENAULT NEVADA	2473000	
+OPEL VECTRA	3977000	
+W VENTO CL	1650000	
+W VENTO CL	1650000	
+FORD ESCORT	1400000	
+RENAULT LAGUNA	2346000	
+RENAULT ESPACE	3530000	
+W VENTO CL	1999000	
+
+
+Kérdés: Irassa ki az 1350000 Ft-nál drágábban vásárolt autók típusát, árát és autócsoport nevét a csoport szerint növekvő, az ár szerint csökkenő sorrendben!	
+Script: select t.tipus_nev,a.ar,ac.auto_csop_nev from autok a join tipusok t on a.tipusok_id=t.id join auto_csop ac on a.auto_csop_id=ac.id where a.ar>1350000 order by ac.auto_csop_nev asc, a.ar desc;	
+Eredmény: 10	
+
+RENAULT NEVADA	2473000	EXTRA	
+RENAULT NEVADA	2473000	EXTRA	
+RENAULT LAGUNA	2346000	EXTRA	
+RENAULT LAGUNA	2346000	EXTRA	
+W VENTO CL	1999000	EXTRA	
+W VENTO CL	1650000	EXTRA	
+W VENTO CL	1650000	EXTRA	
+FORD ESCORT	1400000	EXTRA	
+OPEL VECTRA	3977000	LUXUS	
+RENAULT ESPACE	3530000	LUXUS	
+
+
+Kérdés: Irassa ki az összes olyan autó rendszámát és típusát, amelyek nem az EXTRA autócsoporthoz tartoznak!	
+Script: select a.rendszam,t.tipus_nev from autok a join tipusok t on a.tipusok_id=t.id where a.auto_csop_id!=2	
+Eredmény: 6	
+
+ABC-021	SKODA LX	
+ABC-022	SKODA CL	
+BAH-115	OPEL VECTRA	
+CBN-301	OPEL CORSA	
+PDP-101	RENAULT ESPACE	
+CDD-115	RENAULT TWINGO	
+
+
+Kérdés: Irassa ki azon autók adatait az AUTOK táblából, amelyek 9000 km nél többet futottak és áruk 1000000 Ft alatt van!	
+Script: select 
+a.id,
+a.rendszam,
+t.tipus_nev,
+ac.auto_csop_nev,
+a.vasarlas_datuma,
+a.ar, 
+a.futott_km, 
+a.ut_szerviz,
+a.allapot,
+r.reszleg_nev, 
+al.alk_nev
+from autok a
+join tipusok t on a.tipusok_id = t.id
+join auto_csop ac on a.auto_csop_id = ac.id
+join reszleg r on a.reszleg_id = r.id
+join alkalmazott al on a.alkalmazott_id = al.id
+where a.futott_km > 9000 AND a.ar < 1000000;	
+Eredmény: 3	
+
+7	ABC-021	SKODA LX	NORMAL	1993-10-01	827000	123212	120509	F	AUTO	CSIKOS	
+8	ABC-022	SKODA CL	NORMAL	1993-10-01	917000	97081	95310	S	AUTO	CSIKOS	
+13	CBN-301	OPEL CORSA	NORMAL	1993-12-01	917000	28001	25444	A	AUTO	TRENCSENI	
+
+
+Kérdés: Irassa ki az összes kifizetett rendelésre vonatkozó adatot!	
+Script: select r.id,
+r.rendeles_szam,
+u.ugyfel_nev,
+r.rendeles_datum,
+r.rendelo_szemely,
+r.kolcson_kezdete,
+r.napok,
+a.rendszam,
+t.tipus_nev,
+r.km_kezdet,
+r.km_veg,
+r.kolcson_dij,
+r.fizetes
+from rendeles r 
+join autok a on r.rendszam_id=a.id 
+join tipusok t on a.tipusok_id=t.id 
+join ugyfelek u on r.ugyfelek_id=u.id 
+	
+Eredmény: 12	
+
+1	12334	KISS VIKTÓRIA	1993-12-01	NAGY TIBORNE	1994-04-01	5	ABC-123	OPEL ASTRA	95308	101978	558600	Y	
+2	12335	MOLNÁR PETER	1994-02-02	HOTEL CIVIS	1994-03-05	2	ABR-115	RENAULT 19	144102	145097	134400	Y	
+3	12336	MOLNÁR PETER	1994-02-02	HOTEL CIVIS	1994-02-02	21	PHD-100	RENAULT 19	150871	151441	225900	Y	
+4	12337	ABEL ANETT	1994-03-30	HILTON	1994-04-05	30	ABR-047	FORD ESCORT	141413	151003	1375800	N	
+5	12338	PAPP ROBERT	1994-03-30	MATAV IG.	1994-04-05	5	ABC-123	OPEL ASTRA	101978	104965	395940	N	
+6	12339	KISS VIKTÓRIA	1994-04-02	APEH IG.	1994-04-10	1	BAH-115	OPEL VECTRA	50609	51007	55260	N	
+7	12340	TIBOR SMITH	1994-02-03	HOTEL CIVIS	1994-05-01	5	ABR-047	FORD ESCORT	151003	null	null	Y	
+8	12341	LIGETI ZOLTAN	1994-04-04	IBUSZ IG.	1994-05-01	10	ABC-123	OPEL ASTRA	152311	null	null	Y	
+9	12342	ABEL ANETT	1994-04-04	HILTON	1994-05-02	5	PHD-610	RENAULT NEVADA	39066	null	null	Y	
+10	12343	KISS VIKTÓRIA	1994-05-04	NAGY TIBORNE	1994-04-10	7	CDE-324	RENAULT NEVADA	42040	null	null	N	
+11	12344	PAPP ROBERT	1994-04-20	KOOS TIBOR	1994-05-03	10	ABC-123	OPEL ASTRA	123212	null	null	N	
+12	12345	MOLNÁR PETER	1994-04-21	HILTON	1994-05-03	3	CIC-312	W VENTO CL	100021	null	null	Y	
+
+
+Kérdés: Irassa ki az 1994. március 1. előtti megrendelésekben szereplő adatokat!	
+Script: select r.id,
+r.rendeles_szam,
+u.ugyfel_nev,
+r.rendeles_datum,
+r.rendelo_szemely,
+r.kolcson_kezdete,
+r.napok,
+a.rendszam,
+t.tipus_nev,
+r.km_kezdet,
+r.km_veg,
+r.kolcson_dij,
+r.fizetes from rendeles r 
+join autok a on r.rendszam_id=a.id 
+join tipusok t on a.tipusok_id=t.id 
+join ugyfelek u on r.ugyfelek_id=u.id where rendeles_datum<'1994-03-01'	
+Eredmény: 4	
+
+1	12334	KISS VIKTÓRIA	1993-12-01	NAGY TIBORNE	1994-04-01	5	ABC-123	OPEL ASTRA	95308	101978	558600	Y	
+2	12335	MOLNÁR PETER	1994-02-02	HOTEL CIVIS	1994-03-05	2	ABR-115	RENAULT 19	144102	145097	134400	Y	
+3	12336	MOLNÁR PETER	1994-02-02	HOTEL CIVIS	1994-02-02	21	PHD-100	RENAULT 19	150871	151441	225900	Y	
+7	12340	TIBOR SMITH	1994-02-03	HOTEL CIVIS	1994-05-01	5	ABR-047	FORD ESCORT	151003	null	null	Y	
+
+
+Kérdés: Irassa ki az 1994. március 1. után esedékes, nem kifizetett megrendelés adatokat!	
+Script: select r.id,
+r.rendeles_szam,
+u.ugyfel_nev,
+r.rendeles_datum,
+r.rendelo_szemely,
+r.kolcson_kezdete,
+r.napok,
+a.rendszam,
+t.tipus_nev,
+r.km_kezdet,
+r.km_veg,
+r.kolcson_dij,
+r.fizetes from rendeles r 
+join autok a on r.rendszam_id=a.id 
+join tipusok t on a.tipusok_id=t.id 
+join ugyfelek u on r.ugyfelek_id=u.id where rendeles_datum>'1994-03-01' and fizetes = 'N'	
+Eredmény: 5	
+
+4	12337	ABEL ANETT	1994-03-30	HILTON	1994-04-05	30	ABR-047	FORD ESCORT	141413	151003	1375800	N	
+5	12338	PAPP ROBERT	1994-03-30	MATAV IG.	1994-04-05	5	ABC-123	OPEL ASTRA	101978	104965	395940	N	
+6	12339	KISS VIKTÓRIA	1994-04-02	APEH IG.	1994-04-10	1	BAH-115	OPEL VECTRA	50609	51007	55260	N	
+10	12343	KISS VIKTÓRIA	1994-05-04	NAGY TIBORNE	1994-04-10	7	CDE-324	RENAULT NEVADA	42040	null	null	N	
+11	12344	PAPP ROBERT	1994-04-20	KOOS TIBOR	1994-05-03	10	ABC-123	OPEL ASTRA	123212	null	null	N	
+
+
+Kérdés: Irassa ki az összes olyan autó rendszámát, típusát és a futott kilométert, amelyek a 20-as részleghez tartoznak!	
+Script: select a.rendszam,t.tipus_nev,a.futott_km from autok a join tipusok t on a.tipusok_id=t.id join reszleg r on a.reszleg_id=r.id where r.reszleg_kod =20	
+Eredmény: 8	
+
+ABR-115	RENAULT 19	145097	
+CDE-324	RENAULT NEVADA	42040	
+DHV-123	RENAULT LAGUNA	73621	
+PHD-100	RENAULT 19	151441	
+PHD-610	RENAULT NEVADA	39066	
+DCD-324	RENAULT LAGUNA	41061	
+PDP-101	RENAULT ESPACE	7911	
+CDD-115	RENAULT TWINGO	8307	
+
+
+Kérdés: Irassa ki az összes olyan autó adatait, amelyet 1994. január 1. előtt vásároltak!	
+Script: select 
+a.id,
+a.rendszam,
+t.tipus_nev,
+ac.auto_csop_nev,
+a.vasarlas_datuma,
+a.ar, 
+a.futott_km, 
+a.ut_szerviz,
+a.allapot,
+r.reszleg_nev, 
+al.alk_nev
+from autok a
+join tipusok t on a.tipusok_id = t.id
+join auto_csop ac on a.auto_csop_id = ac.id
+join reszleg r on a.reszleg_id = r.id
+join alkalmazott al on a.alkalmazott_id = al.id where vasarlas_datuma<'1994-01-01'	
+Eredmény: 14	
+
+1	ABR-047	FORD ESCORT	EXTRA	1993-01-02	1300000	151003	141410	F	AUTO	CSIKOS	
+2	ABR-115	RENAULT 19	EXTRA	1993-01-02	1200000	145097	139600	X	AUTO-RENAULT	KOVACS	
+3	CDE-324	RENAULT NEVADA	EXTRA	1993-06-01	2473000	42040	15901	F	AUTO-RENAULT	KOVACS	
+4	DHV-123	RENAULT LAGUNA	EXTRA	1993-06-05	2346000	73621	53600	A	AUTO-RENAULT	HERCEG	
+5	PHD-100	RENAULT 19	EXTRA	1993-06-30	1329000	151441	140507	X	AUTO-RENAULT	KISS	
+6	PHD-610	RENAULT NEVADA	EXTRA	1993-07-20	2473000	39066	30009	F	AUTO-RENAULT	KISS	
+7	ABC-021	SKODA LX	NORMAL	1993-10-01	827000	123212	120509	F	AUTO	CSIKOS	
+8	ABC-022	SKODA CL	NORMAL	1993-10-01	917000	97081	95310	S	AUTO	CSIKOS	
+9	ABC-123	OPEL ASTRA	EXTRA	1993-11-11	1239000	101978	93710	A	AUTO	CSIKOS	
+10	BAH-115	OPEL VECTRA	LUXUS	1993-10-11	3977000	51007	49620	A	LUXUS-AUTO	BOGNAR	
+11	CIC-312	W VENTO CL	EXTRA	1993-12-01	1650000	100021	83701	F	AUTO	TRENCSENI	
+12	COD-705	W VENTO CL	EXTRA	1993-12-01	1650000	91970	79600	S	AUTO	TRENCSENI	
+13	CBN-301	OPEL CORSA	NORMAL	1993-12-01	917000	28001	25444	A	AUTO	TRENCSENI	
+14	CBN-302	OPEL ASTRA	EXTRA	1993-12-01	1239000	87111	80001	S	AUTO	TRENCSENI	
+
+
+Kérdés: Irassa ki az ALKALMAZOTT táblából a munkatársak nevét, beosztását és fizetését, fizetés szerint csökkenő (növekvő) sorrendben!	
+Script: select alk_nev,beosztas,fizetes from alkalmazott order by fizetes desc	
+Eredmény: 14	
+
+SZABO	IGAZGATO	54000	
+NEMETH	TELEPHELYVEZETO	29000	
+HORVAT	TELEPHELYVEZETO	25000	
+BALOGH	SZERELO	22000	
+HALASZ	SZERELO	21000	
+KIRALY	VIZSGABIZTOS	21000	
+TOTH	VIZSGABIZTOS	20000	
+MOLNAR	SZERELO	18000	
+CSIKOS	ELADO	13250	
+KOVACS	ELADO	13000	
+BOGNAR	ELADO	13000	
+KISS	ELADO	12500	
+TRENCSENI	ELADO	12100	
+HERCEG	ELADO	11000	
+
+
+Kérdés: Irassa ki az ALKALMAZOTT tábla tartalmát beosztás szerint növekvő, ezen belül fizetés szerint csökkenő sorrendben!	
+Script: select al.id,
+al.alk_kod,
+al.alk_nev,
+al.beosztas,
+al.belepes,
+al.fizetes,
+al.premium,
+r.reszleg_nev
+from alkalmazott al join reszleg r on al.reszleg_id=r.id order by beosztas asc, fizetes desc	
+Eredmény: 14	
+
+3	1236	CSIKOS	ELADO	1993-03-12	13250	5000	AUTO	
+11	1246	BOGNAR	ELADO	1992-10-08	13000	6000	LUXUS-AUTO	
+1	1234	KOVACS	ELADO	1992-12-10	13000	4000	AUTO-RENAULT	
+14	1249	KISS	ELADO	1993-12-23	12500	9500	AUTO-RENAULT	
+8	1241	TRENCSENI	ELADO	1993-06-20	12100	7200	AUTO	
+10	1245	HERCEG	ELADO	1993-11-12	11000	6000	AUTO-RENAULT	
+6	1239	SZABO	IGAZGATO	1992-05-01	54000	75000	KOZPONT	
+7	1240	BALOGH	SZERELO	1992-06-02	22000	5000	LUXUS-AUTO	
+12	1247	HALASZ	SZERELO	1993-05-23	21000	7000	AUTO	
+2	1235	MOLNAR	SZERELO	1992-12-18	18000	null	AUTO	
+5	1238	NEMETH	TELEPHELYVEZETO	1993-11-28	29000	14000	AUTO	
+13	1248	HORVAT	TELEPHELYVEZETO	1993-12-09	25000	12000	AUTO	
+9	1244	KIRALY	VIZSGABIZTOS	1993-08-04	21000	8000	AUTO-RENAULT	
+4	1237	TOTH	VIZSGABIZTOS	1993-04-22	20000	null	AUTO-RENAULT	
+
+
+Kérdés: Irassa ki az ALKALMAZOTT táblából az összes különböző beosztás nevét!	
+Script: select distinct beosztas from alkalmazott	
+Eredmény: 5	
+
+VIZSGABIZTOS	
+TELEPHELYVEZETO	
+SZERELO	
+ELADO	
+IGAZGATO	
+
+
+Kérdés: Irassa ki az'ELADÓ' és'SZERELŐ' foglalkozású dolgozókat fizetés szerint csökkenő sorrendben!	
+Script: select alk_nev, beosztas, fizetes from alkalmazott where beosztas='ELADO' or beosztas='SZERELO' order by fizetes desc	
+Eredmény: 9	
+
+BALOGH	SZERELO	22000	
+HALASZ	SZERELO	21000	
+MOLNAR	SZERELO	18000	
+CSIKOS	ELADO	13250	
+BOGNAR	ELADO	13000	
+KOVACS	ELADO	13000	
+KISS	ELADO	12500	
+TRENCSENI	ELADO	12100	
+HERCEG	ELADO	11000	
+
+
+Kérdés: Irassa ki az ALKALMAZOTT táblából azokat, akiknek a fizetése nagyobb 50000-nél vagy a beosztásuk 'SZERELŐ' a belépés dátuma szerinti sorrendben!	
+Script: select al.id,
+al.alk_kod,
+al.alk_nev,
+al.beosztas,
+al.belepes,
+al.fizetes,
+al.premium,
+r.reszleg_nev
+from alkalmazott al join reszleg r on al.reszleg_id=r.id where fizetes>50000 or beosztas='SZERELO' order by belepes asc	
+Eredmény: 4	
+
+6	1239	SZABO	IGAZGATO	1992-05-01	54000	75000	KOZPONT	
+7	1240	BALOGH	SZERELO	1992-06-02	22000	5000	LUXUS-AUTO	
+2	1235	MOLNAR	SZERELO	1992-12-18	18000	null	AUTO	
+12	1247	HALASZ	SZERELO	1993-05-23	21000	7000	AUTO	
+
+
+Kérdés: Irassa ki azokat, akiknek a fizetése 60000-nél kisebb vagy 100000 nél nagyobb!	
+Script: select al.id,
+al.alk_kod,
+al.alk_nev,
+al.beosztas,
+al.belepes,
+al.fizetes,
+al.premium,
+r.reszleg_nev
+from alkalmazott al join reszleg r on al.reszleg_id=r.id where fizetes<60000 or fizetes>100000	
+Eredmény: 14	
+
+1	1234	KOVACS	ELADO	1992-12-10	13000	4000	AUTO-RENAULT	
+2	1235	MOLNAR	SZERELO	1992-12-18	18000	null	AUTO	
+3	1236	CSIKOS	ELADO	1993-03-12	13250	5000	AUTO	
+4	1237	TOTH	VIZSGABIZTOS	1993-04-22	20000	null	AUTO-RENAULT	
+5	1238	NEMETH	TELEPHELYVEZETO	1993-11-28	29000	14000	AUTO	
+6	1239	SZABO	IGAZGATO	1992-05-01	54000	75000	KOZPONT	
+7	1240	BALOGH	SZERELO	1992-06-02	22000	5000	LUXUS-AUTO	
+8	1241	TRENCSENI	ELADO	1993-06-20	12100	7200	AUTO	
+9	1244	KIRALY	VIZSGABIZTOS	1993-08-04	21000	8000	AUTO-RENAULT	
+10	1245	HERCEG	ELADO	1993-11-12	11000	6000	AUTO-RENAULT	
+11	1246	BOGNAR	ELADO	1992-10-08	13000	6000	LUXUS-AUTO	
+12	1247	HALASZ	SZERELO	1993-05-23	21000	7000	AUTO	
+13	1248	HORVAT	TELEPHELYVEZETO	1993-12-09	25000	12000	AUTO	
+14	1249	KISS	ELADO	1993-12-23	12500	9500	AUTO-RENAULT	
+
+
+Kérdés: Irassa ki az ALKALMAZOTT táblából azokat a dolgozókat, akik a 20-as vagy 50-es kódú részlegben dolgoznak!	
+Script: select a.alk_nev from alkalmazott a join reszleg r on a.reszleg_id=r.id where r.reszleg_kod=20 or reszleg_kod=50	
+Eredmény: 7	
+
+KOVACS	
+TOTH	
+BALOGH	
+KIRALY	
+HERCEG	
+BOGNAR	
+KISS	
+
+
+Kérdés: Irassa ki a 30-nál nagyobb kódú munkahelyen dolgozók adatait!	
+Script: select al.id,
+al.alk_kod,
+al.alk_nev,
+al.beosztas,
+al.belepes,
+al.fizetes,
+al.premium,
+r.reszleg_nev
+from alkalmazott al join reszleg r on al.reszleg_id=r.id where r.reszleg_kod>30	
+Eredmény: 5	
+
+7	1240	BALOGH	SZERELO	1992-06-02	22000	5000	LUXUS-AUTO	
+8	1241	TRENCSENI	ELADO	1993-06-20	12100	7200	AUTO	
+11	1246	BOGNAR	ELADO	1992-10-08	13000	6000	LUXUS-AUTO	
+12	1247	HALASZ	SZERELO	1993-05-23	21000	7000	AUTO	
+13	1248	HORVAT	TELEPHELYVEZETO	1993-12-09	25000	12000	AUTO	
+
+
+Kérdés: Irassa ki a vidéki (nem budapesti) részlegek adatait!	
+Script: select * from reszleg where reszleg_cim!='BUDAPEST'	
+Eredmény: 2	
+
+3	30	AUTO	GYOR	
+5	60	AUTO	DEBRECEN	
+
+
+Kérdés: Irassa ki városnév szerint rendezve az ügyfelek és városuk nevét!	
+Script: select ugyfel_nev, varos from ugyfelek order by varos asc	
+Eredmény: 9	
+
+ABEL ANETT	BECS	
+LIGETI ZOLTAN	BUDAPEST	
+KISS VIKTÓRIA	BUDAPEST	
+TOTH KAROLYNE	BUDAPEST	
+PAPP AGNES	DEBRECEN	
+PAPP ROBERT	DEBRECEN	
+BIRO KATALIN	DEBRECEN	
+MOLNÁR PETER	NEW YORK	
+TIBOR SMITH	PARIZS	
+
+
+Kérdés: Irassa ki azon ügyfelek adatait, akik készpénzzel (átutalással) fizetnek!	
+Script: select * from ugyfelek where fizetesi_mod='K'	
+Eredmény: 4	
+
+1	342	MOLNÁR PETER	HILTON PRK. 1.	NEW YORK	USA	49928	HILTON	K	
+2	343	PAPP ROBERT	PIAC U. 10.	DEBRECEN	MAGYAR	4027	PINTER ATTILA	K	
+3	344	ABEL ANETT	WIESZ STR 5	BECS	AUSZTRIA	20800	HILTON	K	
+7	348	KISS VIKTÓRIA	FO U. 8.	BUDAPEST	MAGYAR	1221	NAGY TIBORNE	K	
+
+
+Kérdés: Irassa ki azon rendelések adatait, amelyeknél a kölcsönzési idő 1 hétnél hosszabb!	
+Script: select r.id,
+r.rendeles_szam,
+u.ugyfel_nev,
+r.rendeles_datum,
+r.rendelo_szemely,
+r.kolcson_kezdete,
+r.napok,
+a.rendszam,
+t.tipus_nev,
+r.km_kezdet,
+r.km_veg,
+r.kolcson_dij,
+r.fizetes from rendeles r 
+join autok a on r.rendszam_id=a.id 
+join tipusok t on a.tipusok_id=t.id 
+join ugyfelek u on r.ugyfelek_id=u.id where napok>7	
+Eredmény: 4	
+
+3	12336	MOLNÁR PETER	1994-02-02	HOTEL CIVIS	1994-02-02	21	PHD-100	RENAULT 19	150871	151441	225900	Y	
+4	12337	ABEL ANETT	1994-03-30	HILTON	1994-04-05	30	ABR-047	FORD ESCORT	141413	151003	1375800	N	
+8	12341	LIGETI ZOLTAN	1994-04-04	IBUSZ IG.	1994-05-01	10	ABC-123	OPEL ASTRA	152311	null	null	Y	
+11	12344	PAPP ROBERT	1994-04-20	KOOS TIBOR	1994-05-03	10	ABC-123	OPEL ASTRA	123212	null	null	N	
+
+
+Kérdés: Irassa ki azon rendelésekre vonatkozó adatokat, amelyeket már kifizettek!	
+Script: select r.id,
+r.rendeles_szam,
+u.ugyfel_nev,
+r.rendeles_datum,
+r.rendelo_szemely,
+r.kolcson_kezdete,
+r.napok,
+a.rendszam,
+t.tipus_nev,
+r.km_kezdet,
+r.km_veg,
+r.kolcson_dij,
+r.fizetes from rendeles r 
+join autok a on r.rendszam_id=a.id 
+join tipusok t on a.tipusok_id=t.id 
+join ugyfelek u on r.ugyfelek_id=u.id where fizetes='Y'	
+Eredmény: 7	
+
+7	12340	TIBOR SMITH	1994-02-03	HOTEL CIVIS	1994-05-01	5	ABR-047	FORD ESCORT	151003	null	null	Y	
+2	12335	MOLNÁR PETER	1994-02-02	HOTEL CIVIS	1994-03-05	2	ABR-115	RENAULT 19	144102	145097	134400	Y	
+3	12336	MOLNÁR PETER	1994-02-02	HOTEL CIVIS	1994-02-02	21	PHD-100	RENAULT 19	150871	151441	225900	Y	
+9	12342	ABEL ANETT	1994-04-04	HILTON	1994-05-02	5	PHD-610	RENAULT NEVADA	39066	null	null	Y	
+8	12341	LIGETI ZOLTAN	1994-04-04	IBUSZ IG.	1994-05-01	10	ABC-123	OPEL ASTRA	152311	null	null	Y	
+1	12334	KISS VIKTÓRIA	1993-12-01	NAGY TIBORNE	1994-04-01	5	ABC-123	OPEL ASTRA	95308	101978	558600	Y	
+12	12345	MOLNÁR PETER	1994-04-21	HILTON	1994-05-03	3	CIC-312	W VENTO CL	100021	null	null	Y	
+
+
+Kérdés: Irassa ki az AUTO_CSOP tábla tartalmát kilométer díj szerint csökkenő sorrendben!	
+Script: select * from auto_csop order by km_dij desc	
+Eredmény: 3	
+
+3	LUXUS	300	15000	
+2	EXTRA	120	7500	
+1	NORMAL	80	5000	
+
+
+Kérdés: Irassa ki az egyes autótípusoknál a tipus név mellé a kötelező karbantartás (szervízbe vitel) kilométer intervallumát! A kiírás a típus neve szerint legyen rendezve!	
+Script: select tipus_nev, szerviz_km from tipusok order by tipus_nev asc	
+Eredmény: 12	
+
+FORD ESCORT	15000	
+OPEL ASTRA	10000	
+OPEL CORSA	10000	
+OPEL VECTRA	10000	
+RENAULT 19	5000	
+RENAULT ESPACE	15000	
+RENAULT LAGUNA	15000	
+RENAULT NEVADA	75000	
+RENAULT TWINGO	75000	
+SKODA CL	5000	
+SKODA LX	5000	
+W VENTO CL	15000	
+
+
+Kérdés: Irassa ki azon autók adatait, amelyek 100000 kilométernél többet futottak!	
+Script: select 
+a.id,
+a.rendszam,
+t.tipus_nev,
+ac.auto_csop_nev,
+a.vasarlas_datuma,
+a.ar, 
+a.futott_km, 
+a.ut_szerviz,
+a.allapot,
+r.reszleg_nev, 
+al.alk_nev
+from autok a
+join tipusok t on a.tipusok_id = t.id
+join auto_csop ac on a.auto_csop_id = ac.id
+join reszleg r on a.reszleg_id = r.id
+join alkalmazott al on a.alkalmazott_id = al.id where futott_km>100000	
+Eredmény: 7	
+
+1	ABR-047	FORD ESCORT	EXTRA	1993-01-02	1300000	151003	141410	F	AUTO	CSIKOS	
+2	ABR-115	RENAULT 19	EXTRA	1993-01-02	1200000	145097	139600	X	AUTO-RENAULT	KOVACS	
+5	PHD-100	RENAULT 19	EXTRA	1993-06-30	1329000	151441	140507	X	AUTO-RENAULT	KISS	
+7	ABC-021	SKODA LX	NORMAL	1993-10-01	827000	123212	120509	F	AUTO	CSIKOS	
+9	ABC-123	OPEL ASTRA	EXTRA	1993-11-11	1239000	101978	93710	A	AUTO	CSIKOS	
+11	CIC-312	W VENTO CL	EXTRA	1993-12-01	1650000	100021	83701	F	AUTO	TRENCSENI	
+18	CBN-001	W VENTO CL	EXTRA	1994-01-02	1999000	152311	150600	F	AUTO	TRENCSENI	
+
+
+Kérdés: Készítsen listát a kiadható autók adatairól!	
+Script: select 
+a.id,
+a.rendszam,
+t.tipus_nev,
+ac.auto_csop_nev,
+a.vasarlas_datuma,
+a.ar, 
+a.futott_km, 
+a.ut_szerviz,
+a.allapot,
+r.reszleg_nev, 
+al.alk_nev
+from autok a
+join tipusok t on a.tipusok_id = t.id
+join auto_csop ac on a.auto_csop_id = ac.id
+join reszleg r on a.reszleg_id = r.id
+join alkalmazott al on a.alkalmazott_id = al.id 
+ join rendeles re on re.rendszam_id=a.id where re.kolcson_dij is null	
+Eredmény: 6	
+
+1	ABR-047	FORD ESCORT	EXTRA	1993-01-02	1300000	151003	141410	F	AUTO	CSIKOS	
+3	CDE-324	RENAULT NEVADA	EXTRA	1993-06-01	2473000	42040	15901	F	AUTO-RENAULT	KOVACS	
+6	PHD-610	RENAULT NEVADA	EXTRA	1993-07-20	2473000	39066	30009	F	AUTO-RENAULT	KISS	
+9	ABC-123	OPEL ASTRA	EXTRA	1993-11-11	1239000	101978	93710	A	AUTO	CSIKOS	
+9	ABC-123	OPEL ASTRA	EXTRA	1993-11-11	1239000	101978	93710	A	AUTO	CSIKOS	
+11	CIC-312	W VENTO CL	EXTRA	1993-12-01	1650000	100021	83701	F	AUTO	TRENCSENI	
+
+
+Kérdés: Készítsen listát azokról az autókról, amelyek szervízben vannak, vagy karbantartásra várnak és ezért nem adhatók ki kölcsönzésre!	
+Script: select 
+a.id,
+a.rendszam,
+t.tipus_nev,
+ac.auto_csop_nev,
+a.vasarlas_datuma,
+a.ar, 
+a.futott_km, 
+a.ut_szerviz,
+a.allapot,
+r.reszleg_nev, 
+al.alk_nev
+from autok a
+join tipusok t on a.tipusok_id = t.id
+join auto_csop ac on a.auto_csop_id = ac.id
+join reszleg r on a.reszleg_id = r.id
+join alkalmazott al on a.alkalmazott_id = al.id where a.allapot='S' or a.allapot='X'	
+Eredmény: 7	
+
+8	ABC-022	SKODA CL	NORMAL	1993-10-01	917000	97081	95310	S	AUTO	CSIKOS	
+19	CDD-115	RENAULT TWINGO	NORMAL	1994-01-03	955000	8307	null	S	AUTO-RENAULT	KOVACS	
+14	CBN-302	OPEL ASTRA	EXTRA	1993-12-01	1239000	87111	80001	S	AUTO	TRENCSENI	
+12	COD-705	W VENTO CL	EXTRA	1993-12-01	1650000	91970	79600	S	AUTO	TRENCSENI	
+5	PHD-100	RENAULT 19	EXTRA	1993-06-30	1329000	151441	140507	X	AUTO-RENAULT	KISS	
+2	ABR-115	RENAULT 19	EXTRA	1993-01-02	1200000	145097	139600	X	AUTO-RENAULT	KOVACS	
+17	PDP-101	RENAULT ESPACE	LUXUS	1994-01-02	3530000	7911	null	S	AUTO-RENAULT	KISS	
+
+
+Kérdés: Készítsen név szerint rendezett listát az ügyfelekről tárolt adatokról!	
+Script: select * from ugyfelek order by ugyfel_nev asc	
+Eredmény: 9	
+
+3	344	ABEL ANETT	WIESZ STR 5	BECS	AUSZTRIA	20800	HILTON	K	
+6	347	BIRO KATALIN	TESSEDIK U. 6.	DEBRECEN	MAGYAR	4032	null	A	
+7	348	KISS VIKTÓRIA	FO U. 8.	BUDAPEST	MAGYAR	1221	NAGY TIBORNE	K	
+8	349	LIGETI ZOLTAN	KIRALY U. 88.	BUDAPEST	MAGYAR	1239	null	A	
+1	342	MOLNÁR PETER	HILTON PRK. 1.	NEW YORK	USA	49928	HILTON	K	
+5	346	PAPP AGNES	VEZER U. 19.	DEBRECEN	MAGYAR	4032	null	A	
+2	343	PAPP ROBERT	PIAC U. 10.	DEBRECEN	MAGYAR	4027	PINTER ATTILA	K	
+4	345	TIBOR SMITH	LIGNOUN 15.	PARIZS	FRANCIA	140010	HOTEL CIVIS	A	
+9	350	TOTH KAROLYNE	DOMB U. 6.	BUDAPEST	MAGYAR	1260	null	A	
+
+
+Kérdés: Irassa ki a LUXUS autócsoporthoz tartozó autók rendszámát és típusát!	
+Script: select a.rendszam, t.tipus_nev from autok a join tipusok t on a.tipusok_id=t.id join auto_csop ac on a.auto_csop_id=ac.id where a.auto_csop_id=3	
+Eredmény: 2	
+
+BAH-115	OPEL VECTRA	
+PDP-101	RENAULT ESPACE	
+
+
+Kérdés: Irassa ki azokat az autó típusokat, melyeket 15000 kilométerenként kell szervízbe vinni!	
+Script: select tipus_nev from tipusok where szerviz_km=15000	
+Eredmény: 4	
+
+FORD ESCORT	
+RENAULT LAGUNA	
+W VENTO CL	
+RENAULT ESPACE	
+
+
+Kérdés: Készítsen listát azokról a városokról, ahol az autókölcsönzőnek részlege van!	
+Script: select distinct reszleg_cim from reszleg	
+Eredmény: 3	
+
+DEBRECEN	
+GYOR	
+BUDAPEST	
+
+
+Kérdés: Irassa ki a debreceni ügyfelek adatait!	
+Script: select * from ugyfelek where varos='DEBRECEN'	
+Eredmény: 3	
+
+2	343	PAPP ROBERT	PIAC U. 10.	DEBRECEN	MAGYAR	4027	PINTER ATTILA	K	
+5	346	PAPP AGNES	VEZER U. 19.	DEBRECEN	MAGYAR	4032	null	A	
+6	347	BIRO KATALIN	TESSEDIK U. 6.	DEBRECEN	MAGYAR	4032	null	A	
+
+
+Kérdés: Irassa ki a rendeléseknél kapcsolatot tartó személyek nevét névsor szerint rendezve!	
+Script: select distinct rendelo_szemely from rendeles r join ugyfelek u on r.ugyfelek_id=u.id order by rendelo_szemely asc	
+Eredmény: 7	
+
+APEH IG.	
+HILTON	
+HOTEL CIVIS	
+IBUSZ IG.	
+KOOS TIBOR	
+MATAV IG.	
+NAGY TIBORNE	
+
+
+Kérdés: Irassa ki az alkalmazottak nevét, beosztását és jövedelmét (fizetés + prémium) névsor szerinti sorrendben!	
+Script: select alk_nev, beosztas, coalesce(fizetes, 0) + coalesce(premium, 0) as jovedelem from alkalmazott order by alk_nev asc;	
+Eredmény: 14	
+
+BALOGH	SZERELO	27000	
+BOGNAR	ELADO	19000	
+CSIKOS	ELADO	18250	
+HALASZ	SZERELO	28000	
+HERCEG	ELADO	17000	
+HORVAT	TELEPHELYVEZETO	37000	
+KIRALY	VIZSGABIZTOS	29000	
+KISS	ELADO	22000	
+KOVACS	ELADO	17000	
+MOLNAR	SZERELO	18000	
+NEMETH	TELEPHELYVEZETO	43000	
+SZABO	IGAZGATO	129000	
+TOTH	VIZSGABIZTOS	20000	
+TRENCSENI	ELADO	19300	
+
+
+Kérdés: Irassa ki azokat a dolgozókat, akiknek fizetése 50000 és 100000 Ft közötti!	
+Script: select alk_nev, fizetes from alkalmazott where fizetes between 50000 and 100000	
+Eredmény: 1	
+
+SZABO	54000	
+
+
+Kérdés: Készítsen listát a 120000 és 200000 közötti kilométert futott autókról!	
+Script: select rendszam from autok where futott_km between 120000 and 200000	
+Eredmény: 5	
+
+ABR-047	
+ABR-115	
+PHD-100	
+ABC-021	
+CBN-001	
+
+
+Kérdés: Irassa ki azon dolgozók adatait, akiknek a beosztása 'TELEPHELYVEZETŐ' vagy 'SZERELŐ'!	
+Script: select al.id,
+al.alk_kod,
+al.alk_nev,
+al.beosztas,
+al.belepes,
+al.fizetes,
+al.premium,
+r.reszleg_nev
+from alkalmazott al join reszleg r on al.reszleg_id=r.id where beosztas='TELEPHELYVEZETO' or beosztas='SZERELO'	
+Eredmény: 5	
+
+5	1238	NEMETH	TELEPHELYVEZETO	1993-11-28	29000	14000	AUTO	
+2	1235	MOLNAR	SZERELO	1992-12-18	18000	null	AUTO	
+7	1240	BALOGH	SZERELO	1992-06-02	22000	5000	LUXUS-AUTO	
+13	1248	HORVAT	TELEPHELYVEZETO	1993-12-09	25000	12000	AUTO	
+12	1247	HALASZ	SZERELO	1993-05-23	21000	7000	AUTO	
+
+
+Kérdés: Irassa ki a 10, 20 vagy 60-as telepen dolgozók adatait!	
+Script: select al.id,
+al.alk_kod,
+al.alk_nev,
+al.beosztas,
+al.belepes,
+al.fizetes,
+al.premium,
+r.reszleg_nev
+from alkalmazott al join reszleg r on al.reszleg_id=r.id where r.reszleg_kod=10 or r.reszleg_kod=20 or r.reszleg_kod=60	
+Eredmény: 9	
+
+1	1234	KOVACS	ELADO	1992-12-10	13000	4000	AUTO-RENAULT	
+4	1237	TOTH	VIZSGABIZTOS	1993-04-22	20000	null	AUTO-RENAULT	
+6	1239	SZABO	IGAZGATO	1992-05-01	54000	75000	KOZPONT	
+8	1241	TRENCSENI	ELADO	1993-06-20	12100	7200	AUTO	
+9	1244	KIRALY	VIZSGABIZTOS	1993-08-04	21000	8000	AUTO-RENAULT	
+10	1245	HERCEG	ELADO	1993-11-12	11000	6000	AUTO-RENAULT	
+12	1247	HALASZ	SZERELO	1993-05-23	21000	7000	AUTO	
+13	1248	HORVAT	TELEPHELYVEZETO	1993-12-09	25000	12000	AUTO	
+14	1249	KISS	ELADO	1993-12-23	12500	9500	AUTO-RENAULT	
+
+
+Kérdés: Irassa ki azon dolgozók adatait akiknek a neve 'H' betűvel kezdődik!	
+Script: select al.id,
+al.alk_kod,
+al.alk_nev,
+al.beosztas,
+al.belepes,
+al.fizetes,
+al.premium,
+r.reszleg_nev
+from alkalmazott al join reszleg r on al.reszleg_id=r.id where alk_nev like 'H%'	
+Eredmény: 3	
+
+10	1245	HERCEG	ELADO	1993-11-12	11000	6000	AUTO-RENAULT	
+12	1247	HALASZ	SZERELO	1993-05-23	21000	7000	AUTO	
+13	1248	HORVAT	TELEPHELYVEZETO	1993-12-09	25000	12000	AUTO	
+
+
+Kérdés: Irassa ki az ALKALMAZOTT tábla tartalmát azokra, akiknek a nevében 'O' betű szerepel!	
+Script: select al.id,
+al.alk_kod,
+al.alk_nev,
+al.beosztas,
+al.belepes,
+al.fizetes,
+al.premium,
+r.reszleg_nev
+from alkalmazott al join reszleg r on al.reszleg_id=r.id where alk_nev like '%O%'	
+Eredmény: 8	
+
+1	1234	KOVACS	ELADO	1992-12-10	13000	4000	AUTO-RENAULT	
+2	1235	MOLNAR	SZERELO	1992-12-18	18000	null	AUTO	
+3	1236	CSIKOS	ELADO	1993-03-12	13250	5000	AUTO	
+4	1237	TOTH	VIZSGABIZTOS	1993-04-22	20000	null	AUTO-RENAULT	
+6	1239	SZABO	IGAZGATO	1992-05-01	54000	75000	KOZPONT	
+7	1240	BALOGH	SZERELO	1992-06-02	22000	5000	LUXUS-AUTO	
+11	1246	BOGNAR	ELADO	1992-10-08	13000	6000	LUXUS-AUTO	
+13	1248	HORVAT	TELEPHELYVEZETO	1993-12-09	25000	12000	AUTO	
+
+
+Kérdés: Irassa ki azon alkalmazottak adatait, akik nevének második betűje az 'O' betű!	
+Script: select al.id,
+al.alk_kod,
+al.alk_nev,
+al.beosztas,
+al.belepes,
+al.fizetes,
+al.premium,
+r.reszleg_nev
+from alkalmazott al join reszleg r on al.reszleg_id=r.id where alk_nev like '_O%'	
+Eredmény: 5	
+
+1	1234	KOVACS	ELADO	1992-12-10	13000	4000	AUTO-RENAULT	
+2	1235	MOLNAR	SZERELO	1992-12-18	18000	null	AUTO	
+4	1237	TOTH	VIZSGABIZTOS	1993-04-22	20000	null	AUTO-RENAULT	
+11	1246	BOGNAR	ELADO	1992-10-08	13000	6000	LUXUS-AUTO	
+13	1248	HORVAT	TELEPHELYVEZETO	1993-12-09	25000	12000	AUTO	
+
+
+Kérdés: Irassa ki azokat a részlegre vonatkozó adatokat, amelyek nevében nem szerepel az 'AUTO'!	
+Script: select * from reszleg where reszleg_nev not like '%AUTO%'	
+Eredmény: 1	
+
+1	10	KOZPONT	BUDAPEST	
+
+
+Kérdés: Irassa ki azon alkalmazottak adatait, akik a 10-es részlegben dolgoznak és beosztásuk 'ELADÓ', vagy nem kaptak prémiumot!	
+Script: select al.id,
+al.alk_kod,
+al.alk_nev,
+al.beosztas,
+al.belepes,
+al.fizetes,
+al.premium,
+r.reszleg_nev
+from alkalmazott al join reszleg r on al.reszleg_id=r.id where r.reszleg_kod=10 and (beosztas='ELADO' or premium is null)	
+Eredmény: 0	
+
+
+
+Kérdés: Készítsen listát azon dolgozók adatairól, akik fizetése 60000 és 90000 Ft közötti és beosztásuk nem 'TELEPHELYVEZETŐ' vagy ELADÓ!	
+Script: select al.id,
+al.alk_kod,
+al.alk_nev,
+al.beosztas,
+al.belepes,
+al.fizetes,
+al.premium,
+r.reszleg_nev
+from alkalmazott al join reszleg r on al.reszleg_id=r.id where fizetes between 60000 and 90000 and beosztas!='TELEPHELYVEZETO' and beosztas!='ELADO'	
+Eredmény: 0	
+
+
+
+Kérdés: Készítsen listát azokról a dolgozókról, akik nem kaptak prémiumot!	
+Script: select al.id,
+al.alk_kod,
+al.alk_nev,
+al.beosztas,
+al.belepes,
+al.fizetes,
+al.premium,
+r.reszleg_nev
+from alkalmazott al join reszleg r on al.reszleg_id=r.id where premium is null	
+Eredmény: 2	
+
+2	1235	MOLNAR	SZERELO	1992-12-18	18000	null	AUTO	
+4	1237	TOTH	VIZSGABIZTOS	1993-04-22	20000	null	AUTO-RENAULT	
+
+
+Kérdés: Irassa ki azon dolgozók adatait, akiknek a fizetése kisebb, mint a prémiumuk kétszerese!	
+Script: select al.id,
+al.alk_kod,
+al.alk_nev,
+al.beosztas,
+al.belepes,
+al.fizetes,
+al.premium,
+r.reszleg_nev
+from alkalmazott al join reszleg r on al.reszleg_id=r.id where fizetes<premium*2	
+Eredmény: 4	
+
+6	1239	SZABO	IGAZGATO	1992-05-01	54000	75000	KOZPONT	
+8	1241	TRENCSENI	ELADO	1993-06-20	12100	7200	AUTO	
+10	1245	HERCEG	ELADO	1993-11-12	11000	6000	AUTO-RENAULT	
+14	1249	KISS	ELADO	1993-12-23	12500	9500	AUTO-RENAULT	
+
+
+Kérdés: Irassa ki azokat a rendelés adatokat, amelyekben a kölcsönzés végén a kilométeróra állása legalább 1000-rel mutat többet, mint az elején vagy a kölcsönzött napok száma nagyobb 10-nél!	
+Script: select r.id,
+r.rendeles_szam,
+u.ugyfel_nev,
+r.rendeles_datum,
+r.rendelo_szemely,
+r.kolcson_kezdete,
+r.napok,
+a.rendszam,
+t.tipus_nev,
+r.km_kezdet,
+r.km_veg,
+r.kolcson_dij,
+r.fizetes from rendeles r 
+join autok a on r.rendszam_id=a.id 
+join tipusok t on a.tipusok_id=t.id 
+join ugyfelek u on r.ugyfelek_id=u.id where (km_veg-km_kezdet)>1000 or napok>10	
+Eredmény: 4	
+
+1	12334	KISS VIKTÓRIA	1993-12-01	NAGY TIBORNE	1994-04-01	5	ABC-123	OPEL ASTRA	95308	101978	558600	Y	
+3	12336	MOLNÁR PETER	1994-02-02	HOTEL CIVIS	1994-02-02	21	PHD-100	RENAULT 19	150871	151441	225900	Y	
+4	12337	ABEL ANETT	1994-03-30	HILTON	1994-04-05	30	ABR-047	FORD ESCORT	141413	151003	1375800	N	
+5	12338	PAPP ROBERT	1994-03-30	MATAV IG.	1994-04-05	5	ABC-123	OPEL ASTRA	101978	104965	395940	N	
+
+
+Kérdés: Készítsen listát azon megrendelésekben tárolt adatokról, amelyekben a következő rendszámú autók közül kölcsönöztek: ABC-123, ABR-047, BAH-115, CDE-324!	
+Script: select r.id,
+r.rendeles_szam,
+u.ugyfel_nev,
+r.rendeles_datum,
+r.rendelo_szemely,
+r.kolcson_kezdete,
+r.napok,
+a.rendszam,
+t.tipus_nev,
+r.km_kezdet,
+r.km_veg,
+r.kolcson_dij,
+r.fizetes from rendeles r 
+join autok a on r.rendszam_id=a.id 
+join tipusok t on a.tipusok_id=t.id 
+join ugyfelek u on r.ugyfelek_id=u.id where rendszam='ABC-123' or rendszam='ABR-047' or rendszam='BAH-115' or rendszam='CDE-324'	
+Eredmény: 8	
+
+7	12340	TIBOR SMITH	1994-02-03	HOTEL CIVIS	1994-05-01	5	ABR-047	FORD ESCORT	151003	null	null	Y	
+4	12337	ABEL ANETT	1994-03-30	HILTON	1994-04-05	30	ABR-047	FORD ESCORT	141413	151003	1375800	N	
+10	12343	KISS VIKTÓRIA	1994-05-04	NAGY TIBORNE	1994-04-10	7	CDE-324	RENAULT NEVADA	42040	null	null	N	
+11	12344	PAPP ROBERT	1994-04-20	KOOS TIBOR	1994-05-03	10	ABC-123	OPEL ASTRA	123212	null	null	N	
+8	12341	LIGETI ZOLTAN	1994-04-04	IBUSZ IG.	1994-05-01	10	ABC-123	OPEL ASTRA	152311	null	null	Y	
+5	12338	PAPP ROBERT	1994-03-30	MATAV IG.	1994-04-05	5	ABC-123	OPEL ASTRA	101978	104965	395940	N	
+1	12334	KISS VIKTÓRIA	1993-12-01	NAGY TIBORNE	1994-04-01	5	ABC-123	OPEL ASTRA	95308	101978	558600	Y	
+6	12339	KISS VIKTÓRIA	1994-04-02	APEH IG.	1994-04-10	1	BAH-115	OPEL VECTRA	50609	51007	55260	N	
+
+
+Kérdés: Irassa ki azon megrendelések adatait, amelyekben a kölcsönzött (nem kifizetett) autó típusnevében szerepel a RENAULT szó!	
+Script: select r.id,
+r.rendeles_szam,
+u.ugyfel_nev,
+r.rendeles_datum,
+r.rendelo_szemely,
+r.kolcson_kezdete,
+r.napok,
+a.rendszam,
+t.tipus_nev,
+r.km_kezdet,
+r.km_veg,
+r.kolcson_dij,
+r.fizetes from rendeles r 
+join autok a on r.rendszam_id=a.id 
+join tipusok t on a.tipusok_id=t.id 
+join ugyfelek u on r.ugyfelek_id=u.id where tipus_nev like '%RENAULT%' and r.fizetes='N'	
+Eredmény: 1	
+
+10	12343	KISS VIKTÓRIA	1994-05-04	NAGY TIBORNE	1994-04-10	7	CDE-324	RENAULT NEVADA	42040	null	null	N	
+
+
+Kérdés: Készítsen listát azon autók adatairól, amelyek kilométer díja 100 és 300 Ft között van és napi kölcsönzési díja kevesebb, mint 6000 Ft!	
+Script: select 
+a.id,
+a.rendszam,
+t.tipus_nev,
+ac.auto_csop_nev,
+a.vasarlas_datuma,
+a.ar, 
+a.futott_km, 
+a.ut_szerviz,
+a.allapot,
+r.reszleg_nev, 
+al.alk_nev
+from autok a
+join tipusok t on a.tipusok_id = t.id
+join auto_csop ac on a.auto_csop_id = ac.id
+join reszleg r on a.reszleg_id = r.id
+join alkalmazott al on a.alkalmazott_id = al.id where ac.km_dij between 100 and 300 and ac.napi_dij<6000	
+Eredmény: 0	
+
+
+
+Kérdés: Listázza ki azokat az autótípus jellemzőket, amelyek az E-vel kezdődő nevű autócsoportba tartoznak!	
+Script: select t.id, 
+t.tipus_nev, 
+ac.auto_csop_nev, 
+t.leiras, 
+t.szerviz_km 
+from tipusok t join auto_csop ac on t.auto_csop_id=ac.id where ac.auto_csop_nev like 'E%'	
+Eredmény: 7	
+
+1	FORD ESCORT	EXTRA	CL 1.8 DSL 5-A	15000	
+2	RENAULT 19	EXTRA	RL 1.4 L KAT 3-A	5000	
+3	RENAULT NEVADA	EXTRA	RTD 2.1 L KAT 5-	75000	
+4	RENAULT LAGUNA	EXTRA	RT 2.0 L KAT 5-A	15000	
+7	OPEL ASTRA	EXTRA	CL 1.6 I 5-A	10000	
+9	W VENTO CL	EXTRA	TD 1.9 L KAT	15000	
+11	RENAULT TWINGO	EXTRA	1.2 L KAT 3-A	75000	
+
+
+Kérdés: Irassa ki azon autótípus adatokat, ahol a kötelező szervízek intervalluma 10000 és 15000 kilométer között van és az autó típusneve nem a RENAULT szóval kezdődik!	
+Script: select t.id, 
+t.tipus_nev, 
+ac.auto_csop_nev, 
+t.leiras, 
+t.szerviz_km 
+from tipusok t join auto_csop ac on t.auto_csop_id=ac.id where szerviz_km between 10000 and 15000 and tipus_nev not like 'RENAULT%'	
+Eredmény: 5	
+
+1	FORD ESCORT	EXTRA	CL 1.8 DSL 5-A	15000	
+7	OPEL ASTRA	EXTRA	CL 1.6 I 5-A	10000	
+8	OPEL VECTRA	LUXUS	TURBO 2.0 I 4-A	10000	
+9	W VENTO CL	EXTRA	TD 1.9 L KAT	15000	
+10	OPEL CORSA	NORMAL	CITY 1.2 I 3-A	10000	
+
+
+Kérdés: Irassa ki az összes olyan megrendelés tételt, amely nincs kifizetve és a kölcsönzési idő 1994. január 1. előtt kezdődik vagy fizetve van és a kölcsönzés 1994. május 1. után esedékes!	
+Script: select r.id,
+r.rendeles_szam,
+u.ugyfel_nev,
+r.rendeles_datum,
+r.rendelo_szemely,
+r.kolcson_kezdete,
+r.napok,
+a.rendszam,
+t.tipus_nev,
+r.km_kezdet,
+r.km_veg,
+r.kolcson_dij,
+r.fizetes from rendeles r 
+join autok a on r.rendszam_id=a.id 
+join tipusok t on a.tipusok_id=t.id 
+join ugyfelek u on r.ugyfelek_id=u.id where (kolcson_kezdete<'1994-01-01' and fizetes='N') or (kolcson_kezdete>'1994-05-01' and fizetes='Y')	
+Eredmény: 2	
+
+12	12345	MOLNÁR PETER	1994-04-21	HILTON	1994-05-03	3	CIC-312	W VENTO CL	100021	null	null	Y	
+9	12342	ABEL ANETT	1994-04-04	HILTON	1994-05-02	5	PHD-610	RENAULT NEVADA	39066	null	null	Y	
+
+
+Kérdés: Irassa ki az alkalmazottak nevét nagy kezdőbetűkkel, beosztásukat csupa kis betűvel!	
+Script: select upper(alk_nev), lower(beosztas) from alkalmazott	
+Eredmény: 14	
+
+KOVACS	elado	
+MOLNAR	szerelo	
+CSIKOS	elado	
+TOTH	vizsgabiztos	
+NEMETH	telephelyvezeto	
+SZABO	igazgato	
+BALOGH	szerelo	
+TRENCSENI	elado	
+KIRALY	vizsgabiztos	
+HERCEG	elado	
+BOGNAR	elado	
+HALASZ	szerelo	
+HORVAT	telephelyvezeto	
+KISS	elado	
+
+
+Kérdés: Irassa ki az AUTOK táblájának minden sorából a típusneveket és a rendszámokat úgy, hogy a típus neveket kisbetűssé konvertálja!	
+Script: select lower(tipus_nev), rendszam from autok join tipusok on autok.tipusok_id=tipusok.id	
+Eredmény: 19	
+
+ford escort	ABR-047	
+renault 19	ABR-115	
+renault nevada	CDE-324	
+renault laguna	DHV-123	
+renault 19	PHD-100	
+renault nevada	PHD-610	
+skoda lx	ABC-021	
+skoda cl	ABC-022	
+opel astra	ABC-123	
+opel vectra	BAH-115	
+w vento cl	CIC-312	
+w vento cl	COD-705	
+opel corsa	CBN-301	
+opel astra	CBN-302	
+ford escort	CDD-115	
+renault laguna	DCD-324	
+renault espace	PDP-101	
+w vento cl	CBN-001	
+renault twingo	CDD-115	
+
+
+Kérdés: Készítsen listát az összes készpénzzel fizető ügyfélről! Az ügyfél nevét, számát és a fizetési módját a következő szöveg után írja ki: 'ÜGYFÉL:'!	
+Script: select concat('ÜGYFÉL: ', ugyfel_nev, ', ', ugyfel_szam, ', ', fizetesi_mod) from ugyfelek where fizetesi_mod='K'	
+Eredmény: 4	
+
+ÜGYFÉL: MOLNÁR PETER, 342, K	
+ÜGYFÉL: PAPP ROBERT, 343, K	
+ÜGYFÉL: ABEL ANETT, 344, K	
+ÜGYFÉL: KISS VIKTÓRIA, 348, K	
+
+
+Kérdés: Irassa ki az ügyfelek számát, nevét és megbízottját úgy, hogy a megbízott neve nagybetűvel kezdődjön és a többi karaktere kisbetűs legyen vagy 10 db '*' szerepeljen az üres mező helyén!	
+Script: select concat(ugyfel_nev, ' ', coalesce(megbizott, '**********')) from ugyfelek	
+Eredmény: 9	
+
+MOLNÁR PETER HILTON	
+PAPP ROBERT PINTER ATTILA	
+ABEL ANETT HILTON	
+TIBOR SMITH HOTEL CIVIS	
+PAPP AGNES **********	
+BIRO KATALIN **********	
+KISS VIKTÓRIA NAGY TIBORNE	
+LIGETI ZOLTAN **********	
+TOTH KAROLYNE **********	
+
+
+Kérdés: A 'minden|szo nagy,betuvel.kezdodik' karaktersorozatra alkalmazzuk az INITCAP függvényt! (DUAL tábla)	
+Script: select initcap('minden|szo nagy,betuvel.kezdodik') from ugyfelek	
+Eredmény: 9	
+
+Minden|Szo Nagy,Betuvel.Kezdodik	
+Minden|Szo Nagy,Betuvel.Kezdodik	
+Minden|Szo Nagy,Betuvel.Kezdodik	
+Minden|Szo Nagy,Betuvel.Kezdodik	
+Minden|Szo Nagy,Betuvel.Kezdodik	
+Minden|Szo Nagy,Betuvel.Kezdodik	
+Minden|Szo Nagy,Betuvel.Kezdodik	
+Minden|Szo Nagy,Betuvel.Kezdodik	
+Minden|Szo Nagy,Betuvel.Kezdodik	
+
+
+Kérdés: Irassa ki az alkalmazottak beosztását kisbetűvel és azt, hogy az alkalmazott neve hány karakterből áll!	
+Script: select lower(beosztas), alk_nev, length(alk_nev) from alkalmazott	
+Eredmény: 14	
+
+elado	KOVACS	6	
+szerelo	MOLNAR	6	
+elado	CSIKOS	6	
+vizsgabiztos	TOTH	4	
+telephelyvezeto	NEMETH	6	
+igazgato	SZABO	5	
+szerelo	BALOGH	6	
+elado	TRENCSENI	9	
+vizsgabiztos	KIRALY	6	
+elado	HERCEG	6	
+elado	BOGNAR	6	
+szerelo	HALASZ	6	
+telephelyvezeto	HORVAT	6	
+elado	KISS	4	
+
+
+Kérdés: Irassa ki a beosztásokat, és a beosztások 4-6. karakterét kisbetűssé alakítva!	
+Script: select beosztas, lower(substr(beosztas, 4, 3)) from alkalmazott	
+Eredmény: 14	
+
+ELADO	do	
+SZERELO	rel	
+ELADO	do	
+VIZSGABIZTOS	sga	
+TELEPHELYVEZETO	eph	
+IGAZGATO	zga	
+SZERELO	rel	
+ELADO	do	
+VIZSGABIZTOS	sga	
+ELADO	do	
+ELADO	do	
+SZERELO	rel	
+TELEPHELYVEZETO	eph	
+ELADO	do	
+
+
+Kérdés: Irassa ki az autók típusnevét jobbról a '"' karakterekkel 20 karakter hosszúra kiegészítve!	
+Script: select rpad(tipus_nev, 20, '"') from tipusok	
+Eredmény: 12	
+
+FORD ESCORT"""""""""	
+RENAULT 19""""""""""	
+RENAULT NEVADA""""""	
+RENAULT LAGUNA""""""	
+SKODA LX""""""""""""	
+SKODA CL""""""""""""	
+OPEL ASTRA""""""""""	
+OPEL VECTRA"""""""""	
+W VENTO CL""""""""""	
+OPEL CORSA""""""""""	
+RENAULT TWINGO""""""	
+RENAULT ESPACE""""""	
+
+
+Kérdés: Irassa ki az autók típusnevét balról a '-' karakterekkel 20 karakter hosszúra kiegészítve!	
+Script: select lpad(tipus_nev, 20, '-') from tipusok	
+Eredmény: 12	
+
+---------FORD ESCORT	
+----------RENAULT 19	
+------RENAULT NEVADA	
+------RENAULT LAGUNA	
+------------SKODA LX	
+------------SKODA CL	
+----------OPEL ASTRA	
+---------OPEL VECTRA	
+----------W VENTO CL	
+----------OPEL CORSA	
+------RENAULT TWINGO	
+------RENAULT ESPACE	
+
+
+Kérdés: Irassa ki az alkalmazottak beosztását jobbról a '"' karakterekkel 25 karakter hosszúra kiegészítve!	
+Script: select distinct rpad(beosztas, 25, '"') from alkalmazott	
+Eredmény: 5	
+
+VIZSGABIZTOS"""""""""""""	
+SZERELO""""""""""""""""""	
+IGAZGATO"""""""""""""""""	
+ELADO""""""""""""""""""""	
+TELEPHELYVEZETO""""""""""	
+
+
+Kérdés: Irassa ki az alkalmazottak beosztását balról a'-' karakterekkel 25 karakter hosszúra kiegészítve!	
+Script: select distinct lpad(beosztas, 25, '-') from alkalmazott	
+Eredmény: 5	
+
+-----------------IGAZGATO	
+------------------SZERELO	
+--------------------ELADO	
+----------TELEPHELYVEZETO	
+-------------VIZSGABIZTOS	
+
+
+Kérdés: Irassa ki az alkalmazottak nevét, fizetését és fizetésének címletezését 5000 Ft, 1000 Ft 500 Ft és 100 Ft-os címletekben!	
+Script: select alk_nev, fizetes, trunc(fizetes/5000) || ' db 5000 Ft-os, ' || trunc((fizetes-(trunc(fizetes/5000)*5000))/1000) || ' db 1000 Ft-os, ' || trunc((fizetes-(trunc(fizetes/1000)*1000))/500) || ' db 500 Ft-os, ' || trunc((fizetes-(trunc(fizetes/500)*500))/100) || ' db 100 Ft-os' from alkalmazott	
+Eredmény: 14	
+
+KOVACS	13000	2 db 5000 Ft-os, 3 db 1000 Ft-os, 0 db 500 Ft-os, 0 db 100 Ft-os	
+MOLNAR	18000	3 db 5000 Ft-os, 3 db 1000 Ft-os, 0 db 500 Ft-os, 0 db 100 Ft-os	
+CSIKOS	13250	2 db 5000 Ft-os, 3 db 1000 Ft-os, 0 db 500 Ft-os, 2 db 100 Ft-os	
+TOTH	20000	4 db 5000 Ft-os, 0 db 1000 Ft-os, 0 db 500 Ft-os, 0 db 100 Ft-os	
+NEMETH	29000	5 db 5000 Ft-os, 4 db 1000 Ft-os, 0 db 500 Ft-os, 0 db 100 Ft-os	
+SZABO	54000	10 db 5000 Ft-os, 4 db 1000 Ft-os, 0 db 500 Ft-os, 0 db 100 Ft-os	
+BALOGH	22000	4 db 5000 Ft-os, 2 db 1000 Ft-os, 0 db 500 Ft-os, 0 db 100 Ft-os	
+TRENCSENI	12100	2 db 5000 Ft-os, 2 db 1000 Ft-os, 0 db 500 Ft-os, 1 db 100 Ft-os	
+KIRALY	21000	4 db 5000 Ft-os, 1 db 1000 Ft-os, 0 db 500 Ft-os, 0 db 100 Ft-os	
+HERCEG	11000	2 db 5000 Ft-os, 1 db 1000 Ft-os, 0 db 500 Ft-os, 0 db 100 Ft-os	
+BOGNAR	13000	2 db 5000 Ft-os, 3 db 1000 Ft-os, 0 db 500 Ft-os, 0 db 100 Ft-os	
+HALASZ	21000	4 db 5000 Ft-os, 1 db 1000 Ft-os, 0 db 500 Ft-os, 0 db 100 Ft-os	
+HORVAT	25000	5 db 5000 Ft-os, 0 db 1000 Ft-os, 0 db 500 Ft-os, 0 db 100 Ft-os	
+KISS	12500	2 db 5000 Ft-os, 2 db 1000 Ft-os, 1 db 500 Ft-os, 0 db 100 Ft-os	
+
+
+Kérdés: Írjon SELECT parancsot, amely kerekítve kiírja, hogy mennyibe kerül 3 napra 257 km-re egy'NORMAL' autócsoportba tartozó autó kölcsönzése!	
+Script: select  distinct round((3*ac.napi_dij)+(257*ac.km_dij)) from auto_csop ac join autok a on ac.id=a.auto_csop_id join tipusok t on a.tipusok_id=t.id where ac.auto_csop_nev='NORMAL'	
+Eredmény: 1	
+
+35560	
+
+
+Kérdés: Irassa ki a NORMAL autócsoport összes autójának típusát, kilométeróra állását! A futott kilométerek kiírását a 'KILOMÉTER ÓRA ÁLLÁSA:' szöveg előzze meg és a kiírás 10 ezer kilométerre kerekítve történjen!	
+Script: select distinct t.tipus_nev, round(a.futott_km, -4) from autok a join tipusok t on a.tipusok_id=t.id join auto_csop ac on a.auto_csop_id=ac.id where ac.auto_csop_nev='NORMAL'	
+Eredmény: 4	
+
+OPEL CORSA	30000	
+RENAULT TWINGO	10000	
+SKODA CL	100000	
+SKODA LX	120000	
+
+
+Kérdés: Írassuk ki az AUTOK táblából a NORMAL autócsoport minden autójának rendszámát, típusnevét és vásárlási időpontját 'the 6 day of Jun, 1994'- hez hasonló formában!	
+Script: select distinct a.rendszam, t.tipus_nev, to_char(a.vasarlas_datuma, 'the dd "day of" Month, YYYY') from autok a join tipusok t on a.tipusok_id=t.id join auto_csop ac on a.auto_csop_id=ac.id where ac.auto_csop_nev='NORMAL'	
+Eredmény: 4	
+
+ABC-021	SKODA LX	the 01 day of October  , 1993	
+ABC-022	SKODA CL	the 01 day of October  , 1993	
+CBN-301	OPEL CORSA	the 01 day of December , 1993	
+CDD-115	RENAULT TWINGO	the 03 day of January  , 1994	
+
+
+Kérdés: Irassa ki azokat a rendelés adatokat, ahol a rendelés feladása és a kölcsönzés kezdete között 1 hétnél kevesebb idő van!	
+Script: select r.id,
+r.rendeles_szam,
+u.ugyfel_nev,
+r.rendeles_datum,
+r.rendelo_szemely,
+r.kolcson_kezdete,
+r.napok,
+a.rendszam,
+t.tipus_nev,
+r.km_kezdet,
+r.km_veg,
+r.kolcson_dij,
+r.fizetes from rendeles r 
+join autok a on r.rendszam_id=a.id 
+join tipusok t on a.tipusok_id=t.id 
+join ugyfelek u on r.ugyfelek_id=u.id where kolcson_kezdete-rendeles_datum<7	
+Eredmény: 4	
+
+3	12336	MOLNÁR PETER	1994-02-02	HOTEL CIVIS	1994-02-02	21	PHD-100	RENAULT 19	150871	151441	225900	Y	
+4	12337	ABEL ANETT	1994-03-30	HILTON	1994-04-05	30	ABR-047	FORD ESCORT	141413	151003	1375800	N	
+5	12338	PAPP ROBERT	1994-03-30	MATAV IG.	1994-04-05	5	ABC-123	OPEL ASTRA	101978	104965	395940	N	
+10	12343	KISS VIKTÓRIA	1994-05-04	NAGY TIBORNE	1994-04-10	7	CDE-324	RENAULT NEVADA	42040	null	null	N	
+
+
+Kérdés: Készítsen listát az összes olyan rendelés tételről, ahol a kölcsönzési idő 10 napnál hosszabb!	
+Script: select r.id,
+r.rendeles_szam,
+u.ugyfel_nev,
+r.rendeles_datum,
+r.rendelo_szemely,
+r.kolcson_kezdete,
+r.napok,
+a.rendszam,
+t.tipus_nev,
+r.km_kezdet,
+r.km_veg,
+r.kolcson_dij,
+r.fizetes from rendeles r 
+join autok a on r.rendszam_id=a.id 
+join tipusok t on a.tipusok_id=t.id 
+join ugyfelek u on r.ugyfelek_id=u.id where napok>10	
+Eredmény: 2	
+
+3	12336	MOLNÁR PETER	1994-02-02	HOTEL CIVIS	1994-02-02	21	PHD-100	RENAULT 19	150871	151441	225900	Y	
+4	12337	ABEL ANETT	1994-03-30	HILTON	1994-04-05	30	ABR-047	FORD ESCORT	141413	151003	1375800	N	
+
+
+Kérdés: Irassa ki az elmúlt 7 nap rendelés adatait! (SYSDATE)	
+Script: select r.id,
+r.rendeles_szam,
+u.ugyfel_nev,
+r.rendeles_datum,
+r.rendelo_szemely,
+r.kolcson_kezdete,
+r.napok,
+a.rendszam,
+t.tipus_nev,
+r.km_kezdet,
+r.km_veg,
+r.kolcson_dij,
+r.fizetes from rendeles r 
+join autok a on r.rendszam_id=a.id 
+join tipusok t on a.tipusok_id=t.id 
+join ugyfelek u on r.ugyfelek_id=u.id where rendeles_datum > CURRENT_TIMESTAMP - INTERVAL '7 days'	
+Eredmény: 0	
+
+
+
+Kérdés: Ha feltesszük, hogy az amortizáció az eredeti ár 3%-a havonta, akkor írassuk ki, hogy az 1994 előtt vásárolt autóknak mennyi a jelenlegi értéke!	
+Script: select a.id,
+a.rendszam,
+t.tipus_nev,
+ac.auto_csop_nev,
+a.vasarlas_datuma,
+a.ar, 
+a.futott_km, 
+a.ut_szerviz,
+a.allapot,
+r.reszleg_nev, 
+al.alk_nev,
+round(a.ar*power(0.97, (extract(year from CURRENT_TIMESTAMP)-extract(year from vasarlas_datuma))*12+(extract(month from CURRENT_TIMESTAMP)-extract(month from vasarlas_datuma)))) as jelenlegi_ertek
+from autok a
+join tipusok t on a.tipusok_id = t.id
+join auto_csop ac on a.auto_csop_id = ac.id
+join reszleg r on a.reszleg_id = r.id
+join alkalmazott al on a.alkalmazott_id = al.id where extract(year from vasarlas_datuma)<1994	
+Eredmény: 14	
+
+1	ABR-047	FORD ESCORT	EXTRA	1993-01-02	1300000	151003	141410	F	AUTO	CSIKOS	17	
+2	ABR-115	RENAULT 19	EXTRA	1993-01-02	1200000	145097	139600	X	AUTO-RENAULT	KOVACS	15	
+3	CDE-324	RENAULT NEVADA	EXTRA	1993-06-01	2473000	42040	15901	F	AUTO-RENAULT	KOVACS	37	
+4	DHV-123	RENAULT LAGUNA	EXTRA	1993-06-05	2346000	73621	53600	A	AUTO-RENAULT	HERCEG	35	
+5	PHD-100	RENAULT 19	EXTRA	1993-06-30	1329000	151441	140507	X	AUTO-RENAULT	KISS	20	
+6	PHD-610	RENAULT NEVADA	EXTRA	1993-07-20	2473000	39066	30009	F	AUTO-RENAULT	KISS	38	
+7	ABC-021	SKODA LX	NORMAL	1993-10-01	827000	123212	120509	F	AUTO	CSIKOS	14	
+8	ABC-022	SKODA CL	NORMAL	1993-10-01	917000	97081	95310	S	AUTO	CSIKOS	15	
+9	ABC-123	OPEL ASTRA	EXTRA	1993-11-11	1239000	101978	93710	A	AUTO	CSIKOS	21	
+10	BAH-115	OPEL VECTRA	LUXUS	1993-10-11	3977000	51007	49620	A	LUXUS-AUTO	BOGNAR	67	
+11	CIC-312	W VENTO CL	EXTRA	1993-12-01	1650000	100021	83701	F	AUTO	TRENCSENI	29	
+12	COD-705	W VENTO CL	EXTRA	1993-12-01	1650000	91970	79600	S	AUTO	TRENCSENI	29	
+13	CBN-301	OPEL CORSA	NORMAL	1993-12-01	917000	28001	25444	A	AUTO	TRENCSENI	16	
+14	CBN-302	OPEL ASTRA	EXTRA	1993-12-01	1239000	87111	80001	S	AUTO	TRENCSENI	22	
+
+
+Kérdés: Irassa ki a rendelések táblájából az ügyfelek számát, a rendelésük dátumát, valamint a kölcsönzés kezdetének időpontját a magyar szokásoknak megfelelően! (év. hó. nap.)	
+Script: select r.rendeles_szam,
+u.ugyfel_szam,
+to_char(r.rendeles_datum, 'YYYY.MM.DD'),
+to_char(r.kolcson_kezdete, 'YYYY.MM.DD') 
+from rendeles r 
+join autok a on r.rendszam_id=a.id 
+join tipusok t on a.tipusok_id=t.id 
+join ugyfelek u on r.ugyfelek_id=u.id	
+Eredmény: 12	
+
+12334	348	1993.12.01	1994.04.01	
+12335	342	1994.02.02	1994.03.05	
+12336	342	1994.02.02	1994.02.02	
+12337	344	1994.03.30	1994.04.05	
+12338	343	1994.03.30	1994.04.05	
+12339	348	1994.04.02	1994.04.10	
+12340	345	1994.02.03	1994.05.01	
+12341	349	1994.04.04	1994.05.01	
+12342	344	1994.04.04	1994.05.02	
+12343	348	1994.05.04	1994.04.10	
+12344	343	1994.04.20	1994.05.03	
+12345	342	1994.04.21	1994.05.03	
+
+
+Kérdés: Írja kí az alkalmazottak táblájából a belépés dátumát és annak 5 hónappal megnövelt értékét!	
+Script: select belepes, belepes + interval '3 months' from alkalmazott	
+Eredmény: 14	
+
+1992-12-10	1993-03-10 00:00:00	
+1992-12-18	1993-03-18 00:00:00	
+1993-03-12	1993-06-12 00:00:00	
+1993-04-22	1993-07-22 00:00:00	
+1993-11-28	1994-02-28 00:00:00	
+1992-05-01	1992-08-01 00:00:00	
+1992-06-02	1992-09-02 00:00:00	
+1993-06-20	1993-09-20 00:00:00	
+1993-08-04	1993-11-04 00:00:00	
+1993-11-12	1994-02-12 00:00:00	
+1992-10-08	1993-01-08 00:00:00	
+1993-05-23	1993-08-23 00:00:00	
+1993-12-09	1994-03-09 00:00:00	
+1993-12-23	1994-03-23 00:00:00	
+
+
+Kérdés: Írja ki minden alkalmazottra a rendszerdátum és a belépés dátuma közötti hónapok számát!	
+Script: select alk_nev, round((extract(year from CURRENT_TIMESTAMP)-extract(year from belepes))*12+(extract(month from CURRENT_TIMESTAMP)-extract(month from belepes))) as honapok from alkalmazott	
+Eredmény: 14	
+
+KOVACS	371	
+MOLNAR	371	
+CSIKOS	368	
+TOTH	367	
+NEMETH	360	
+SZABO	378	
+BALOGH	377	
+TRENCSENI	365	
+KIRALY	363	
+HERCEG	360	
+BOGNAR	373	
+HALASZ	366	
+HORVAT	359	
+KISS	359	
+
+
+Kérdés: Írja ki a rendszerdátumhoz legközelebbi 'Friday' dátumát, valamint a hónap utolsó napjának dátumát!	
+Script: select distinct (current_timestamp + interval '6 days')-interval '1 day' * extract(dow from current_timestamp), date_trunc('month', current_timestamp)+interval '1 month 1 day' from auto_csop	
+Eredmény: 1	
+
+2023-11-04 17:29:11.945601+01	2023-12-02 00:00:00+01	
+
+
+Kérdés: Irassa ki a '1994. 06. 07.' karaktersorozat dátummá konvertált alakját!	
+Script: select distinct to_date('1994. 06. 07.', 'YYYY. MM. DD.') from auto_csop	
+Eredmény: 1	
+
+1994-06-07	
+
+
+Kérdés: Irja ki a belépés dátumát'YYYY.Month.DAY' formában!	
+Script: select distinct to_char(belepes, 'YYYY.Month.DAY') from alkalmazott	
+Eredmény: 13	
+
+1992.October  .THURSDAY 	
+1993.March    .FRIDAY   	
+1993.November .SUNDAY   	
+1993.November .FRIDAY   	
+1993.August   .WEDNESDAY	
+1993.December .THURSDAY 	
+1992.December .FRIDAY   	
+1992.December .THURSDAY 	
+1992.May      .FRIDAY   	
+1993.June     .SUNDAY   	
+1992.June     .TUESDAY  	
+1993.April    .THURSDAY 	
+1993.May      .SUNDAY   	
+
+
+Kérdés: Írja ki a saját születési dátumát betűkkel!	
+Script: select distinct to_char('1983-10-12':: date, 'FMMonth dd, YYYY') as szuletesei_datum from auto_csop	
+Eredmény: 1	
+
+October 12, 1983	
+
+
+Kérdés: Irassa ki minden dolgozónál a fizetést, a prémiumot és a kettő közül a kisebb értéket!	
+Script: select alk_nev, fizetes, premium, least(fizetes, premium) as kisebb_ertek from alkalmazott	
+Eredmény: 14	
+
+KOVACS	13000	4000	
+MOLNAR	18000	null	
+CSIKOS	13250	5000	
+TOTH	20000	null	
+NEMETH	29000	14000	
+SZABO	54000	75000	
+BALOGH	22000	5000	
+TRENCSENI	12100	7200	
+KIRALY	21000	8000	
+HERCEG	11000	6000	
+BOGNAR	13000	6000	
+HALASZ	21000	7000	
+HORVAT	25000	12000	
+KISS	12500	9500	
+
+
+Kérdés: Irassa ki az alkalmazottak beosztását, illetve annak minősítését a következőképpen: igazgató-FŐNÖK, telephelyvezető-KISFŐNÖK egyéb beosztásúak-BEOSZTOTT!	
+Script: select alk_nev beosztas, case when beosztas='IGAZGATO' then 'FŐNÖK' when beosztas='TELEPHELYVEZETO' then 'KISFŐNÖK' else 'BEOSZTOTT' end as minoseg from alkalmazott	
+Eredmény: 14	
+
+KOVACS	BEOSZTOTT	
+MOLNAR	BEOSZTOTT	
+CSIKOS	BEOSZTOTT	
+TOTH	BEOSZTOTT	
+NEMETH	KISFŐNÖK	
+SZABO	FŐNÖK	
+BALOGH	BEOSZTOTT	
+TRENCSENI	BEOSZTOTT	
+KIRALY	BEOSZTOTT	
+HERCEG	BEOSZTOTT	
+BOGNAR	BEOSZTOTT	
+HALASZ	BEOSZTOTT	
+HORVAT	KISFŐNÖK	
+KISS	BEOSZTOTT	
+
+
+Kérdés: Irassa ki a telephelyek adatai mellé, hogy FŐVÁROSI illetve azt, hogy VIDÉKI, ha a cím mezőben BUDAPEST illetve attól különböző város szerepel!	
+Script: select reszleg_nev, reszleg_cim, case when reszleg_cim like '%BUDAPEST%' then 'FŐVÁROSI' else 'VIDÉKI' end as helyszin from reszleg	
+Eredmény: 6	
+
+KOZPONT	BUDAPEST	FŐVÁROSI	
+AUTO-RENAULT	BUDAPEST	FŐVÁROSI	
+AUTO	GYOR	VIDÉKI	
+LUXUS-AUTO	BUDAPEST	FŐVÁROSI	
+AUTO	DEBRECEN	VIDÉKI	
+TEHERAUTO	BUDAPEST	FŐVÁROSI	
+
+
+Kérdés: Irassa ki az alkalmazottak táblájából a minimális, a maximális, az összes és az átlagfizetést, valamint a létszámot!	
+Script: select min(fizetes), max(fizetes), sum(fizetes), avg(fizetes), count(fizetes) from alkalmazott	
+Eredmény: 1	
+
+11000	54000	284850	20346.428571428571	14	
+
+
+Kérdés: Irassa ki a részlegkódot, a minimális, a maximálís, az összes és átlagfizetést, valamint a létszámot részlegenkénti csoportosításban!	
+Script: select distinct r.reszleg_kod, min(al.fizetes) as minimum_fizetes, max(al.fizetes) as max_fizetes, sum(al.fizetes) as osszes, avg(al.fizetes) as atlag, count(al.alk_nev) from alkalmazott al 
+join reszleg r on al.reszleg_id=r.id group by reszleg_kod	
+Eredmény: 5	
+
+20	11000	21000	77500	15500.000000000000	5	
+30	13250	29000	60250	20083.333333333333	3	
+10	54000	54000	54000	54000.000000000000	1	
+50	13000	22000	35000	17500.000000000000	2	
+60	12100	25000	58100	19366.666666666667	3	
+
+
+Kérdés: Irassa ki a beosztást, a minimális, a maxímális, az összes és átlagfizetést, valamint a létszámot beosztásonkénti csoportosításban!	
+Script: select distinct al.beosztas, min(al.fizetes) as minimum_fizetes, max(al.fizetes) as max_fizetes, sum(al.fizetes) as osszes, avg(al.fizetes) as atlag, count(al.alk_nev) from alkalmazott al group by beosztas	
+Eredmény: 5	
+
+VIZSGABIZTOS	20000	21000	41000	20500.000000000000	2	
+IGAZGATO	54000	54000	54000	54000.000000000000	1	
+SZERELO	18000	22000	61000	20333.333333333333	3	
+ELADO	11000	13250	74850	12475.000000000000	6	
+TELEPHELYVEZETO	25000	29000	54000	27000.000000000000	2	
+
+
+Kérdés: Irassa ki a részlegkódot, átlagfizetést azokra a részlegekre, ahol az átlagfizetés 8000 Ft-nál nagyobb!	
+Script: select distinct r.reszleg_kod, avg(al.fizetes) as atlag from alkalmazott al join reszleg r on al.reszleg_id=r.id group by reszleg_kod having avg(al.fizetes)>8000	
+Eredmény: 5	
+
+60	19366.666666666667	
+30	20083.333333333333	
+20	15500.000000000000	
+10	54000.000000000000	
+50	17500.000000000000	
+
+
+Kérdés: Irassa ki azon a részlegek kódját, ahol pontosan ketten dolgoznak!	
+Script: select distinct r.reszleg_kod from alkalmazott al join reszleg r on al.reszleg_id=r.id group by reszleg_kod having count(al.alk_nev)=2	
+Eredmény: 1	
+
+50	
+
+
+Kérdés:  Írjon SELECT parancsot, amely megadja a legmagasabb (legalacsonyabb) beszerzési árat!	
+Script: select max(ar) from autok	
+Eredmény: 1	
+
+3977000	
+
+
+Kérdés: Írjon olyan SELECT parancsot, amely az AUTOK táblából kiírja a különböző autócsoportok nevét és a csoportban lévő autók számát!	
+Script: select distinct ac.auto_csop_nev, count(a.rendszam) from autok a join auto_csop ac on a.auto_csop_id=ac.id group by ac.auto_csop_nev	
+Eredmény: 3	
+
+EXTRA	13	
+NORMAL	4	
+LUXUS	2	
+
+
+Kérdés: Írjon SELECT parancsot, amely a készpénzzel fizető ügyfelek létszámát kiírja! Használja a HAVING utasításrészt azon ügyfelek kiírására, akik nem átutalással fizettek!	
+Script: select count(ugyfel_nev) from ugyfelek where fizetesi_mod='K' group by fizetesi_mod having fizetesi_mod='K'	
+Eredmény: 1	
+
+4	
+
+
+Kérdés: Irassa ki az AUTOK táblából a különböző típusokat, azt hogy melyikből hány darab van! Típusonként jelenjen meg az átlagos beszerzési ár! Az eredmény névsor szerint rendezve jelenjen meg!	
+Script: select distinct t.tipus_nev, count(a.rendszam), cast(avg(a.ar) as integer) from autok a join tipusok t on a.tipusok_id=t.id group by t.tipus_nev order by t.tipus_nev	
+Eredmény: 12	
+
+FORD ESCORT	2	1350000	
+OPEL ASTRA	2	1239000	
+OPEL CORSA	1	917000	
+OPEL VECTRA	1	3977000	
+RENAULT 19	2	1264500	
+RENAULT ESPACE	1	3530000	
+RENAULT LAGUNA	2	2346000	
+RENAULT NEVADA	2	2473000	
+RENAULT TWINGO	1	955000	
+SKODA CL	1	917000	
+SKODA LX	1	827000	
+W VENTO CL	3	1766333	
+
+
+Kérdés: Irassa ki az AUTOK táblából az átlagos beszerzési árat! Az eredményt kerekítse 2 tizedesjegyre!	
+Script: select round(avg(ar):: numeric,2) as atlag_ar from autok	
+Eredmény: 1	
+
+1777210.53	
+
+
+Kérdés: Irassa ki a legtöbbet és a legkevesebbet futott autó adatait!	
+Script: select a.rendszam, t.tipus_nev, a.futott_km from autok a join tipusok t on a.tipusok_id=t.id where a.futott_km=(select max(futott_km) from autok) or a.futott_km=(select min(futott_km) from autok)	
+Eredmény: 2	
+
+CBN-001	W VENTO CL	152311	
+PDP-101	RENAULT ESPACE	7911	
+
+
+Kérdés: Irassa ki, hogy az AUTOK táblában hány autó adatai szerepelnek!	
+Script: select count(rendszam) from autok	
+Eredmény: 1	
+
+19	
+
+
+Kérdés: Irassa ki típusnevenként csoportosítva az átlagos kilométeróra állást!	
+Script: select t.tipus_nev, cast(avg(a.futott_km) as integer) from autok a join tipusok t on a.tipusok_id=t.id group by t.tipus_nev	
+Eredmény: 12	
+
+SKODA LX	123212	
+FORD ESCORT	83452	
+RENAULT TWINGO	8307	
+SKODA CL	97081	
+OPEL VECTRA	51007	
+W VENTO CL	114767	
+RENAULT NEVADA	40553	
+RENAULT 19	148269	
+RENAULT ESPACE	7911	
+OPEL CORSA	28001	
+OPEL ASTRA	94545	
+RENAULT LAGUNA	57341	
+
+
+Kérdés: Írja ki az ALKALMAZOTT tábla alapján a maxímálís és minimális fizetések eltérését az átlagtól!	
+Script: select max(fizetes)-cast(avg(fizetes) as integer) as max_atlag_kulonbseg, cast(avg(fizetes) as integer) - min(fizetes) as avg_min_kulonbseg from alkalmazott	
+Eredmény: 1	
+
+33654	9346	
+
+
+Kérdés: Irassa ki típusnevenként csoportosítva a kiadható autók számát és átlagos beszerzési árát!	
+Script: select t.tipus_nev, count(a.rendszam), cast(avg(a.ar) as integer) from autok a join tipusok t on a.tipusok_id=t.id group by t.tipus_nev	
+Eredmény: 12	
+
+SKODA LX	1	827000	
+FORD ESCORT	2	1350000	
+RENAULT TWINGO	1	955000	
+SKODA CL	1	917000	
+OPEL VECTRA	1	3977000	
+W VENTO CL	3	1766333	
+RENAULT NEVADA	2	2473000	
+RENAULT 19	2	1264500	
+RENAULT ESPACE	1	3530000	
+OPEL CORSA	1	917000	
+OPEL ASTRA	2	1239000	
+RENAULT LAGUNA	2	2346000	
+
+
+Kérdés: Irassa ki, mennyi volt az átlagos kölcsönzési idő az 1993. március 30. utáni kölcsönzéseknél!	
+Script: select cast(avg(napok) as integer) from rendeles where kolcson_kezdete>'1993-03-30'	
+Eredmény: 1	
+
+9	
+
+
+Kérdés: Irassa ki a már kifizetett rendelések számát!	
+Script: select count(rendeles_szam) from rendeles where fizetes='Y'	
+Eredmény: 1	
+
+7	
+
+
+Kérdés: Irassa ki azokat a megrendeléseket, ahol a kölcsönzés ideje alatt megtett kilométer a maximális illetve minimális!	
+Script: select r.id,
+r.rendeles_szam,
+u.ugyfel_nev,
+r.rendeles_datum,
+r.rendelo_szemely,
+r.kolcson_kezdete,
+r.napok,
+a.rendszam,
+t.tipus_nev,
+r.km_kezdet,
+r.km_veg,
+r.kolcson_dij,
+r.fizetes from rendeles r 
+join autok a on r.rendszam_id=a.id 
+join tipusok t on a.tipusok_id=t.id 
+join ugyfelek u on r.ugyfelek_id=u.id where r.km_veg=(select max(km_veg) from rendeles) or r.km_veg=(select min(km_veg) from rendeles)	
+Eredmény: 2	
+
+3	12336	MOLNÁR PETER	1994-02-02	HOTEL CIVIS	1994-02-02	21	PHD-100	RENAULT 19	150871	151441	225900	Y	
+6	12339	KISS VIKTÓRIA	1994-04-02	APEH IG.	1994-04-10	1	BAH-115	OPEL VECTRA	50609	51007	55260	N	
+
+
+Kérdés: Irassa ki a kölcsönzési idő alatt futott átlag km értéket!	
+Script: select cast(avg(km_veg-km_kezdet) as integer) from rendeles	
+Eredmény: 1	
+
+3535	
+
+
+Kérdés: Irassa ki a kikölcsönzött autók típus nevét és a kölcsönzések számát gyakoriság szerint csökkenő sorrendbe!	
+Script: select t.tipus_nev, count(a.rendszam) from rendeles r join autok a on r.rendszam_id=a.id join tipusok t on a.tipusok_id=t.id group by t.tipus_nev order by count(a.rendszam) desc	
+Eredmény: 6	
+
+OPEL ASTRA	4	
+FORD ESCORT	2	
+RENAULT NEVADA	2	
+RENAULT 19	2	
+OPEL VECTRA	1	
+W VENTO CL	1	
+
+
+Kérdés: Melyik városban van a LUXRENT cég legtöbb ügyfele?	
+Script: select varos, count(*) as ugyfelek_szama from ugyfelek group by varos order by ugyfelek_szama desc limit 1	
+Eredmény: 1	
+
+DEBRECEN	
+
+
+Kérdés: Készítsen listát, amely tartalmazza a dolgozó nevét, beosztását, részleg kódját, a részleg nevét és címét névsor szerinti sorrendben!	
+Script: select al.alk_nev, al.beosztas, r.reszleg_kod, r.reszleg_nev, r.reszleg_cim from alkalmazott al join reszleg r on al.reszleg_id=r.id order by al.alk_nev	
+Eredmény: 14	
+
+BALOGH	SZERELO	50	LUXUS-AUTO	BUDAPEST	
+BOGNAR	ELADO	50	LUXUS-AUTO	BUDAPEST	
+CSIKOS	ELADO	30	AUTO	GYOR	
+HALASZ	SZERELO	60	AUTO	DEBRECEN	
+HERCEG	ELADO	20	AUTO-RENAULT	BUDAPEST	
+HORVAT	TELEPHELYVEZETO	60	AUTO	DEBRECEN	
+KIRALY	VIZSGABIZTOS	20	AUTO-RENAULT	BUDAPEST	
+KISS	ELADO	20	AUTO-RENAULT	BUDAPEST	
+KOVACS	ELADO	20	AUTO-RENAULT	BUDAPEST	
+MOLNAR	SZERELO	30	AUTO	GYOR	
+NEMETH	TELEPHELYVEZETO	30	AUTO	GYOR	
+SZABO	IGAZGATO	10	KOZPONT	BUDAPEST	
+TOTH	VIZSGABIZTOS	20	AUTO-RENAULT	BUDAPEST	
+TRENCSENI	ELADO	60	AUTO	DEBRECEN	
+
+
+Kérdés: Irassa ki az'ELADÓ' beosztású dolgozók nevét, részleg kódját és a részleg címét!	
+Script: select al.alk_nev, r.reszleg_kod, r.reszleg_cim from alkalmazott al join reszleg r on al.reszleg_id=r.id where al.beosztas='ELADO'	
+Eredmény: 6	
+
+KOVACS	20	BUDAPEST	
+CSIKOS	30	GYOR	
+TRENCSENI	60	DEBRECEN	
+HERCEG	20	BUDAPEST	
+BOGNAR	50	BUDAPEST	
+KISS	20	BUDAPEST	
+
+
+Kérdés: Irassa ki a Győrött dolgozók adatait!	
+Script: select al.alk_nev, al.beosztas, r.reszleg_kod, r.reszleg_nev, r.reszleg_cim from alkalmazott al join reszleg r on al.reszleg_id=r.id where r.reszleg_cim like '%GYOR%'	
+Eredmény: 3	
+
+MOLNAR	SZERELO	30	AUTO	GYOR	
+CSIKOS	ELADO	30	AUTO	GYOR	
+NEMETH	TELEPHELYVEZETO	30	AUTO	GYOR	
+
+
+Kérdés: Irassa ki részleg nevenként csoportosítva a legmagasabb és legalacsonyabb fizetést!	
+Script: select r.reszleg_nev, max(al.fizetes), min(al.fizetes) from alkalmazott al join reszleg r on al.reszleg_id=r.id group by r.reszleg_nev	
+Eredmény: 4	
+
+AUTO	29000	12100	
+LUXUS-AUTO	22000	13000	
+AUTO-RENAULT	21000	11000	
+KOZPONT	54000	54000	
+
+
+Kérdés: Irassa ki részleg címenként csoportosítva az átlagfizetést és a létszámot!	
+Script: select r.reszleg_cim, cast(avg(al.fizetes) as integer), count(al.alk_nev) from alkalmazott al join reszleg r on al.reszleg_id=r.id group by r.reszleg_cim	
+Eredmény: 3	
+
+DEBRECEN	19367	3	
+GYOR	20083	3	
+BUDAPEST	20813	8	
+
+
+Kérdés: Irassa ki azoknak a dolgozóknak a nevét, beosztását és fizetését, akiknek a fizetése több, mint 'BALOGH' fizetése!	
+Script: select al.alk_nev, al.beosztas, al.fizetes from alkalmazott al where al.fizetes>(select fizetes from alkalmazott where alk_nev='BALOGH')	
+Eredmény: 3	
+
+NEMETH	TELEPHELYVEZETO	29000	
+SZABO	IGAZGATO	54000	
+HORVAT	TELEPHELYVEZETO	25000	
+
+
+Kérdés: Irassa ki azon részlegek kódját, nevét és címét, amelyekben nem dolgozik senki!	
+Script: select r.reszleg_kod, r.reszleg_nev, r.reszleg_cim from reszleg r where r.id not in (select reszleg_id from alkalmazott)	
+Eredmény: 1	
+
+70	TEHERAUTO	BUDAPEST	
+
+
+Kérdés:  Irassa ki azon autók rendszámát és típusát, melyek már több, mint kétszer voltak kötelezően szervízben!	
+Script: select a.rendszam, t.tipus_nev from autok a join tipusok t on a.tipusok_id=t.id where a.ut_szerviz / t.szerviz_km>2	
+Eredmény: 12	
+
+ABR-047	FORD ESCORT	
+ABR-115	RENAULT 19	
+DHV-123	RENAULT LAGUNA	
+PHD-100	RENAULT 19	
+ABC-021	SKODA LX	
+ABC-022	SKODA CL	
+ABC-123	OPEL ASTRA	
+BAH-115	OPEL VECTRA	
+CIC-312	W VENTO CL	
+COD-705	W VENTO CL	
+CBN-302	OPEL ASTRA	
+CBN-001	W VENTO CL	
+
+
+Kérdés: Irassa ki a 3000 és 10000 Ft közötti napidíjért kölcsönözhető autók rendszámát, típusát és napidíját!	
+Script: select a.rendszam, t.tipus_nev, ac.napi_dij from autok a join tipusok t on a.tipusok_id=t.id join auto_csop ac on a.auto_csop_id=ac.id where ac.napi_dij between 3000 and 10000	
+Eredmény: 17	
+
+ABR-047	FORD ESCORT	7500	
+ABR-115	RENAULT 19	7500	
+CDE-324	RENAULT NEVADA	7500	
+DHV-123	RENAULT LAGUNA	7500	
+PHD-100	RENAULT 19	7500	
+PHD-610	RENAULT NEVADA	7500	
+ABC-021	SKODA LX	5000	
+ABC-022	SKODA CL	5000	
+ABC-123	OPEL ASTRA	7500	
+CIC-312	W VENTO CL	7500	
+COD-705	W VENTO CL	7500	
+CBN-301	OPEL CORSA	5000	
+CBN-302	OPEL ASTRA	7500	
+CDD-115	FORD ESCORT	7500	
+DCD-324	RENAULT LAGUNA	7500	
+CBN-001	W VENTO CL	7500	
+CDD-115	RENAULT TWINGO	5000	
+
+
+Kérdés: Irassa ki azokat az ügyfeleket, akiknek jelenleg rendelésük van! A listában legyen kiírva az ügyfél száma, neve és címe a rendelés, kölcsönzés dátumával együtt!	
+Script: select u.ugyfel_szam, u.ugyfel_nev, u.cim, u.varos, r.rendeles_datum, r.kolcson_kezdete from ugyfelek u join rendeles r on u.id=r.ugyfelek_id	
+Eredmény: 12	
+
+348	KISS VIKTÓRIA	FO U. 8.	BUDAPEST	1993-12-01	1994-04-01	
+342	MOLNÁR PETER	HILTON PRK. 1.	NEW YORK	1994-02-02	1994-03-05	
+342	MOLNÁR PETER	HILTON PRK. 1.	NEW YORK	1994-02-02	1994-02-02	
+344	ABEL ANETT	WIESZ STR 5	BECS	1994-03-30	1994-04-05	
+343	PAPP ROBERT	PIAC U. 10.	DEBRECEN	1994-03-30	1994-04-05	
+348	KISS VIKTÓRIA	FO U. 8.	BUDAPEST	1994-04-02	1994-04-10	
+345	TIBOR SMITH	LIGNOUN 15.	PARIZS	1994-02-03	1994-05-01	
+349	LIGETI ZOLTAN	KIRALY U. 88.	BUDAPEST	1994-04-04	1994-05-01	
+344	ABEL ANETT	WIESZ STR 5	BECS	1994-04-04	1994-05-02	
+348	KISS VIKTÓRIA	FO U. 8.	BUDAPEST	1994-05-04	1994-04-10	
+343	PAPP ROBERT	PIAC U. 10.	DEBRECEN	1994-04-20	1994-05-03	
+342	MOLNÁR PETER	HILTON PRK. 1.	NEW YORK	1994-04-21	1994-05-03	
+
+
+Kérdés: Irassa ki azokat az ügyfeleket, akik a LUXUS autócsoportból rendeltek autót! Írja ki az ügyfélszámot, a típust, a rendszámot, a napi és kilométerenkénti kölcsönzési díjat valamint a megrendelés dátumát!	
+Script: select u.ugyfel_szam, t.tipus_nev, a.rendszam, ac.napi_dij, ac.km_dij, r.rendeles_datum from ugyfelek u join rendeles r on u.id=r.ugyfelek_id join autok a on r.rendszam_id=a.id join tipusok t on a.tipusok_id=t.id join auto_csop ac on a.auto_csop_id=ac.id where ac.auto_csop_nev='LUXUS'	
+Eredmény: 1	
+
+348	OPEL VECTRA	BAH-115	15000	300	1994-04-02	
+
+
+Kérdés: Irassa ki a rendszámot, típust, kölcsönzési díjat, a rendelés dátumát, a kölcsönzés kezdetét, az ügyfélszámot, nevet, címet az összes megrendelésre, amely 1994. május 1. óta történt!	
+Script: select a.rendszam, t.tipus_nev, ac.napi_dij, r.rendeles_datum, r.kolcson_kezdete, u.ugyfel_szam, u.ugyfel_nev, u.cim from ugyfelek u 
+join rendeles r on u.id=r.ugyfelek_id join autok a on r.rendszam_id=a.id join tipusok t on a.tipusok_id=t.id join auto_csop ac on a.auto_csop_id=ac.id 
+where r.rendeles_datum>'1994-05-01'	
+Eredmény: 1	
+
+CDE-324	RENAULT NEVADA	7500	1994-05-04	1994-04-10	348	KISS VIKTÓRIA	FO U. 8.	
+
+
+Kérdés: Keresse ki azokat az ügyfeleket, akiknek jelenleg nincsen rendelésük! Irassa ki az ügyfél számát, nevét, címét és a kapcsolatot tartó személy nevét!	
+Script: select u.ugyfel_szam, u.ugyfel_nev, u.cim, u.varos, u.megbizott from ugyfelek u where u.id not in (select ugyfelek_id from rendeles)	
+Eredmény: 3	
+
+346	PAPP AGNES	VEZER U. 19.	DEBRECEN	null	
+347	BIRO KATALIN	TESSEDIK U. 6.	DEBRECEN	null	
+350	TOTH KAROLYNE	DOMB U. 6.	BUDAPEST	null	
+
+
+Kérdés: Irassa ki azon autók típusát, rendszámát, napi kölcsönzési díját, amelyeknél a kölcsönzési díj értéke kevesebb, mint a RENAULT 19 típusé!	
+Script: select t.tipus_nev, a.rendszam, ac.napi_dij from autok a join tipusok t on a.tipusok_id=t.id join auto_csop ac on a.auto_csop_id=ac.id 
+where ac.napi_dij<(select ac.napi_dij from auto_csop ac join tipusok t on t.auto_csop_id=ac.id where t.tipus_nev='RENAULT 19')	
+Eredmény: 4	
+
+SKODA LX	ABC-021	5000	
+SKODA CL	ABC-022	5000	
+OPEL CORSA	CBN-301	5000	
+RENAULT TWINGO	CDD-115	5000	
+
+
+Kérdés: Készítsen listát, amely a rendelés számokat, a rendelő személy nevét, a rendelt autó típusát, leírását és a rendelés dátumát tartalmazza!	
+Script: select r.rendeles_szam, r.rendelo_szemely, t.tipus_nev, t.leiras, r.rendeles_datum from rendeles r join autok a on r.rendszam_id=a.id join tipusok t on a.tipusok_id=t.id	
+Eredmény: 12	
+
+12334	NAGY TIBORNE	OPEL ASTRA	CL 1.6 I 5-A	1993-12-01	
+12335	HOTEL CIVIS	RENAULT 19	RL 1.4 L KAT 3-A	1994-02-02	
+12336	HOTEL CIVIS	RENAULT 19	RL 1.4 L KAT 3-A	1994-02-02	
+12337	HILTON	FORD ESCORT	CL 1.8 DSL 5-A	1994-03-30	
+12338	MATAV IG.	OPEL ASTRA	CL 1.6 I 5-A	1994-03-30	
+12339	APEH IG.	OPEL VECTRA	TURBO 2.0 I 4-A	1994-04-02	
+12340	HOTEL CIVIS	FORD ESCORT	CL 1.8 DSL 5-A	1994-02-03	
+12341	IBUSZ IG.	OPEL ASTRA	CL 1.6 I 5-A	1994-04-04	
+12342	HILTON	RENAULT NEVADA	RTD 2.1 L KAT 5-	1994-04-04	
+12343	NAGY TIBORNE	RENAULT NEVADA	RTD 2.1 L KAT 5-	1994-05-04	
+12344	KOOS TIBOR	OPEL ASTRA	CL 1.6 I 5-A	1994-04-20	
+12345	HILTON	W VENTO CL	TD 1.9 L KAT	1994-04-21	
+
+
+Kérdés: Irassa ki a jelenleg kölcsönzött autók rendszámát, típus nevét, a kölcsönző ügyfél számát és nevét, valamint a rendelés dátumát!	
+Script: select a.rendszam, t.tipus_nev, u.ugyfel_szam, u.ugyfel_nev, r.rendeles_datum from ugyfelek u 
+join rendeles r on u.id=r.ugyfelek_id join autok a on r.rendszam_id=a.id join tipusok t on a.tipusok_id=t.id 
+where r.kolcson_kezdete+(r.napok*interval '1 day')<='1994-05-07'	
+Eredmény: 10	
+
+ABC-123	OPEL ASTRA	348	KISS VIKTÓRIA	1993-12-01	
+ABR-115	RENAULT 19	342	MOLNÁR PETER	1994-02-02	
+PHD-100	RENAULT 19	342	MOLNÁR PETER	1994-02-02	
+ABR-047	FORD ESCORT	344	ABEL ANETT	1994-03-30	
+ABC-123	OPEL ASTRA	343	PAPP ROBERT	1994-03-30	
+BAH-115	OPEL VECTRA	348	KISS VIKTÓRIA	1994-04-02	
+ABR-047	FORD ESCORT	345	TIBOR SMITH	1994-02-03	
+PHD-610	RENAULT NEVADA	344	ABEL ANETT	1994-04-04	
+CDE-324	RENAULT NEVADA	348	KISS VIKTÓRIA	1994-05-04	
+CIC-312	W VENTO CL	342	MOLNÁR PETER	1994-04-21	
+
+
+Kérdés: Irassa ki az összes autó rendszámát és típusát, akár az AUTOK táblában, akár a RENDELES táblában szerepel!	
+Script: select a.rendszam, t.tipus_nev from autok a join tipusok t on a.tipusok_id=t.id union select a.rendszam, t.tipus_nev from rendeles r 
+join autok a on r.rendszam_id=a.id join tipusok t on a.tipusok_id=t.id	
+Eredmény: 19	
+
+DHV-123	RENAULT LAGUNA	
+PHD-610	RENAULT NEVADA	
+CDD-115	RENAULT TWINGO	
+PDP-101	RENAULT ESPACE	
+CDD-115	FORD ESCORT	
+CBN-302	OPEL ASTRA	
+CBN-001	W VENTO CL	
+ABC-123	OPEL ASTRA	
+BAH-115	OPEL VECTRA	
+ABC-022	SKODA CL	
+DCD-324	RENAULT LAGUNA	
+ABR-115	RENAULT 19	
+ABR-047	FORD ESCORT	
+ABC-021	SKODA LX	
+PHD-100	RENAULT 19	
+CIC-312	W VENTO CL	
+CDE-324	RENAULT NEVADA	
+COD-705	W VENTO CL	
+CBN-301	OPEL CORSA	
+
+
+Kérdés: Irassa ki azon autók rendszámát és típusát az AUTOK táblából, amelyek nem szerepelnek a RENDELES táblában!	
+Script: select a.rendszam, t.tipus_nev from autok a join tipusok t on a.tipusok_id=t.id left join rendeles r on a.id=r.rendszam_id where r.rendszam_id is null	
+Eredmény: 11	
+
+DHV-123	RENAULT LAGUNA	
+ABC-021	SKODA LX	
+ABC-022	SKODA CL	
+COD-705	W VENTO CL	
+CBN-301	OPEL CORSA	
+CBN-302	OPEL ASTRA	
+CDD-115	FORD ESCORT	
+DCD-324	RENAULT LAGUNA	
+PDP-101	RENAULT ESPACE	
+CBN-001	W VENTO CL	
+CDD-115	RENAULT TWINGO	
+
+
+Kérdés: Irassa ki azon dolgozók nevét és beosztását, akiknek a beosztása azonos 'HERCEG' beosztásával!	
+Script: select al.alk_nev, al.beosztas from alkalmazott al where al.beosztas=(select beosztas from alkalmazott where alk_nev='HERCEG')	
+Eredmény: 6	
+
+KOVACS	ELADO	
+CSIKOS	ELADO	
+TRENCSENI	ELADO	
+HERCEG	ELADO	
+BOGNAR	ELADO	
+KISS	ELADO	
+
+
+Kérdés: Készítsen listát azon dolgozók beosztásáról és fizetéséről, akiknek beosztása és fizetése azonos'BOGNÁR' beosztásával és fizetésével!	
+Script: select al.beosztas, al.fizetes from alkalmazott al where al.beosztas=(select beosztas from alkalmazott where alk_nev='BOGNAR') 
+and al.fizetes=(select fizetes from alkalmazott where alk_nev='BOGNAR')	
+Eredmény: 2	
+
+ELADO	13000	
+ELADO	13000	
+
+
+Kérdés: Irassa ki azon dolgozók nevét és fizetését, akik kevesebbet keresnek, mint az azonos beosztású kollégáik átlagfizetése!	
+Script: select al.alk_nev, al.fizetes from alkalmazott al where al.fizetes<(select avg(fizetes) from alkalmazott where beosztas=al.beosztas)	
+Eredmény: 5	
+
+MOLNAR	18000	
+TOTH	20000	
+TRENCSENI	12100	
+HERCEG	11000	
+HORVAT	25000	
+
+
+Kérdés: Irassa ki azon autók rendszámát, típus nevét és kilométeróra állását, melyek többet futottak, mint az ABR-115!	
+Script: select a.rendszam, t.tipus_nev, a.futott_km from autok a join tipusok t on a.tipusok_id=t.id 
+where a.futott_km>(select a.futott_km from autok a where a.rendszam='ABR-115')	
+Eredmény: 3	
+
+ABR-047	FORD ESCORT	151003	
+PHD-100	RENAULT 19	151441	
+CBN-001	W VENTO CL	152311	
+
+
+Kérdés: Készítsen listát azokról az ügyfelekről, akik a NORMAL autócsoport autói közül rendeltek! 
+ A lista tartalmazza az ügyfél számát, a rendelt autó típusának nevét és a rendelés dátumát!	
+Script: select u.ugyfel_szam, t.tipus_nev, r.rendeles_datum from ugyfelek u join rendeles r on u.id=r.ugyfelek_id 
+join autok a on r.rendszam_id=a.id join tipusok t on r.tipusok_id=t.id join auto_csop ac on t.auto_csop_id=ac.id 
+where auto_csop_nev='NORMAL'	
+Eredmény: 1	
+
+343	SKODA LX	1994-04-20	
+
+
+Kérdés: Irassa ki azon ügyfelek nevét, címét, a várost, az országot, akik RENAULT 19 típusú autót kölcsönöztek!	
+Script: select u.ugyfel_nev, u.cim, u.varos, u.orszag from ugyfelek u join rendeles r on u.id=r.ugyfelek_id join autok a on r.rendszam_id=a.id 
+join tipusok t on a.tipusok_id=t.id where t.tipus_nev='RENAULT 19'	
+Eredmény: 2	
+
+MOLNÁR PETER	HILTON PRK. 1.	NEW YORK	USA	
+MOLNÁR PETER	HILTON PRK. 1.	NEW YORK	USA	
+
+
+Kérdés: Írassuk ki az ügyfélszámot, nevet, várost az ügyfelek táblájából azokra, akiknél a rendelést a 'HOTEL CÍVIS' adta fel!	
+Script: select u.ugyfel_szam, u.ugyfel_nev, u.varos from ugyfelek u join rendeles r on u.id=r.ugyfelek_id where r.rendelo_szemely='HOTEL CIVIS'	
+Eredmény: 3	
+
+342	MOLNÁR PETER	NEW YORK	
+342	MOLNÁR PETER	NEW YORK	
+345	TIBOR SMITH	PARIZS	
+
+
+Kérdés: Írassuk ki a debreceni és budapesti megrendelők autóinak típusát, rendszámát, kölcsönzési idejének kezdetét!	
+Script: select t.tipus_nev, a.rendszam, r.kolcson_kezdete from ugyfelek u join rendeles r on u.id=r.ugyfelek_id join autok a on r.rendszam_id=a.id 
+join tipusok t on a.tipusok_id=t.id where u.varos='DEBRECEN' or u.varos='BUDAPEST'	
+Eredmény: 6	
+
+OPEL ASTRA	ABC-123	1994-04-01	
+OPEL ASTRA	ABC-123	1994-04-05	
+OPEL VECTRA	BAH-115	1994-04-10	
+OPEL ASTRA	ABC-123	1994-05-01	
+RENAULT NEVADA	CDE-324	1994-04-10	
+OPEL ASTRA	ABC-123	1994-05-03	
+
+
+Kérdés: A rendelési táblából írjunk ki 'IGEN'-t, ha az ügyfél táblában 'PAPP ÁGNES' létezik!	
+Script: select case when u.ugyfel_nev='PAPP AGNES' then 'IGEN' else 'NEM' end as papp_agnes from ugyfelek u join rendeles r on u.id=r.ugyfelek_id	
+Eredmény: 12	
+
+NEM	
+NEM	
+NEM	
+NEM	
+NEM	
+NEM	
+NEM	
+NEM	
+NEM	
+NEM	
+NEM	
+NEM	
+
+
+Kérdés: Készítsen listát azokról a megrendelésekről, amelyekben a kölcsönzött autó szervízelési intervalluma hosszabb, mint az átlagos szervízelési intervallum!	
+Script: select r.rendeles_szam, r.rendelo_szemely, t.tipus_nev, t.szerviz_km, a.ut_szerviz from rendeles r join autok a on r.rendszam_id=a.id 
+join tipusok t on a.tipusok_id=t.id where t.szerviz_km>(select avg(szerviz_km) from tipusok)	
+Eredmény: 2	
+
+12342	HILTON	RENAULT NEVADA	75000	
+12343	NAGY TIBORNE	RENAULT NEVADA	75000	
+
+
+Kérdés: Irassa ki azon ügyfelek nevét és ügyfél számát, akiknek fizetési módja megegyezik a 'MOLNÁR PÉTER' nevű ügyfél fizetési módjával!	
+Script: select u.ugyfel_nev, u.ugyfel_szam from ugyfelek u where u.fizetesi_mod=(select fizetesi_mod from ugyfelek where ugyfel_nev='MOLNÁR PETER')	
+Eredmény: 4	
+
+MOLNÁR PETER	342	
+PAPP ROBERT	343	
+ABEL ANETT	344	
+KISS VIKTÓRIA	348	
+
+
+Kérdés: Irassa ki azon dolgozók nevét és kódját, akiknek beosztása szerepel a 'KÖZPONT' munkahelyen dolgozók beosztásai között!	
+Script: select al.alk_nev, al.alk_kod from alkalmazott al where al.beosztas in (select beosztas from alkalmazott al join reszleg r on al.reszleg_id=r.id where r.reszleg_nev='KOZPONT')	
+Eredmény: 1	
+
+SZABO	1239	
+
+
+Kérdés: Készítsen listát azokról az alkalmazottakról, akiknek beosztása megegyezik a'KIRÁLY' vagy a'KOVÁCS' nevű dolgozók beosztásával!	
+Script: select al.alk_nev, al.beosztas from alkalmazott al where al.beosztas in (select beosztas from alkalmazott where alk_nev='KIRALY' or alk_nev='KOVACS')	
+Eredmény: 8	
+
+KOVACS	ELADO	
+CSIKOS	ELADO	
+TOTH	VIZSGABIZTOS	
+TRENCSENI	ELADO	
+KIRALY	VIZSGABIZTOS	
+HERCEG	ELADO	
+BOGNAR	ELADO	
+KISS	ELADO	
+
+
+Kérdés: Irassa ki azoknak az ügyfeleknek a nevét és lakhelyét, akik az átlagos kölcsönzési díjnál magasabb díjat fizettek!	
+Script: select u.ugyfel_nev, u.varos from ugyfelek u join rendeles r on u.id=r.ugyfelek_id join autok a on r.rendszam_id=a.id join tipusok t on a.tipusok_id=t.id 
+join auto_csop ac on t.auto_csop_id=ac.id where ac.napi_dij>(select avg(napi_dij) from auto_csop)	
+Eredmény: 1	
+
+KISS VIKTÓRIA	BUDAPEST	
+
+
+Kérdés: Irassa ki azon ügyfelek nevét és ügyfél számát, akik olyan autót béreltek, amelyek jelenleg karbantartásra várnak!	
+Script: select u.ugyfel_nev, u.ugyfel_szam from ugyfelek u join rendeles r on u.id=r.ugyfelek_id join autok a on r.rendszam_id=a.id 
+where a.allapot='X'	
+Eredmény: 2	
+
+MOLNÁR PETER	342	
+MOLNÁR PETER	342	
+
+

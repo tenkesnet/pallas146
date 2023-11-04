@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1466e184-7c74-4863-b28d-08be7c90f734" name="Changes" comment="Json előkészítése javítás">
-      <change beforePath="$PROJECT_DIR$/../../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../auto_dlq2.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../auto_dlq2.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sql/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/../sql/.classpath" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sql/src/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/../sql/src/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sql/src/szotar/peldadb.java" beforeDir="false" afterPath="$PROJECT_DIR$/../sql/src/szotar/peldadb.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -33,10 +33,12 @@ public class peldadb {
                 //st.setInt(2, 0);
                 ResultSet result = st.executeQuery();
                 while (result.next()) {
+                    String sor="";
                     for(int oszlopSzam=1; oszlopSzam<=l.getOszlopSzam();oszlopSzam++){
-                        System.out.print(result.getString(oszlopSzam)+" ");
+                        //System.out.print(result.getString(oszlopSzam)+"\t");
+                        sor = sor +result.getString(oszlopSzam)+"\t";
                     }
-                    System.out.println("");
+                    System.out.println(sor);
                     //System.out.print(" ; Szin: " + result.getString("szin"));
                     //System.out.println(" ; Rendszám: " + result.getString("rendszam"));
                 }
