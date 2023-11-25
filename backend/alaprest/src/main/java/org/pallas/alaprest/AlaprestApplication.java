@@ -7,9 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class AlaprestApplication {
 
 	public static void main(String[] args) {
+		SpringApplication.run(AlaprestApplication.class, args);
 
-		var ctx= SpringApplication.run(AlaprestApplication.class, args);
-		ctx.getBeanDefinitionNames();
 	}
 
 }
