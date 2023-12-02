@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 public class MyRestController {
 
     @RequestMapping(value = "/testpost", method = RequestMethod.POST)
-    public ResponseEntity ElnokEmberei(@RequestBody Person person){
+    public ResponseEntity<PersonResponse> ElnokEmberei(@RequestBody Person person){
         PersonResponse result = new PersonResponse();
         result.setName(person.getName());
         if(person.getAge()<18){
@@ -19,6 +19,7 @@ public class MyRestController {
         }
         result.setBirthYear(2023-person.getAge());
         result.setAddress(person.getAddress());
+
         return new ResponseEntity(result, HttpStatus.OK);
     }
 
@@ -44,5 +45,37 @@ public class MyRestController {
     @RequestMapping(value = "/testpost", method = RequestMethod.DELETE)
     public String Csaba(){
         return "Ez egy DELETE végpont";
+    }
+
+    @RequestMapping(value = "/prim",method = RequestMethod.GET)
+    public String legnagyobbPrim(@RequestParam(required = false) String q){
+        if(q==null){
+            return "kell egy q paraméter";
+        }
+        int jegyekSzama=0; // "3" -> 3
+        try{
+            jegyekSzama=  Integer.parseInt(q);
+        } catch(NumberFormatException e){
+            return "A q paraméter szám kell legyen";
+        }
+        long i;
+        for(i=(long)Math.pow(10,jegyekSzama)-1; i>2;i--){
+            if(isPrime(i)){
+                break;
+            }
+        }
+        return "{ \"maxPrim\":"+i+"}";
+    }
+
+    public static boolean isPrime(long n) {
+        if (n <= 1) {
+            return false;
+        }
+        for (int i = 2; i <Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }
