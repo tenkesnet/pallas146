@@ -1,5 +1,6 @@
-package org.pallas.alaprest.controllers;
+package org.pallas.alaprest.model;
 
+import org.pallas.alaprest.interfaces.IRandomNumber;
 import org.springframework.stereotype.Component;
 
 @Component("BigRandomNumber")

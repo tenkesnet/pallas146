@@ -1,4 +1,4 @@
-package org.pallas.alaprest.models;
+package org.pallas.alaprest.model;
 
 public class Address {
     private String city;

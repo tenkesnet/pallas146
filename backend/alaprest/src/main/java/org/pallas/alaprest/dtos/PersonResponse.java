@@ -1,6 +1,6 @@
 package org.pallas.alaprest.dtos;
 
-import org.pallas.alaprest.models.Address;
+import org.pallas.alaprest.model.Address;
 
 public class PersonResponse {
     private String name;
