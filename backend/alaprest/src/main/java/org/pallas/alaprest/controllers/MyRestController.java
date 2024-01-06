@@ -1,19 +1,21 @@
 package org.pallas.alaprest.controllers;
 
 import org.pallas.alaprest.interfaces.IRandomNumber;
+import org.pallas.alaprest.model.RandomNumber;
 import org.pallas.alaprest.model.Person;
 import org.pallas.alaprest.dtos.PersonResponse;
-import org.pallas.alaprest.helper.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import static org.pallas.alaprest.helper.Util.isPrime;
+import org.pallas.alaprest.helper.Util;
 
 @RestController
 public class MyRestController {
+
     @Autowired
     private IRandomNumber randomNumber;
-
     @RequestMapping(value = "/testpost", method = RequestMethod.POST)
     public ResponseEntity<PersonResponse> ElnokEmberei(@RequestBody Person person){
         PersonResponse result = new PersonResponse();
@@ -64,15 +66,14 @@ public class MyRestController {
         }
         long i;
         for(i=(long)Math.pow(10,jegyekSzama)-1; i>2;i--){
-            if(Util.isPrime(i)){
+            if(isPrime(i)/*Util.isPrime(i)*/) {
                 break;
             }
         }
         return "{ \"maxPrim\":"+i+"}";
     }
-    @RequestMapping(value = "/random" ,method = RequestMethod.GET)
-    public String getRandom(){
-        return ""+randomNumber.getNumber();
+    @RequestMapping(value = "/random",method = RequestMethod.GET)
+    public String getRandom() {
+        return "" + randomNumber.getNumber();
     }
-
 }
