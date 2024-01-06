@@ -4,6 +4,8 @@ import org.pallas.alaprest.interfaces.IRandomNumber;
 import org.pallas.alaprest.model.RandomNumber;
 import org.pallas.alaprest.model.Person;
 import org.pallas.alaprest.dtos.PersonResponse;
+import org.pallas.alaprest.model.Tanulo;
+import org.pallas.alaprest.repository.ITanuloRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,11 +13,19 @@ import org.springframework.web.bind.annotation.*;
 import static org.pallas.alaprest.helper.Util.isPrime;
 import org.pallas.alaprest.helper.Util;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 @RestController
 public class MyRestController {
 
     @Autowired
     private IRandomNumber randomNumber;
+
+    @Autowired
+    private ITanuloRepository tanuloRepository;
+
     @RequestMapping(value = "/testpost", method = RequestMethod.POST)
     public ResponseEntity<PersonResponse> ElnokEmberei(@RequestBody Person person){
         PersonResponse result = new PersonResponse();
@@ -36,11 +46,24 @@ public class MyRestController {
     }
 
     @RequestMapping(value = "/testpost2",method = RequestMethod.GET)
-    public String teszt(@RequestParam(required = false) String q){
-        if(q==null){
+    public ResponseEntity teszt(@RequestParam(required = false) String q){
+        List<Tanulo> tanulok = tanuloRepository.findAll();
+
+        /*if(q==null){
             return "Ez egy GET végpont.";
         }
         return "Ez egy GET végpont :"+q;
+        for(Tanulo tanulo:tanulok){
+
+        }*/
+        return new ResponseEntity(tanulok,HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/testpost2", method = RequestMethod.POST)
+    public ResponseEntity tesztPost(@RequestBody Tanulo tanulo){
+        tanuloRepository.save(tanulo);
+        List<Tanulo> tanulok = tanuloRepository.findAll();
+        return new ResponseEntity(tanulok, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/testpost", method = RequestMethod.PUT)

@@ -11,7 +11,7 @@ import java.util.Date;
 public class Tanulo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
 
     @Column(nullable = false)
@@ -22,4 +22,19 @@ public class Tanulo {
 
     @Column
     private double weight;
+
+    @Column
+    private String hajSzin;
+
+
+    @Override
+    public String toString() {
+        return "Tanulo{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", birthDate=" + birthDate +
+                ", weight=" + weight +
+                ", hajSzin='" + hajSzin + '\'' +
+                '}';
+    }
 }
