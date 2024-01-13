@@ -3,6 +3,7 @@ package org.pallas.alaprest.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -11,14 +12,14 @@ import java.util.Date;
 public class Tanulo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(nullable = false)
     private String name;
 
     @Column
-    private Date birthDate;
+    private LocalDate birthDate;
 
     @Column
     private double weight;

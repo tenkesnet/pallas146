@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.*;
 import static org.pallas.alaprest.helper.Util.isPrime;
 import org.pallas.alaprest.helper.Util;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
+import java.util.*;
 
 @RestController
 public class MyRestController {
@@ -46,9 +48,24 @@ public class MyRestController {
     }
 
     @RequestMapping(value = "/testpost2",method = RequestMethod.GET)
-    public ResponseEntity teszt(@RequestParam(required = false) String q){
+    public ResponseEntity teszt(@RequestParam(required = false) String q,@RequestParam(required = false) String d){
         List<Tanulo> tanulok = tanuloRepository.findAll();
+        //List<Tanulo> tanulok = tanuloRepository.findAllByOrderByIdDesc();
+        if(q!=null){
+            tanulok = tanuloRepository.findByHajSzin(q);
+            return new ResponseEntity(tanulok,HttpStatus.OK);
+        }
+        if(d!=null){
+            LocalDate date;
+            try {
+                date = LocalDate.parse(d);
+            } catch (DateTimeParseException e){
+                date = LocalDate.parse("1975-01-20");
+            }
 
+            tanulok = tanuloRepository.findByBirthDate(date);
+            return new ResponseEntity(tanulok,HttpStatus.OK);
+        }
         /*if(q==null){
             return "Ez egy GET végpont.";
         }
@@ -62,7 +79,7 @@ public class MyRestController {
     @RequestMapping(value = "/testpost2", method = RequestMethod.POST)
     public ResponseEntity tesztPost(@RequestBody Tanulo tanulo){
         tanuloRepository.save(tanulo);
-        List<Tanulo> tanulok = tanuloRepository.findAll();
+        List<Tanulo> tanulok = tanuloRepository.findAllByOrderByIdAsc();
         return new ResponseEntity(tanulok, HttpStatus.OK);
     }
 
@@ -98,5 +115,37 @@ public class MyRestController {
     @RequestMapping(value = "/random",method = RequestMethod.GET)
     public String getRandom() {
         return "" + randomNumber.getNumber();
+    }
+    @RequestMapping(value = "/testpost3", method = RequestMethod.GET)
+    public ResponseEntity test(@RequestParam(required = false) String q) {
+        List<Tanulo> fiatalok = tanuloRepository.findAll();
+        if (q == null) {
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.GERMAN);
+            LocalDate date;
+            try {
+                date = LocalDate.parse("1980-01-01");
+            } catch (DateTimeParseException e) {
+                date = LocalDate.parse("1980-01-01");
+            }
+
+            fiatalok = tanuloRepository.findByBirthDateLessThan(date);
+            return new ResponseEntity(fiatalok, HttpStatus.OK);
+        }
+        if (q != null) {
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.GERMAN);
+            LocalDate start;
+            LocalDate end;
+            try {
+                start = LocalDate.parse("1980-01-01");
+                end = LocalDate.parse("1990-12-31");
+            } catch (DateTimeParseException e) {
+                start = LocalDate.parse("1980-01-01");
+                end = LocalDate.parse("1990-12-31");
+            }
+
+            fiatalok = tanuloRepository.findByBirthDateBetween(start, end);
+            return new ResponseEntity(fiatalok, HttpStatus.OK);
+        }
+        return new ResponseEntity(fiatalok, HttpStatus.OK);
     }
 }
