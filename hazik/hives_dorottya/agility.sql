@@ -1,3 +1,4 @@
+set search_path = agility;
 --show search_path;
 
 CREATE TABLE statusz (

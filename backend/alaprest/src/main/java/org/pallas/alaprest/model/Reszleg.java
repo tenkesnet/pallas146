@@ -38,6 +38,6 @@ public class Reszleg {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "reszleg")
     private List<Alkalmazott> alkalmazottak = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "reszleg")
-    private List<Autok> autok = new ArrayList<>();
+    //@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "reszleg")
+    //private List<Autok> autok = new ArrayList<>();
 }

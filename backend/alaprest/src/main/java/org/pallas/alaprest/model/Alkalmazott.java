@@ -48,7 +48,7 @@ public class Alkalmazott {
 	private Reszleg reszleg;
 
 	// @JsonIdentityReference(alwaysAsId = true)
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "alkalmazott")
-	private List<Autok> autok = new ArrayList<>();
+	//@OneToMany(fetch = FetchType.EAGER, mappedBy = "alkalmazott")
+	//private List<Autok> autok = new ArrayList<>();
 
 }
