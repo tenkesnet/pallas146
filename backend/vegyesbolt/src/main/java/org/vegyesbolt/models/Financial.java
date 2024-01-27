@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Embeddable
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "financialId")
 @Table(name = "financial")
 public class Financial {
     @Id
@@ -30,7 +30,5 @@ public class Financial {
     @ManyToOne
     @JoinColumn(name = "ertekesites_id", nullable = false)
     private Ertekesites ertekesites;
-    @ManyToOne
-    @JoinColumn(name = "kiadas_id", nullable = false)
-    private Kiadas kiadas;
+
 }

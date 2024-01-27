@@ -9,7 +9,6 @@ create table termekek(
 	termek_id serial primary key,
 	termek_megnevezes text,
 	beszallito_id int,
-	beszallito text,
 	termek_tipus text, --tejtermék,gyümölcs,zöldség,péksütemény,ital
 	termek_beszerzesi_ar int,
 	termek_eladasi_ar int,
@@ -160,7 +159,7 @@ insert into kiadas values
 	(7,'2023-01-02',(select beszallito_megnevezes from beszallitok where beszallito_megnevezes = 'Hentes & Hentes Bt.'),136780)
 ;
 
-insert into termekek values
+insert into termekek  values
 	(1,'Tejföl',1,(select beszallito_megnevezes from beszallitok where beszallito_id = 1),'tejtermék',120,150,30,3),
 	(2,'Kenyér',2,(select beszallito_megnevezes from beszallitok where beszallito_id = 2),'pékáru',300,450,150,1),
 	(3,'Zsemle',2,(select beszallito_megnevezes from beszallitok where beszallito_id = 2),'pékáru',80,120,40,1),

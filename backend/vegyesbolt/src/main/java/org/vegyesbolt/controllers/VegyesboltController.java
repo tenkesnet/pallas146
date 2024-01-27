@@ -3,6 +3,8 @@ package org.vegyesbolt.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.vegyesbolt.dtos.TermekekBaseDTO;
+import org.vegyesbolt.mappers.TermekekMapper;
 import org.vegyesbolt.models.*;
 import org.vegyesbolt.repositories.*;
 
@@ -26,8 +28,6 @@ public class VegyesboltController {
     @Autowired
     private IForgalomRepository forgalomRepository;
 
-    @Autowired
-    private IKiadasRepository kiadasRepository;
 
     @Autowired
     private IMasterdataRepository masterdataRepository;
@@ -58,10 +58,6 @@ public class VegyesboltController {
     public List<Forgalom> getForgalom(){
         return forgalomRepository.findAll();
     }
-    @GetMapping("/getKiadas")
-    public List<Kiadas> getKiadas(){
-        return kiadasRepository.findAll();
-    }
     @GetMapping("/getMasterdata")
     public List<Masterdata> getMasterdata(){
         return masterdataRepository.findAll();
@@ -71,8 +67,10 @@ public class VegyesboltController {
         return selejtRepository.findAll();
     }
     @GetMapping("/getTermekek")
-    public List<Termekek> getTermekek(){
-        return termekekRepository.findAll();
+    public List<TermekekBaseDTO> getTermekek(){
+        List<Termekek> termekek = termekekRepository.findAll();
+        return TermekekMapper.MAPPER.fromTermekek(termekek);
+        //return termekekRepository.findAll();
     }
 
 }

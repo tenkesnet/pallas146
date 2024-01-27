@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Embeddable
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "termekId")
 @Table(name = "termekek")
 public class Termekek {
     @Id
@@ -21,8 +21,6 @@ public class Termekek {
     @Column(nullable = false)
     public String termekMegnevezes;
     @Column(nullable = false)
-    public String beszallito;
-    @Column(nullable = false)
     public String termekTipus;
     @Column(nullable = false)
     public int termekBeszerzesiAr;
@@ -30,8 +28,8 @@ public class Termekek {
     public int termekEladasiAr;
     @Column(nullable = false)
     public int termekProfit;
-    @Column(nullable = false)
-    public int szavatossagiIdoHonap;
+    @Column
+    public Integer szavatossagiIdoHonap;
 
     //Ide már kell kapcsolatot írni!
     @ManyToOne
