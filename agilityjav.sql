@@ -1,5 +1,5 @@
 --show search_path;
-
+SET search_path= agility;
 
 create table szerep(
 id serial primary key,

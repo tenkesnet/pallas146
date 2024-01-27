@@ -2,7 +2,7 @@
 --drop table if exists termekek;
 --drop table beszallitok cascade;
 --alter table sz_auto drop constraint FK_sz_autotipus_sz_auto;
-
+create schema if not exists vegyesbolt;
 set search_path = vegyesbolt;
 
 create table termekek(
@@ -81,7 +81,7 @@ create table fenntartasi_koltsegek (
 );
 
 create table dolgozok (
-	dolgozo_id int,
+	dolgozo_id serial,
 	nev text,
 	eletkor int,
 	lokacio text,
@@ -91,7 +91,7 @@ create table dolgozok (
 	ado_kedvezmeny text,
 	biztosito_id int, --fk_biztosito(biztosito_id)_dolgozok(biztosito_id)
 	bolt_id int, --fk_boltok(bolt_id)_dolgozok(bolt_id)
-	primary key(dolgozo_id,nev)	
+	primary key(dolgozo_id)	
 );
 
 create table boltok (
@@ -101,11 +101,6 @@ create table boltok (
 	biztosito_id int --fk_biztosito(biztosito_id)_boltok(biztosito_id)
 );
 
-alter table dolgozok  
-add constraint FK_dolgozok_boltok
-foreign key (bolt_id) 
-references boltok (bolt_id) 
-on update set null on delete set null;
 
 create table biztosito (
 	biztosito_id serial primary key,
@@ -136,6 +131,35 @@ foreign key (bolt_id)
 references boltok (bolt_id) 
 on update set null on delete set null;
 
+
+insert into biztosito values
+	(1,'Telelóvé Ingatlanbiztosítási Zrt.','Budapest','Gazdagság u. 1','Ingatlan','2000-01-03','2030-01-03',40),
+	(2,'Aranyélet Személy-és vagyonbiztosítási Zrt.','Budapest','Fényűzés u. 2','Személy','2000-01-03','2030-01-03',10)
+;
+insert into boltok values
+	(1,'Budapest','Régi u. 45',2),
+	(2,'Békéscsaba','Új u. 54',2)
+;
+insert into beszallitok values
+	(1,'Tejtermelő Bocik Kft.','Ny-Magyarország',1111,'Szombathely','Nincstelen u. 12'),
+	(2,'Kovászmester Bt.','K-Magyarország',1122,'Debrecen','Végtelen u. 67'),
+	(3,'Paradicsom Király Zrt.','Ny-Magyarország',2211,'Sopron','Nincsneve u. 121'),
+	(4,'Tóth Jákob EV','D-Magyarország',3300,'Szeged','Árvíz u. 98'),
+	(5,'Édenkert Gyümölcsei Kft.','É-Magyarország',6789,'Mátra','Erőmű u. 1'),
+	(6,'Magyar Napilap nyomda Zrt.','Ny-Magyarország',1111,'Szombathely','Sas u. 5'),
+	(7,'Hentes & Hentes Bt.','É-Magyarország',9999,'Miskolc','Csibész u. 57')
+;
+
+insert into kiadas values
+	(1,'2023-01-02',(select beszallito_megnevezes from beszallitok where beszallito_megnevezes = 'Tejtermelő Bocik Kft.'),134520),
+	(2,'2023-01-02',(select beszallito_megnevezes from beszallitok where beszallito_megnevezes = 'Kovászmester Bt.'),80950),
+	(3,'2023-01-02',(select beszallito_megnevezes from beszallitok where beszallito_megnevezes = 'Paradicsom Király Zrt.'),25000),
+	(4,'2023-01-02',(select beszallito_megnevezes from beszallitok where beszallito_megnevezes = 'Tóth Jákob EV'),115000),
+	(5,'2023-01-02',(select beszallito_megnevezes from beszallitok where beszallito_megnevezes = 'Édenkert Gyümölcsei Kft.'),75890),
+	(6,'2023-01-02',(select beszallito_megnevezes from beszallitok where beszallito_megnevezes = 'Magyar Napilap nyomda Zrt.'),19500),
+	(7,'2023-01-02',(select beszallito_megnevezes from beszallitok where beszallito_megnevezes = 'Hentes & Hentes Bt.'),136780)
+;
+
 insert into termekek values
 	(1,'Tejföl',1,(select beszallito_megnevezes from beszallitok where beszallito_id = 1),'tejtermék',120,150,30,3),
 	(2,'Kenyér',2,(select beszallito_megnevezes from beszallitok where beszallito_id = 2),'pékáru',300,450,150,1),
@@ -164,15 +188,6 @@ insert into termekek values
 	(25,'"Pletykamánia" - Újság',6,(select beszallito_megnevezes from beszallitok where beszallito_id = 6),'egyéb',1000,1150,150,null)
 ;
 
-insert into beszallitok values
-	(1,'Tejtermelő Bocik Kft.','Ny-Magyarország',1111,'Szombathely','Nincstelen u. 12'),
-	(2,'Kovászmester Bt.','K-Magyarország',1122,'Debrecen','Végtelen u. 67'),
-	(3,'Paradicsom Király Zrt.','Ny-Magyarország',2211,'Sopron','Nincsneve u. 121'),
-	(4,'Tóth Jákob EV','D-Magyarország',3300,'Szeged','Árvíz u. 98'),
-	(5,'Édenkert Gyümölcsei Kft.','É-Magyarország',6789,'Mátra','Erőmű u. 1'),
-	(6,'Magyar Napilap nyomda Zrt.','Ny-Magyarország',1111,'Szombathely','Sas u. 5'),
-	(7,'Hentes & Hentes Bt.','É-Magyarország',9999,'Miskolc','Csibész u. 57')
-;
 
 insert into dolgozok values
 	(1,'Farkas Piroska',72,(select varos from boltok where bolt_id = 1),120000,180000,'2002-02-10','--',(select biztosito_id from biztosito where biztosito_id  = 2),(select bolt_id from boltok where varos = 'Budapest')),
@@ -188,15 +203,8 @@ insert into dolgozok values
 ;
 
 
-insert into biztosito values
-	(1,'Telelóvé Ingatlanbiztosítási Zrt.','Budapest','Gazdagság u. 1','Ingatlan','2000-01-03','2030-01-03',40),
-	(2,'Aranyélet Személy-és vagyonbiztosítási Zrt.','Budapest','Fényűzés u. 2','Személy','2000-01-03','2030-01-03',10)
-;	
 
-insert into boltok values
-	(1,'Budapest','Régi u. 45',2),
-	(2,'Békéscsaba','Új u. 54',2)
-;
+
 
 insert into selejt values
 	(1,'2023-01-01',
@@ -273,15 +281,7 @@ insert into ertekesites  values
 	(46,'2023-01-02','15:59:10',1,22340)
 ;
 
-insert into kiadas values
-	(1,'2023-01-02',(select beszallito_megnevezes from beszallitok where beszallito_megnevezes = 'Tejtermelő Bocik Kft.'),134520),
-	(2,'2023-01-02',(select beszallito_megnevezes from beszallitok where beszallito_megnevezes = 'Kovászmester Bt.'),80950),
-	(3,'2023-01-02',(select beszallito_megnevezes from beszallitok where beszallito_megnevezes = 'Paradicsom Király Zrt.'),25000),
-	(4,'2023-01-02',(select beszallito_megnevezes from beszallitok where beszallito_megnevezes = 'Tóth Jákob EV'),115000),
-	(5,'2023-01-02',(select beszallito_megnevezes from beszallitok where beszallito_megnevezes = 'Édenkert Gyümölcsei Kft.'),75890),
-	(6,'2023-01-02',(select beszallito_megnevezes from beszallitok where beszallito_megnevezes = 'Magyar Napilap nyomda Zrt.'),19500),
-	(7,'2023-01-02',(select beszallito_megnevezes from beszallitok where beszallito_megnevezes = 'Hentes & Hentes Bt.'),136780)
-;
+
 /*delete from forgalom ;*/
 insert into forgalom values
 	(1,'2023-01-02',
