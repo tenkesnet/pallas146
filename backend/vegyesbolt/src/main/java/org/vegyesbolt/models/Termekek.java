@@ -34,5 +34,5 @@ public class Termekek {
     //Ide már kell kapcsolatot írni!
     @ManyToOne
     @JoinColumn(name = "beszallito_id", nullable = false)
-    private Beszallitok beszallitok;
+    public Beszallitok beszallitok;
 }
