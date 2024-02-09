@@ -57,11 +57,7 @@ create table kiadas (
 	kiadas int 
 );
 
-alter table termekek 
-add constraint FK_termekek_kiadas
-foreign key (beszallito) 
-references kiadas (beszallito) 
-on update set null on delete set null;
+
 
 create table forgalom (
 	forgalom_id serial primary key,
@@ -160,31 +156,31 @@ insert into kiadas values
 ;
 
 insert into termekek  values
-	(1,'Tejföl',1,(select beszallito_megnevezes from beszallitok where beszallito_id = 1),'tejtermék',120,150,30,3),
-	(2,'Kenyér',2,(select beszallito_megnevezes from beszallitok where beszallito_id = 2),'pékáru',300,450,150,1),
-	(3,'Zsemle',2,(select beszallito_megnevezes from beszallitok where beszallito_id = 2),'pékáru',80,120,40,1),
-	(4,'Tej 1,5%',1,(select beszallito_megnevezes from beszallitok where beszallito_id = 1),'tejtermék',280,310,30,1),
-	(5,'Tej 2,6%',1,(select beszallito_megnevezes from beszallitok where beszallito_id = 1),'tejtermék',280,350,70,1),
-	(6,'Paradicsom',3,(select beszallito_megnevezes from beszallitok where beszallito_id = 3),'zöldség',200,350,150,1),
-	(7,'Uborka',4,(select beszallito_megnevezes from beszallitok where beszallito_id = 4),'zöldség',100,150,50,2),
-	(8,'Saláta',4,(select beszallito_megnevezes from beszallitok where beszallito_id = 4),'zöldség',400,450,50,4),
-	(9,'Kifli',2,(select beszallito_megnevezes from beszallitok where beszallito_id = 2),'pékáru',10,30,20,1),
-	(10,'Hagyma',4,(select beszallito_megnevezes from beszallitok where beszallito_id = 4),'zöldség',800,1250,450,1),
-	(11,'Alma',5,(select beszallito_megnevezes from beszallitok where beszallito_id = 5),'gyümölcs',200,350,150,2),
-	(12,'Szőlő',5,(select beszallito_megnevezes from beszallitok where beszallito_id = 5),'gyümölcs',120,150,30,2),
-	(13,'Sajt normál',1,(select beszallito_megnevezes from beszallitok where beszallito_id = 1),'tejtermék',220,350,130,1),
-	(14,'Sajt laktózmentes',1,(select beszallito_megnevezes from beszallitok where beszallito_id = 1),'tejtermék',220,450,230,1),
-	(15,'"Mindent az SQL-ről" - Újság',6,(select beszallito_megnevezes from beszallitok where beszallito_id = 6),'egyéb',1100,1550,450,null),
-	(16,'Szalámi',7,(select beszallito_megnevezes from beszallitok where beszallito_id = 7),'hús',420,450,30,1),
-	(17,'Sonka',7,(select beszallito_megnevezes from beszallitok where beszallito_id = 7),'hús',190,250,60,1),
-	(18,'Párizsi szelet',7,(select beszallito_megnevezes from beszallitok where beszallito_id = 7),'hús',600,750,150,1),
-	(19,'Lapocka',7,(select beszallito_megnevezes from beszallitok where beszallito_id = 7),'hús',1200,1500,300,3),
-	(20,'Kenőmájas',7,(select beszallito_megnevezes from beszallitok where beszallito_id = 7),'hús',90,350,260,2),
-	(21,'Kakaóscsiga',2,(select beszallito_megnevezes from beszallitok where beszallito_id = 2),'pékáru',200,300,100,1),
-	(22,'Pizzás csiga',2,(select beszallito_megnevezes from beszallitok where beszallito_id = 2),'pékáru',200,300,100,1),
-	(23,'Kuglóf',2,(select beszallito_megnevezes from beszallitok where beszallito_id = 2),'pékáru',360,450,90,2),
-	(24,'"Java titánok" - Újság',6,(select beszallito_megnevezes from beszallitok where beszallito_id = 6),'egyéb',2000,2350,350,null),
-	(25,'"Pletykamánia" - Újság',6,(select beszallito_megnevezes from beszallitok where beszallito_id = 6),'egyéb',1000,1150,150,null)
+	(1,'Tejföl',1,'tejtermék',120,150,30,3),
+	(2,'Kenyér',2,'pékáru',300,450,150,1),
+	(3,'Zsemle',2,'pékáru',80,120,40,1),
+	(4,'Tej 1,5%',1,'tejtermék',280,310,30,1),
+	(5,'Tej 2,6%',1,'tejtermék',280,350,70,1),
+	(6,'Paradicsom',3,'zöldség',200,350,150,1),
+	(7,'Uborka',4,'zöldség',100,150,50,2),
+	(8,'Saláta',4,'zöldség',400,450,50,4),
+	(9,'Kifli',2,'pékáru',10,30,20,1),
+	(10,'Hagyma',4,'zöldség',800,1250,450,1),
+	(11,'Alma',5,'gyümölcs',200,350,150,2),
+	(12,'Szőlő',5,'gyümölcs',120,150,30,2),
+	(13,'Sajt normál',1,'tejtermék',220,350,130,1),
+	(14,'Sajt laktózmentes',1,'tejtermék',220,450,230,1),
+	(15,'"Mindent az SQL-ről" - Újság',6,'egyéb',1100,1550,450,null),
+	(16,'Szalámi',7,'hús',420,450,30,1),
+	(17,'Sonka',7,'hús',190,250,60,1),
+	(18,'Párizsi szelet',7,'hús',600,750,150,1),
+	(19,'Lapocka',7,'hús',1200,1500,300,3),
+	(20,'Kenőmájas',7,'hús',90,350,260,2),
+	(21,'Kakaóscsiga',2,'pékáru',200,300,100,1),
+	(22,'Pizzás csiga',2,'pékáru',200,300,100,1),
+	(23,'Kuglóf',2,'pékáru',360,450,90,2),
+	(24,'"Java titánok" - Újság',6,'egyéb',2000,2350,350,null),
+	(25,'"Pletykamánia" - Újság',6,'egyéb',1000,1150,150,null)
 ;
 
 
