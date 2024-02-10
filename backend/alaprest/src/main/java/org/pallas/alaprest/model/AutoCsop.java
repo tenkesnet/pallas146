@@ -27,7 +27,7 @@ public class AutoCsop {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public int id;
+	public Integer id;
 	
 	@Column(length = 6, nullable = false)
 	public String autoCsopNev;

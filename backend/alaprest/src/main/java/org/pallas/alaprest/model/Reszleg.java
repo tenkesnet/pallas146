@@ -3,6 +3,7 @@ package org.pallas.alaprest.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -18,7 +19,10 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.*;
 
-@Entity @Data @NoArgsConstructor @Embeddable
+@Entity
+@Data
+@NoArgsConstructor
+@Embeddable
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 @Table(name = "RESZLEG")
 public class Reszleg {
@@ -36,8 +40,7 @@ public class Reszleg {
     private String reszlegCim;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "reszleg")
+    @JsonBackReference
     private List<Alkalmazott> alkalmazottak = new ArrayList<>();
 
-    //@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "reszleg")
-    //private List<Autok> autok = new ArrayList<>();
 }

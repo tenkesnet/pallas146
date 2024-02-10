@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -31,8 +29,8 @@ import lombok.NoArgsConstructor;
 public class Alkalmazott {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public int id;
-	public int alkKod;
+	public Integer id;
+	public Integer alkKod;
 	@Column(length = 20, nullable = false)
 	public String alkNev;
 	@Column(length = 16, nullable = false)
@@ -42,13 +40,15 @@ public class Alkalmazott {
 	public Integer premium;
 	public Date belepes;
 
-	@JsonIdentityReference(alwaysAsId = true)
+	//@JsonIdentityReference(alwaysAsId = true)
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "RESZLEG_ID", referencedColumnName = "ID")
+	@JsonManagedReference
 	private Reszleg reszleg;
 
-	// @JsonIdentityReference(alwaysAsId = true)
-	//@OneToMany(fetch = FetchType.EAGER, mappedBy = "alkalmazott")
-	//private List<Autok> autok = new ArrayList<>();
+	@JsonIdentityReference(alwaysAsId = true)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "alkalmazott")
+	@JsonBackReference
+	private List<Autok> autok = new ArrayList<>();
 
 }
