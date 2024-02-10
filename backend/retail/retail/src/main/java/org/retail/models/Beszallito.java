@@ -11,13 +11,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Embeddable
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "beszallito_id")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "beszallitoId")
 @Table(name = "beszallito")
 public class Beszallito {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int beszallitoId;
+    public Integer beszallitoId;
 
     @Column(nullable = false)
     public String beszallitoNev;
@@ -26,11 +26,13 @@ public class Beszallito {
     public String termek;
 
     @Column(nullable = false)
-    public int koltseg;
+    public Integer koltseg;
 
     @Column(nullable = false)
     public String cim;
 
-    @Column(nullable = false)
-    public int kozpontId;
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "kozpont_id")
+    public Kozpont kozpont;
+
 }

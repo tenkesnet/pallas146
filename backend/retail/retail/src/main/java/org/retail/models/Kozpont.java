@@ -14,24 +14,24 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data @NoArgsConstructor @AllArgsConstructor @Embeddable
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "kozpont_id")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "kozpontId")
 @Table(name = "kozpont")
 public class Kozpont {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int kozpontId;
+    public Integer kozpontId;
 
     @Column(nullable = false)
     public String kozpontNev;
 
     @Column(nullable = false)
-    public int bevetel;
+    public Integer bevetel;
 
     @Column(nullable = false)
-    public int kiadas;
+    public Integer kiadas;
 
     @Column(nullable = false)
-    public int dolgozokSzama;
+    public Integer dolgozokSzama;
 
     @Column(nullable = false)
     public String cim;

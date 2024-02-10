@@ -14,22 +14,23 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data @NoArgsConstructor @AllArgsConstructor @Embeddable
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "raktar_id")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "raktarId")
 @Table(name = "raktar")
 public class Raktar {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int raktarId;
+    public Integer raktarId;
 
     @Column(nullable = false)
     public String raktarNev;
 
     @Column(nullable = false)
-    public int dolgozokSzama;
+    public Integer dolgozokSzama;
 
     @Column(nullable = false)
     public String cim;
 
-    @Column(nullable = false)
-    public int kozpontId;
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "kozpont_id")
+    public Kozpont kozpont;
 }

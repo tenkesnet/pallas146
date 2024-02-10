@@ -12,26 +12,27 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Embeddable
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "bolt_id")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "boltId")
 @Table(name = "bolt")
 public class Bolt {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int boltId;
+    public Integer boltId;
 
     @Column(nullable = false)
     public String boltNev;
 
     @Column(nullable = false)
-    public int bevetel;
+    public Integer bevetel;
 
     @Column(nullable = false)
-    public int raktarId;
-
-    @Column(nullable = false)
-    public int dolgozokSzama;
+    public Integer dolgozokSzama;
 
     @Column(nullable = false)
     public String cim;
+
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "raktar_id")
+    public Raktar raktar;
 }
