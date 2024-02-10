@@ -55,7 +55,11 @@ foreign key (kozpont_id)
 references kozpont(kozpont_id) 
 on update set null on delete set null;
 
---Az instert into részt újra megcsinálni!!!
+
+
+insert into kozpont (kozpont_nev,bevetel,kiadas,dolgozok_szama,cim) values 
+	('Siklósi Központ',null,null,82,'Siklós,Kereskedelem utca 1')
+;
 
 insert into raktar (raktar_id,raktar_nev,dolgozok_szama,cim, kozpont_id) values 
 	(1,'Keszthelyi Logisztikai Központ',125,'Keszthely,Targoncások útja 1',1),
@@ -70,10 +74,6 @@ insert into bolt (bolt_nev,bevetel,raktar_id,dolgozok_szama,cim) values
 	('005',30000,2,4,'Pécs,Szegény köz 2')
 ;
 
-insert into kozpont (kozpont_nev,bevetel,kiadas,dolgozok_szama,cim) values 
-	('Siklósi Központ',(select sum(bevetel) from bolt),(select sum(koltseg) from beszallito),82,'Siklós,Kereskedelem utca 1')
-;
-
 insert into beszallito (beszallito_nev,termek,koltseg,cim,kozpont_id) values 
 	('Tuti Malac Kft.','hús',2250000,'Kecskemét, Hízlalda út 19',1),
 	('Everyday Newspaper Inc.','újság',112000,'London, Paper street 59',1),
@@ -82,6 +82,8 @@ insert into beszallito (beszallito_nev,termek,koltseg,cim,kozpont_id) values
 	('Harapnijó 2024 Kft.','zöldség',5550000,'Kecskemét, Kertekalatt út 67',1),
 	('Tutikovács Bt.','szerszám',15000,'Sopron, Öntöde köz 167',1)
 ;
+
+update kozpont set bevetel = (select sum(bevetel) from bolt), kiadas = (select sum(koltseg) from beszallito);
 
 
 
