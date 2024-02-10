@@ -1,4 +1,5 @@
 package org.retail.models;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
@@ -33,6 +34,8 @@ public class Beszallito {
 
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "kozpont_id")
+    @JsonBackReference
     public Kozpont kozpont;
+
 
 }

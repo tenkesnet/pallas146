@@ -1,3 +1,6 @@
+create schema if not exists retail;
+set search_path = retail;
+
 drop table if exists AUTO_CSOP CASCADE ; 
 drop table if exists TIPUSOK CASCADE ; 
 drop table if exists AUTOK CASCADE ;

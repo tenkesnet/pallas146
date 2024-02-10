@@ -2,9 +2,7 @@ package org.retail.models;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 
 
 import jakarta.persistence.*;
@@ -14,7 +12,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data @NoArgsConstructor @AllArgsConstructor @Embeddable
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "raktarId")
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "raktarId")
 @Table(name = "raktar")
 public class Raktar {
     @Id
@@ -25,12 +23,17 @@ public class Raktar {
     public String raktarNev;
 
     @Column(nullable = false)
-    public Integer dolgozokSzama;
+    public Integer dolgozokSzamaRaktar;
 
     @Column(nullable = false)
     public String cim;
 
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "kozpont_id")
+    @JsonBackReference
     public Kozpont kozpont;
+
+    @OneToMany(mappedBy = "raktar")
+    @JsonManagedReference
+    List<Bolt> boltok;
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 
@@ -31,8 +32,16 @@ public class Kozpont {
     public Integer kiadas;
 
     @Column(nullable = false)
-    public Integer dolgozokSzama;
+    public Integer dolgozokSzamaKozpont;
 
     @Column(nullable = false)
     public String cim;
+
+    @OneToMany(mappedBy = "kozpont")
+    @JsonManagedReference
+    List<Raktar> raktarak;
+
+    @OneToMany(mappedBy = "kozpont")
+    @JsonManagedReference
+    List<Beszallito> beszallitok;
 }

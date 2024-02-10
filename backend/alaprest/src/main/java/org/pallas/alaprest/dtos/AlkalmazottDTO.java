@@ -22,9 +22,4 @@ public class AlkalmazottDTO {
 	public Integer premium;
 	public Date belepes;
 	private Reszleg reszleg;
-
-	// @JsonIdentityReference(alwaysAsId = true)
-	//@OneToMany(fetch = FetchType.EAGER, mappedBy = "alkalmazott")
-	//private List<Autok> autok = new ArrayList<>();
-
-}
+	}

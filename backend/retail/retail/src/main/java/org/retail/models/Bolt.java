@@ -1,5 +1,6 @@
 package org.retail.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
@@ -27,12 +28,13 @@ public class Bolt {
     public Integer bevetel;
 
     @Column(nullable = false)
-    public Integer dolgozokSzama;
+    public Integer dolgozokSzamaBolt;
 
     @Column(nullable = false)
     public String cim;
 
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "raktar_id")
+    @JsonBackReference
     public Raktar raktar;
 }

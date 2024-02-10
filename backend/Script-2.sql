@@ -6,14 +6,14 @@ create table bolt(
 	bolt_nev text,
 	bevetel int,
 	raktar_id int,
-	dolgozok_szama int,
+	dolgozok_szama_bolt int,
 	cim text
 );
 --drop table if exists raktar;
 create table raktar(
 	raktar_id serial primary key,
 	raktar_nev text,
-	dolgozok_szama int,
+	dolgozok_szama_raktar int,
 	cim text,
 	kozpont_id int
 );
@@ -32,7 +32,7 @@ create table kozpont(
 	kozpont_nev text,
 	bevetel int,
 	kiadas int,
-	dolgozok_szama int,
+	dolgozok_szama_kozpont int,
 	cim text
 );
 
@@ -57,16 +57,16 @@ on update set null on delete set null;
 
 
 
-insert into kozpont (kozpont_nev,bevetel,kiadas,dolgozok_szama,cim) values 
+insert into kozpont (kozpont_nev,bevetel,kiadas,dolgozok_szama_kozpont,cim) values 
 	('Siklósi Központ',null,null,82,'Siklós,Kereskedelem utca 1')
 ;
 
-insert into raktar (raktar_id,raktar_nev,dolgozok_szama,cim, kozpont_id) values 
+insert into raktar (raktar_id,raktar_nev,dolgozok_szama_raktar,cim, kozpont_id) values 
 	(1,'Keszthelyi Logisztikai Központ',125,'Keszthely,Targoncások útja 1',1),
 	(2,'Zalaegerszegi Logisztikai Központ',119,'Zalaegerszeg,Pakoló inasok utca 1',1)
 ;
 
-insert into bolt (bolt_nev,bevetel,raktar_id,dolgozok_szama,cim) values 
+insert into bolt (bolt_nev,bevetel,raktar_id,dolgozok_szama_bolt,cim) values 
 	('001',5300000,1,15,'Budapest,Nevenincs utca 1'),
 	('002',7460000,1,17,'Budapest,Seholsincs út 11'),
 	('003',700000,2,9,'Békéscsaba,Valaholvan utca 71'),
