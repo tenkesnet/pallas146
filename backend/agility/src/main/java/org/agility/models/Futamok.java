@@ -56,6 +56,5 @@ class FutamokId implements Serializable{
     private int id;
     private LocalDateTime kezdoIdopont;
     private int kutyak;
-
 }
 
