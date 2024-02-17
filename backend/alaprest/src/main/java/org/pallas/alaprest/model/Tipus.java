@@ -1,15 +1,16 @@
 package org.pallas.alaprest.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.pallas.alaprest.model.Autok;
 
+import java.util.ArrayList;
 import java.util.List;
 
-@Entity
 @Data
+@Entity
 @Table(name = "TIPUSOK")
 public class Tipus {
 
@@ -21,16 +22,22 @@ public class Tipus {
     public String  tipusNev ;
 
     @Column(length = 6, nullable = false)
-    public String  leiras ;
-    public int SzervizKm;
+    public String leiras ;
+    public int szervizKm;
+
+    @ManyToOne
+    @JoinColumn(name = "AUTO_CSOP_ID", referencedColumnName = "ID")
+    public AutoCsop autoCsop;
 
 	@JsonIdentityReference(alwaysAsId = true)
-	@OneToMany(fetch=FetchType.EAGER, mappedBy = "tipus")
-	private List<Autok> autok;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "tipus")
+    @JsonBackReference
+    private List<Rendeles> rendeles = new ArrayList<>();
 
 	@JsonIdentityReference(alwaysAsId = true)
-	@OneToMany(fetch=FetchType.EAGER, mappedBy = "tipus")
-	private List <Rendeles> rendeles;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "tipus")
+    @JsonBackReference
+    private List<Autok> autok = new ArrayList<>();
 
 
 }

@@ -15,11 +15,15 @@ import java.util.Date;
 @Data @NoArgsConstructor @AllArgsConstructor @Embeddable
 public class AlkalmazottDTO {
 	public int id;
-	public int alkKod;
-	public String alkNev;
+	public String nev;
 	public String beosztas;
 	public Integer fizetes;
 	public Integer premium;
 	public Date belepes;
-	private Reszleg reszleg;
-	}
+	private String reszlegNev;
+
+	// @JsonIdentityReference(alwaysAsId = true)
+	//@OneToMany(fetch = FetchType.EAGER, mappedBy = "alkalmazott")
+	//private List<Autok> autok = new ArrayList<>();
+
+}
