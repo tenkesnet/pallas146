@@ -1,6 +1,7 @@
 package org.pallas.alaprest.controllers;
 
 import org.pallas.alaprest.dtos.AlkalmazottDTO;
+import org.pallas.alaprest.mappers.AlkalmazottMapper;
 import org.pallas.alaprest.model.Alkalmazott;
 import org.pallas.alaprest.model.Reszleg;
 import org.pallas.alaprest.repository.IAlkalmazottRepository;
@@ -8,10 +9,7 @@ import org.pallas.alaprest.repository.IReszlegRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -29,8 +27,8 @@ public class AlkalmazottController {
         return alkalmazottRepository.findAll();
     }
 
-    @GetMapping("{id}")
-    public ResponseEntity<?> getByid(@PathVariable String id){
+    /*@GetMapping("{id}")
+    public ResponseEntity getByid(@PathVariable String id){
         try {
             int idTemp=Integer.parseInt(id);
             Alkalmazott a=alkalmazottRepository.findById(idTemp).get();
@@ -45,5 +43,7 @@ public class AlkalmazottController {
         } catch (NumberFormatException e){
             return new ResponseEntity(e, HttpStatus.BAD_REQUEST);
         }
-    }
+    }*/
+
+
 }
