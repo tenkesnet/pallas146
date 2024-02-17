@@ -30,7 +30,7 @@ public class AlkalmazottController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity getByid(@PathVariable String id){
+    public ResponseEntity<?> getByid(@PathVariable String id){
         try {
             int idTemp=Integer.parseInt(id);
             Alkalmazott a=alkalmazottRepository.findById(idTemp).get();

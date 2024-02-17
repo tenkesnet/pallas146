@@ -6,6 +6,7 @@ import org.pallas.alaprest.model.Person;
 import org.pallas.alaprest.dtos.PersonResponse;
 import org.pallas.alaprest.model.Tanulo;
 import org.pallas.alaprest.repository.ITanuloRepository;
+import org.pallas.alaprest.services.MyRestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,12 +24,15 @@ import java.util.*;
 
 @RestController
 public class MyRestController {
+    private final IRandomNumber randomNumber;
+    private final ITanuloRepository tanuloRepository;
+    private final MyRestService myRestService;
 
-    @Autowired
-    private IRandomNumber randomNumber;
-
-    @Autowired
-    private ITanuloRepository tanuloRepository;
+    public MyRestController(IRandomNumber randomNumber, ITanuloRepository tanuloRepository, MyRestService myRestService) {
+        this.randomNumber = randomNumber;
+        this.tanuloRepository = tanuloRepository;
+        this.myRestService = myRestService;
+    }
 
     @RequestMapping(value = "/testpost", method = RequestMethod.POST)
     public ResponseEntity<PersonResponse> ElnokEmberei(@RequestBody Person person) {
@@ -122,46 +126,7 @@ public class MyRestController {
 
     @RequestMapping(value = "/testpost3", method = RequestMethod.GET)
     public ResponseEntity test(@RequestParam(required = false) String q, @RequestParam(required = false) String from, @RequestParam(required = false) String to) {
-        List<Tanulo> fiatalok = tanuloRepository.findAll();
-        if (q == null && from == null && to == null) {
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.GERMAN);
-            LocalDate date;
-            try {
-                date = LocalDate.parse("1980-01-01");
-            } catch (DateTimeParseException e) {
-                date = LocalDate.parse("1980-01-01");
-            }
-            fiatalok = tanuloRepository.findByBirthDateLessThan(date);
-            return new ResponseEntity(fiatalok, HttpStatus.OK);
-        }
-        if (q != null) {
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.GERMAN);
-            LocalDate start;
-            LocalDate end;
-            try {
-                start = LocalDate.parse("1980-01-01");
-                end = LocalDate.parse("1990-12-31");
-            } catch (DateTimeParseException e) {
-                start = LocalDate.parse("1980-01-01");
-                end = LocalDate.parse("1990-12-31");
-            }
-            fiatalok = tanuloRepository.findByBirthDateBetween(start, end);
-            return new ResponseEntity(fiatalok, HttpStatus.OK);
-        }
-        if (from != null && to != null) {
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.GERMAN);
-            LocalDate fromDate;
-            LocalDate toDate;
-            try {
-                fromDate = LocalDate.parse(from);
-                toDate = LocalDate.parse(to);
-            } catch (DateTimeParseException e) {
-                fromDate = LocalDate.parse("1985-01-01");
-                toDate = LocalDate.parse("2001-01-01");
-            }
-            fiatalok = tanuloRepository.findByBirthDateBetween(fromDate, toDate);
-            return new ResponseEntity(fiatalok, HttpStatus.OK);
-        }
+        var fiatalok = myRestService.getTest3(q,from,to);
         return new ResponseEntity(fiatalok, HttpStatus.OK);
     }
 }
