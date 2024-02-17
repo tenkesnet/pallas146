@@ -7,11 +7,9 @@ import org.pallas.alaprest.repository.*;
 import org.pallas.alaprest.services.ModelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -60,6 +58,16 @@ public class ModelController {
     public ResponseEntity getReszleg(){
         List<Reszleg> reszleg = modelService.getReszleg();
         return new ResponseEntity(reszleg, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "postAutoCsop", method = RequestMethod.POST)
+    public ResponseEntity addAutoCsop (@RequestBody AutoCsopRequestDTO autoCsopRequestDTO){
+        return new ResponseEntity<>(modelService.addAutoCsop(autoCsopRequestDTO),HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "postAlkalmazott", method = RequestMethod.POST)
+    public ResponseEntity addAlkalmazott (@RequestBody AlkalmazottRequestDTO alkalmazottRequestDTO){
+        return new ResponseEntity<>(modelService.addAlkalmazott(alkalmazottRequestDTO),HttpStatus.OK);
     }
 
 

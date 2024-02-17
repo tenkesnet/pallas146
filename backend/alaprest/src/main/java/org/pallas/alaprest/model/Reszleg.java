@@ -36,7 +36,7 @@ public class Reszleg {
     @Column(length = 20, nullable = false)
     private String reszlegNev;
 
-    @Column(length = 15, nullable = false)
+    @Column(length = 15, nullable = true)
     private String reszlegCim;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "reszleg")

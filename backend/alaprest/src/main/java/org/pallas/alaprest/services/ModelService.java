@@ -68,4 +68,21 @@ public class ModelService {
     public List<Reszleg> getReszleg(){
         return reszlegRepository.findAll();
     }
+
+    public List<AutoCsopDTO> addAutoCsop(AutoCsopRequestDTO autoCsopRequestDTO){
+        AutoCsop autoCsop = AutoCsopRequestMapper.MAPPER.toAutoCsop(autoCsopRequestDTO);
+        autoCsopRepository.save(autoCsop);
+        List<AutoCsop> autoCsops = autoCsopRepository.findAll();
+        return AutoCsopMapper.MAPPER.fromAutoCsop(autoCsops);
+    }
+
+    public List<AlkalmazottDTO> addAlkalmazott(AlkalmazottRequestDTO alkalmazottRequestDTO){
+        Alkalmazott alkalmazott = AlkalmazottRequestMapper.MAPPER.toAlkalmazott(alkalmazottRequestDTO);
+
+        Reszleg reszleg = reszlegRepository.findByReszlegNev(alkalmazott.getReszleg().getReszlegNev());
+        alkalmazott.setReszleg(reszleg);
+        alkalmazottRepository.save(alkalmazott);
+        List<Alkalmazott> alkalmazotts = alkalmazottRepository.findAll();
+        return AlkalmazottMapper.MAPPER.fromAlkalmazott(alkalmazotts);
+    }
 }
