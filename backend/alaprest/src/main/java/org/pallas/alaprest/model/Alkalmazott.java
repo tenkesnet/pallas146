@@ -1,5 +1,6 @@
 package org.pallas.alaprest.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -38,7 +39,7 @@ public class Alkalmazott {
 	public Integer fizetes;
 	@Column(nullable = true)
 	public Integer premium;
-	public Date belepes;
+	public LocalDate belepes;
 
 	//@JsonIdentityReference(alwaysAsId = true)
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

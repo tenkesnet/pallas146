@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 
@@ -18,7 +19,7 @@ public class AlkalmazottRequestDTO {
 	public String beosztas;
 	public Integer fizetes;
 	public Integer premium;
-	public Date belepes;
+	public LocalDate belepes;
 	private String reszlegNev;
 
 	// @JsonIdentityReference(alwaysAsId = true)

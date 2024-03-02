@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.pallas.alaprest.model.Reszleg;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 
@@ -19,7 +20,7 @@ public class AlkalmazottDTO {
 	public String beosztas;
 	public Integer fizetes;
 	public Integer premium;
-	public Date belepes;
+	public LocalDate belepes;
 	private String reszlegNev;
 
 	// @JsonIdentityReference(alwaysAsId = true)
