@@ -4,6 +4,7 @@ import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.pallas.alaprest.model.Reszleg;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -20,7 +21,7 @@ public class AlkalmazottRequestDTO {
 	public Integer fizetes;
 	public Integer premium;
 	public LocalDate belepes;
-	private String reszlegNev;
+	private Reszleg reszleg;
 
 	// @JsonIdentityReference(alwaysAsId = true)
 	//@OneToMany(fetch = FetchType.EAGER, mappedBy = "alkalmazott")

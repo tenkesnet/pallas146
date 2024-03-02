@@ -4,7 +4,6 @@ import org.pallas.alaprest.dtos.*;
 import org.pallas.alaprest.mappers.*;
 import org.pallas.alaprest.model.*;
 import org.pallas.alaprest.repository.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -45,7 +44,7 @@ public class ModelService {
         List<AutoCsop> autoCsop= autoCsopRepository.findAll();
         return AutoCsopMapper.MAPPER.fromAutoCsop(autoCsop);
     }
-    public List<AlkalmazottDTO> getAlkalmazottak() {
+    public List<AlkalmazottResponseDTO> getAlkalmazottak() {
         List<Alkalmazott> alkalmazott = alkalmazottRepository.findAll();
         return AlkalmazottMapper.MAPPER.fromAlkalmazott(alkalmazott);
     }
@@ -76,7 +75,7 @@ public class ModelService {
         return AutoCsopMapper.MAPPER.fromAutoCsop(autoCsops);
     }
 
-    public List<AlkalmazottDTO> addAlkalmazott(AlkalmazottRequestDTO alkalmazottRequestDTO){
+    public List<AlkalmazottResponseDTO> addAlkalmazott(AlkalmazottRequestDTO alkalmazottRequestDTO){
         Alkalmazott alkalmazott = AlkalmazottRequestMapper.MAPPER.toAlkalmazott(alkalmazottRequestDTO);
 
         Reszleg reszleg = reszlegRepository.findByReszlegNev(alkalmazott.getReszleg().getReszlegNev());

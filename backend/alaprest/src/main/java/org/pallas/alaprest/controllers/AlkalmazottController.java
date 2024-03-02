@@ -1,19 +1,12 @@
 package org.pallas.alaprest.controllers;
 
-import org.pallas.alaprest.dtos.AlkalmazottDTO;
-import org.pallas.alaprest.mappers.AlkalmazottMapper;
 import org.pallas.alaprest.model.Alkalmazott;
-import org.pallas.alaprest.model.Reszleg;
 import org.pallas.alaprest.repository.IAlkalmazottRepository;
 import org.pallas.alaprest.repository.IReszlegRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/alkalmazott")

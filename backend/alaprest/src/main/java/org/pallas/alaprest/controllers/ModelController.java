@@ -1,13 +1,9 @@
 package org.pallas.alaprest.controllers;
 
 import org.pallas.alaprest.dtos.*;
-import org.pallas.alaprest.mappers.*;
 import org.pallas.alaprest.model.*;
-import org.pallas.alaprest.repository.*;
 import org.pallas.alaprest.services.ModelService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,7 +21,7 @@ public class ModelController {
 
     @RequestMapping(value = "getAlkalmazottak", method = RequestMethod.GET)
     public ResponseEntity getAlkalmazottak() {
-        List<AlkalmazottDTO> alkalmazott = modelService.getAlkalmazottak();
+        List<AlkalmazottResponseDTO> alkalmazott = modelService.getAlkalmazottak();
         return new ResponseEntity(alkalmazott, HttpStatus.OK);
     }
 

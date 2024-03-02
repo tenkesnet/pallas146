@@ -1,10 +1,8 @@
 package org.pallas.alaprest.mappers;
 
-import org.checkerframework.checker.units.qual.A;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.pallas.alaprest.dtos.AlkalmazottDTO;
+import org.pallas.alaprest.dtos.AlkalmazottResponseDTO;
+import org.pallas.alaprest.dtos.AlkalmazottRequestDTO;
 import org.pallas.alaprest.model.Alkalmazott;
 import org.pallas.alaprest.model.Autok;
 import org.pallas.alaprest.model.Reszleg;
@@ -26,14 +24,15 @@ class AlkalmazottRequestMapperTest {
                 "Róbert",
                 "főnök",23000,4000,null,null,null);
         //When
-        AlkalmazottDTO alkalmazottDTO = AlkalmazottRequestMapper.MAPPER.fromAlkalmazott(alkalmazott);
+        AlkalmazottResponseDTO alkalmazottResponseDTO = AlkalmazottRequestMapper.MAPPER.fromAlkalmazott(alkalmazott);
 
         //Then
-        assertEquals(alkalmazott.getAlkNev(), alkalmazottDTO.getNev());
-        assertEquals(alkalmazott.getBeosztas(), alkalmazottDTO.getBeosztas());
-        assertEquals(null, alkalmazottDTO.getReszlegNev());
-        assertEquals(alkalmazott.getFizetes(), alkalmazottDTO.getFizetes());
-        assertEquals(alkalmazott.getPremium(), alkalmazottDTO.getPremium());
+        assertEquals(alkalmazott.getAlkNev(), alkalmazottResponseDTO.getNev());
+        assertEquals(2+3,5);
+        assertEquals(alkalmazott.getBeosztas(), alkalmazottResponseDTO.getBeosztas());
+        assertEquals(null, alkalmazottResponseDTO.getReszlegNev());
+        assertEquals(alkalmazott.getFizetes(), alkalmazottResponseDTO.getFizetes());
+        assertEquals(alkalmazott.getPremium(), alkalmazottResponseDTO.getPremium());
         assertEquals(alkalmazott.getBelepes(), null);
     }
 
@@ -51,17 +50,29 @@ class AlkalmazottRequestMapperTest {
                 reszleg,
                 autok);
         //When
-        AlkalmazottDTO alkalmazottDTO = AlkalmazottRequestMapper.MAPPER.fromAlkalmazott(alkalmazott);
+        AlkalmazottResponseDTO alkalmazottResponseDTO = AlkalmazottRequestMapper.MAPPER.fromAlkalmazott(alkalmazott);
         //Then
-        assertEquals(alkalmazott.getAlkNev(), alkalmazottDTO.getNev());
-        assertEquals(alkalmazott.getBeosztas(), alkalmazottDTO.getBeosztas());
-        assertEquals(alkalmazott.getReszleg().getReszlegNev(), alkalmazottDTO.getReszlegNev());
-        assertEquals(alkalmazott.getFizetes(), alkalmazottDTO.getFizetes());
-        assertEquals(alkalmazott.getPremium(), alkalmazottDTO.getPremium());
+        assertEquals(alkalmazott.getAlkNev(), alkalmazottResponseDTO.getNev());
+        assertEquals(alkalmazott.getBeosztas(), alkalmazottResponseDTO.getBeosztas());
+        assertEquals(alkalmazott.getReszleg().getReszlegNev(), alkalmazottResponseDTO.getReszlegNev());
+        assertEquals(alkalmazott.getFizetes(), alkalmazottResponseDTO.getFizetes());
+        assertEquals(alkalmazott.getPremium(), alkalmazottResponseDTO.getPremium());
         assertEquals(alkalmazott.getBelepes(), LocalDate.of(2016,2,13));
     }
 
     @Test
-    void toAlkalmazott() {
+    void FromDTOtoAlkalmazott() {
+        //Given
+        Reszleg reszleg = new Reszleg(0,23,"Szállítás","Pest",null);
+        AlkalmazottRequestDTO alkalmazottDTO = new AlkalmazottRequestDTO(1,
+                "Zoltán",
+                "melós",
+                40000,
+                5000,LocalDate.parse("2018-12-21"),reszleg);
+        //When
+        Alkalmazott alkalmazott = AlkalmazottRequestMapper.MAPPER.toAlkalmazott(alkalmazottDTO);
+        //Then
+        assertEquals(alkalmazottDTO.getNev(),alkalmazott.getAlkNev());
+        assertEquals(alkalmazottDTO.getReszleg().getReszlegNev(),alkalmazott.getReszleg().getReszlegNev());
     }
 }
