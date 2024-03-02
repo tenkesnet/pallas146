@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -27,7 +28,7 @@ public class MyRestService {
     public List<Tanulo> getTest3(String q, String from, String to){
         List<Tanulo> fiatalok = tanuloRepository.findAll();
         if (q == null && from == null && to == null) {
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.GERMAN);
+            //SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.GERMAN);
             LocalDate date;
             try {
                 date = LocalDate.parse("1980-01-01");
@@ -65,6 +66,9 @@ public class MyRestService {
             fiatalok = tanuloRepository.findByBirthDateBetween(fromDate, toDate);
             return fiatalok;
         }
-        return fiatalok;
+        if(fiatalok.stream().anyMatch(x->x.getHajSzin().equals("szoke"))){
+            return fiatalok;
+        };
+        return new ArrayList<>();
     }
 }

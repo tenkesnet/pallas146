@@ -42,7 +42,7 @@ public class ModelService {
 
     public List<AutoCsopDTO> getAutoCsop(){
         List<AutoCsop> autoCsop= autoCsopRepository.findAll();
-        return AutoCsopMapper.MAPPER.fromAutoCsop(autoCsop);
+        return AutoCsopMapper.MAPPER.fromAutoCsop(autoCsop).subList(0,1);
     }
     public List<AlkalmazottResponseDTO> getAlkalmazottak() {
         List<Alkalmazott> alkalmazott = alkalmazottRepository.findAll();

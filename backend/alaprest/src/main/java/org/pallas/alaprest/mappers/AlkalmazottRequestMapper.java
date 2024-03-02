@@ -24,6 +24,6 @@ public interface AlkalmazottRequestMapper {
 
     @AfterMapping
     default void ChangeName(@MappingTarget AlkalmazottResponseDTO alkalmazottResponseDTO, Alkalmazott alkalmazott){
-        alkalmazottResponseDTO.setNev(alkalmazott.getAlkNev());
+        //alkalmazottResponseDTO.setNev(alkalmazott.getAlkNev().substring(0, alkalmazott.getAlkNev().length()-1));
     }
 }
