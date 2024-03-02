@@ -27,6 +27,13 @@ public class Tanulo {
     @Column
     private String hajSzin;
 
+    public Tanulo(int id, String name, LocalDate birthDate, double weight, String hajSzin) {
+        this.id = id;
+        this.name = name;
+        this.birthDate = birthDate;
+        this.weight = weight;
+        this.hajSzin = hajSzin;
+    }
 
     @Override
     public String toString() {
